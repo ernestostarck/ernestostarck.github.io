@@ -657,53 +657,82 @@ h3 {
   border-color: rgba(193, 138, 14, 0.45);
 }
 
-.cert-list-with-icons {
+.education-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.cert-card {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-}
-
-.cert-item-with-icon {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  border: 1px solid rgba(193, 138, 14, 0.18);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.6rem;
+  min-height: 180px;
   padding: 1rem;
+  border: 1px solid rgba(193, 138, 14, 0.18);
   background: rgba(12, 10, 7, 0.9);
+  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
 }
 
-.cert-item-with-icon:hover {
-  transform: translateY(-1px);
+.cert-card:hover {
+  transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   border-color: rgba(193, 138, 14, 0.45);
 }
 
-.cert-icon {
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
-  flex-shrink: 0;
+.cert-card-icon {
+  width: 64px;
+  height: 64px;
   object-fit: contain;
   opacity: 0.9;
 }
 
-.cert-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  flex: 1;
-}
-
-.cert-content strong {
-  display: inline-block;
-  margin-bottom: 0.12rem;
+.cert-card strong {
   color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
-.cert-content span {
+.cert-card-meta {
   color: var(--muted);
+  font-size: 0.85rem;
   display: block;
-  max-width: none;
+}
+
+.cert-card-status {
+  color: var(--accent-bright);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+}
+
+.cert-card-description {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  display: block;
+}
+
+.cert-card-link {
+  display: block;
+  margin-top: 0.4rem;
+}
+
+.cert-card-link a {
+  color: var(--accent-bright);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 160ms ease;
+}
+
+.cert-card-link a:hover {
+  color: var(--ink);
 }
 
 .contact-list li {
