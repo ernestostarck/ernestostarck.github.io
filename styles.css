@@ -138,6 +138,9 @@ h3 {
 .cta {
   font-weight: 600;
   margin-top: 1.15rem;
+  display: inline-block;
+  min-width: auto;
+  padding: 0.6rem 1.8rem !important;
 }
 
 .cta:hover,
