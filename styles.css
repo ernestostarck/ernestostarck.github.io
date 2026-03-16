@@ -704,8 +704,8 @@ h3 {
 }
 
 .cert-card-icon {
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
   opacity: 0.9;
 }
@@ -1042,6 +1042,11 @@ h3 {
   .cert-card {
     min-height: 150px;
     padding: 0.9rem;
+  }
+
+  .cert-card-icon {
+    width: 82px;
+    height: 82px;
   }
 
   .tech-list {
