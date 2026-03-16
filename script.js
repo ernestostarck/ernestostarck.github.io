@@ -1,4 +1,11 @@
 (function () {
+  var yearNodes = document.querySelectorAll("#systemYear");
+  var currentYear = new Date().getFullYear();
+
+  yearNodes.forEach(function (node) {
+    node.textContent = currentYear;
+  });
+
   var btn = document.getElementById("scrollTopBtn");
   if (!btn) return;
 
