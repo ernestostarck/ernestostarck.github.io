@@ -1,76 +1,85 @@
-# Professional Portfolio – Engineering & Applied Software
+# Portfolio Profesional - Ernesto Starck H.
 
-This repository contains the source code of my personal professional portfolio website.
+Repositorio del sitio personal de portfolio orientado a evidencia técnica y criterio de ingeniería aplicado a contextos reales.
 
-The site is designed as **technical evidence**, focused on automation, data-driven solutions, and software systems applied to real operational contexts rather than academic demonstrations.
-
----
-
-## Purpose
-
-To present a professional profile centered on:
-- technical judgment,
-- operational impact,
-- and the ability to design and implement maintainable solutions in production-like environments.
-
-This repository does not aim to showcase visual experimentation, but clarity, structure, and intent.
+Sitio publicado: https://ernestostarck.github.io/
 
 ---
 
-## Featured Projects
+## Enfoque
 
-The portfolio presents a selected set of projects that address real-world problems:
+Este portfolio no está diseñado como CV largo ni como vitrina de tecnologías.
 
-1. **Management and Modernization System for Rural Water Services (APR)**  
-   Digitalization and automation of administrative and financial processes in low-maturity technological contexts.
-
-2. **PowerPoint Add-In for Corporate Reporting Automation**  
-   Enterprise-oriented integration for automating data-driven presentations and reducing manual reporting overhead.
-
-3. **Clinical Decision Support System (AI)**  
-   Academic prototype validated in a real clinical environment, focused on decision support rather than automation or diagnosis.
-
-4. **Meeting Coordination System (Google Apps Script)**  
-   Lightweight process orchestration for reducing administrative friction in tutoring programs.
-
-Each project is documented individually in its corresponding repository.
+Objetivo principal:
+1. Mostrar decisiones técnicas con impacto operativo.
+2. Comunicar responsabilidad bajo restricciones reales.
+3. Presentar soluciones mantenibles y utilizables por equipos no técnicos.
 
 ---
 
-## Technical Approach
+## Características del Sitio
 
-The website is intentionally built as a **static site** to prioritize:
-- simplicity,
-- maintainability,
-- and long-term stability.
+1. Arquitectura multipágina con navegación consistente.
+2. Diseño visual unificado tipo producto (desktop + móvil).
+3. Ritmo vertical y ancho de lectura homogéneo en todas las vistas.
+4. Jerarquía narrativa de proyectos por impacto y nivel de responsabilidad.
+5. Footer global con año dinámico del sistema.
+6. Botón flotante para volver arriba.
+7. Accesibilidad base: estados focus visibles y soporte para `prefers-reduced-motion`.
 
-Technology choices reflect this approach:
+---
+
+## Estructura del Repositorio
+
+- `index.html`: Home
+- `sobre-mi.html`: Perfil profesional y criterio técnico
+- `proyectos.html`: Proyectos seleccionados por impacto
+- `certificaciones.html`: Certificaciones con respaldo aplicado
+- `contacto.html`: Canales de contacto profesional
+- `styles.css`: Sistema visual global (layout, tipografía, componentes)
+- `script.js`: Año dinámico en footer + comportamiento del botón scroll top
+- `favicon.svg`: Ícono principal del sitio
+- `icons/`: Íconos SVG de contacto
+
+---
+
+## Stack Técnico
+
 - HTML5
 - CSS3
-- Typography: IBM Plex Sans & IBM Plex Serif
-
-No frameworks are used unless strictly necessary.
-
----
-
-## Repository Structure
-
-- `index.html` – main site structure and content
-- `styles.css` – layout, typography, and responsive design
+- JavaScript (vanilla)
+- Bootstrap 5.3.8 (componentes y utilidades base)
+- Google Fonts: IBM Plex Sans / IBM Plex Serif
 
 ---
 
-## Deployment
+## Proyectos Destacados
 
-The site is intended to be deployed using GitHub Pages.
+Ordenados por jerarquía profesional y contexto de aplicación:
 
-Local preview:
-1. Clone the repository.
-2. Open `index.html` in a web browser.
+1. Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)
+2. Sistema de Gestión y Modernización para APR
+3. PowerPoint Add-In para Automatización de Reportes Corporativos
+4. Sistema de Coordinación de Reuniones (Google Apps Script)
 
 ---
 
-## Status
+## Ejecución Local
 
-The portfolio is stable and ready for publication.  
-Future updates focus on content refinement rather than architectural changes.
+1. Clonar el repositorio.
+2. Abrir `index.html` en navegador.
+
+Opcional: usar Live Server en VS Code para recarga automática.
+
+---
+
+## Deploy
+
+Despliegue continuo mediante GitHub Pages desde la rama principal.
+
+---
+
+## Estado
+
+Sitio estable y publicado.
+Las siguientes mejoras se enfocan en contenido y optimización fina de UX/SEO.
