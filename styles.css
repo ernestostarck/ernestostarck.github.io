@@ -150,6 +150,10 @@ main {
   max-width: var(--reading-max);
 }
 
+.page-shell .contact-list.contact-cards {
+  max-width: none;
+}
+
 .section {
   padding: var(--space-3) 0;
   scroll-margin-top: 100px;
@@ -1348,35 +1352,75 @@ h2 {
 }
 
 .contact-list.contact-cards {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
+  max-width: none;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 1rem;
 }
 
 .contact-list.contact-cards li {
+  position: relative;
+  overflow: hidden;
   min-height: 124px;
-  padding: 1rem 1rem;
+  padding: 1.06rem 1.06rem;
   border-radius: 14px;
   display: flex;
   align-items: flex-start;
   gap: 0.72rem;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(82, 205, 138, 0.2);
+  background:
+    linear-gradient(160deg, rgba(13, 22, 18, 0.94), rgba(9, 15, 12, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(197, 255, 220, 0.09),
+    0 10px 20px rgba(0, 0, 0, 0.28);
   transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+}
+
+.contact-list.contact-cards li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(82, 205, 138, 0), rgba(82, 205, 138, 0.82), rgba(82, 205, 138, 0));
+  pointer-events: none;
+}
+
+.contact-list.contact-cards li:nth-child(1) {
+  border-color: rgba(116, 235, 171, 0.34);
+}
+
+.contact-list.contact-cards li:nth-child(2) {
+  border-color: rgba(82, 205, 138, 0.34);
+}
+
+.contact-list.contact-cards li:nth-child(3) {
+  border-color: rgba(62, 184, 121, 0.34);
+}
+
+.contact-list.contact-cards li:nth-child(4) {
+  border-color: rgba(37, 160, 101, 0.34);
 }
 
 .contact-list.contact-cards li:hover {
   transform: translateY(-2px);
-  border-color: rgba(82, 205, 138, 0.42);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.34);
+  border-color: rgba(126, 236, 177, 0.54);
+  box-shadow:
+    inset 0 1px 0 rgba(215, 255, 231, 0.15),
+    0 16px 28px rgba(0, 0, 0, 0.42);
 }
 
 .contact-list.contact-cards li span {
   font-size: 1.02rem;
   line-height: 1.5;
+  color: #d5e8dd;
 }
 
 .contact-list.contact-cards li strong {
   display: block;
   margin-bottom: 0.18rem;
+  color: #eefcf4;
 }
 
 .contact-list.contact-cards .contact-icon {
@@ -1386,6 +1430,12 @@ h2 {
   min-height: 24px;
   flex: 0 0 24px;
   margin-top: 0.15rem;
+}
+
+.contact-list.contact-cards a {
+  color: #6febb1;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .tech-item h4,
