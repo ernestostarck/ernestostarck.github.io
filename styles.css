@@ -235,6 +235,40 @@ h3 {
   }
 }
 
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: white;
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(11, 28, 52, 0.12);
+}
+
+.scroll-top-btn:hover,
+.scroll-top-btn:focus-visible {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(13, 79, 139, 0.2);
+}
+
+.scroll-top-btn.visible {
+  display: flex;
+}
+
 @media (max-width: 760px) {
   .navbar .nav-link {
     padding: 0.4rem 0.65rem;
@@ -250,5 +284,13 @@ h3 {
 
   .contact-list li {
     gap: 0.58rem;
+  }
+
+  .scroll-top-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
