@@ -573,27 +573,35 @@ h3 {
 .quick-social {
   margin-top: 1.5rem;
   display: flex;
-  justify-content: flex-start;
-  gap: 1.4rem;
+  justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
-.quick-social a {
-  color: var(--muted);
+.social-icon-link {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(193, 138, 14, 0.45);
+  background: rgba(193, 138, 14, 0.05);
+  color: var(--accent-bright);
   text-decoration: none;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-bottom: 1px solid transparent;
-  transition: color 180ms ease, border-color 180ms ease;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
-.quick-social a:hover,
-.quick-social a:focus-visible {
-  color: var(--accent-bright);
-  border-bottom-color: var(--accent);
+.social-icon-link svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.social-icon-link:hover,
+.social-icon-link:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--accent-bright);
+  background: rgba(193, 138, 14, 0.14);
 }
 
 /* ── Conversion CTA block ── */
