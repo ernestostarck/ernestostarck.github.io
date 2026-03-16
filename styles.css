@@ -1241,6 +1241,71 @@ h2 {
   background: linear-gradient(180deg, rgba(82, 205, 138, 0.13), rgba(82, 205, 138, 0.05));
 }
 
+.contact-banner {
+  position: relative;
+  overflow: hidden;
+  padding: 1.2rem 1.35rem;
+  border: 1px solid rgba(82, 205, 138, 0.34);
+  background:
+    linear-gradient(120deg, rgba(82, 205, 138, 0.15), rgba(12, 20, 16, 0.58) 45%),
+    linear-gradient(180deg, rgba(18, 30, 24, 0.92), rgba(9, 15, 12, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(183, 247, 213, 0.14),
+    0 12px 26px rgba(0, 0, 0, 0.34);
+}
+
+.contact-banner::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  top: -230px;
+  right: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82, 205, 138, 0.28), rgba(82, 205, 138, 0));
+  pointer-events: none;
+}
+
+.contact-banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(82, 205, 138, 0.72), transparent);
+  pointer-events: none;
+}
+
+.contact-banner .eyebrow,
+.contact-banner h2,
+.contact-banner .banner-lead,
+.contact-banner .banner-chips {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-banner h2 {
+  letter-spacing: -0.01em;
+}
+
+.contact-banner .banner-lead {
+  color: #c9dfd2;
+  max-width: 62ch;
+}
+
+.contact-banner .banner-chips {
+  margin-top: 0.92rem;
+  gap: 0.56rem;
+}
+
+.contact-banner .banner-chips span {
+  border-color: rgba(82, 205, 138, 0.4);
+  background: rgba(82, 205, 138, 0.16);
+  color: #d2f8e3;
+  box-shadow: inset 0 1px 0 rgba(205, 255, 227, 0.2);
+}
+
 .banner-chips span {
   border: 1px solid rgba(82, 205, 138, 0.3);
   background: rgba(82, 205, 138, 0.12);
@@ -1398,5 +1463,16 @@ h2 {
   .cert-card,
   .conversion-cta {
     border-radius: 10px;
+  }
+
+  .contact-banner {
+    padding: 1rem 1rem;
+  }
+
+  .contact-banner::before {
+    width: 240px;
+    height: 240px;
+    top: -150px;
+    right: -100px;
   }
 }
