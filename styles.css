@@ -229,6 +229,22 @@ h3 {
   padding: 0.8rem;
 }
 
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.contact-list li span {
+  line-height: 1.45;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
 .cert-list strong,
 .contact-list strong {
   display: inline-block;
@@ -278,5 +294,9 @@ h3 {
 
   .content-block {
     padding: 0.8rem 0.84rem;
+  }
+
+  .contact-list li {
+    gap: 0.58rem;
   }
 }
