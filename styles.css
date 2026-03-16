@@ -258,6 +258,46 @@ h3 {
   text-underline-offset: 2px;
 }
 
+.page-banner {
+  border: 1px solid rgba(13, 79, 139, 0.16);
+  border-radius: 0.9rem;
+  padding: 1rem 1rem 0.95rem;
+  background: linear-gradient(160deg, rgba(13, 79, 139, 0.08), rgba(255, 255, 255, 0.8) 48%, rgba(13, 79, 139, 0.03));
+}
+
+.banner-lead {
+  margin: 0;
+  color: #29405d;
+  font-weight: 500;
+}
+
+.banner-chips {
+  margin-top: 0.72rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.46rem;
+}
+
+.banner-chips span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(13, 79, 139, 0.22);
+  background: rgba(255, 255, 255, 0.82);
+  color: #26415f;
+  border-radius: 999px;
+  padding: 0.2rem 0.62rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.cert-banner {
+  border-left: 4px solid #2f6ea5;
+}
+
+.contact-banner {
+  border-left: 4px solid #3a6f98;
+}
+
 .cert-list,
 .contact-list {
   margin: 0;
@@ -273,6 +313,14 @@ h3 {
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.58);
   padding: 0.8rem;
+  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+}
+
+.cert-list li:hover,
+.contact-list li:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(11, 28, 52, 0.08);
+  border-color: rgba(13, 79, 139, 0.22);
 }
 
 .contact-list li {
@@ -376,6 +424,14 @@ h3 {
   .project-grid {
     grid-template-columns: 1fr;
     gap: 0.26rem;
+  }
+
+  .page-banner {
+    padding: 0.9rem 0.85rem 0.82rem;
+  }
+
+  .banner-chips {
+    gap: 0.38rem;
   }
 
   .content-block {
