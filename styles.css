@@ -29,63 +29,29 @@ body {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
   z-index: 20;
-  backdrop-filter: blur(9px);
-  background: rgba(237, 242, 248, 0.9);
-  border-bottom: 1px solid var(--line);
 }
 
-.site-nav {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0.75rem 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.brand {
-  text-decoration: none;
-  color: var(--ink);
-  font-weight: 700;
+.navbar-brand {
   letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
 }
 
-.nav-links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  text-decoration: none;
+.navbar .nav-link {
   color: var(--ink);
-  font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.38rem 0.64rem;
   border-radius: 999px;
-  border: 1px solid transparent;
-  transition: all 180ms ease;
+  padding: 0.35rem 0.68rem;
 }
 
-.nav-links a:hover,
-.nav-links a:focus-visible {
-  border-color: var(--line);
-  background: rgba(255, 255, 255, 0.7);
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible,
+.navbar .nav-link.active {
+  background: rgba(13, 79, 139, 0.1);
+  color: #0b3f6f;
 }
 
 main {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3.4rem;
+  max-width: 1120px;
 }
 
 .section {
@@ -94,11 +60,7 @@ main {
 }
 
 .panel {
-  border: 1px solid var(--line);
-  background: var(--card);
-  box-shadow: var(--shadow);
   border-radius: 1rem;
-  padding: clamp(1.1rem, 1.9vw + 0.8rem, 2rem);
 }
 
 .eyebrow {
@@ -171,20 +133,12 @@ h3 {
 }
 
 .cta {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--accent);
-  color: #ffffff;
-  font-weight: 700;
-  border-radius: 0.75rem;
+  font-weight: 600;
   margin-top: 1.15rem;
-  padding: 0.72rem 1.06rem;
-  transition: background 180ms ease, transform 180ms ease;
 }
 
 .cta:hover,
 .cta:focus-visible {
-  background: var(--accent-strong);
   transform: translateY(-1px);
 }
 
@@ -279,18 +233,8 @@ h3 {
 }
 
 @media (max-width: 760px) {
-  .site-nav {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .nav-links {
-    gap: 0.2rem;
-  }
-
-  .nav-links a {
-    padding: 0.34rem 0.54rem;
-    font-size: 0.89rem;
+  .navbar .nav-link {
+    padding: 0.4rem 0.65rem;
   }
 
   .project {
