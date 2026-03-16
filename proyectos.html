@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260316-3" />
+    <link rel="stylesheet" href="styles.css?v=20260316-4" />
   </head>
   <body class="bg-body-tertiary">
     <header class="site-header">
@@ -40,57 +40,84 @@
           <h2>Proyectos seleccionados por impacto, contexto y decisión técnica</h2>
           <p class="lead text-muted">No es un catálogo de trabajos, sino una selección curada de sistemas donde tomé decisiones técnicas bajo restricciones reales.</p>
 
-          <article class="project">
-            <h3>Proyecto 1 - Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)</h3>
-            <p><strong>Contexto:</strong> Proyecto de Título validado en el Centro Avanzado de Tratamiento de Heridas para apoyar evaluaciones periódicas de heridas crónicas.</p>
-            <p><strong>Problema:</strong> Evaluaciones clínicas dependientes de experiencia individual, dificultad para estandarizar criterios y necesidad de soporte al profesional sin reemplazar su criterio.</p>
-            <p><strong>Solución:</strong> Diseño de un sistema de apoyo a la toma de decisiones clínicas basado en IA aplicada, orientado a entregar información estructurada y sugerencias para evaluación y seguimiento.</p>
-            <p><strong>Decisiones técnicas relevantes:</strong> Enfoque explícito en decision support, arquitectura modular para prototipado académico, persistencia local controlada y separación estricta entre lógica de IA y presentación.</p>
-            <p><strong>Consideraciones:</strong> Se priorizó un enfoque de apoyo clínico explicable y acotado por sobre automatizaciones de mayor alcance para resguardar uso responsable y adopción profesional.</p>
-            <p><strong>Validación:</strong> Prototipo académico validado en contexto clínico real, con énfasis en uso responsable y apoyo al criterio profesional.</p>
-            <p><strong>Impacto:</strong> Mayor consistencia en evaluación y mejor continuidad del seguimiento clínico mediante soporte estructurado.</p>
-            <p><strong>Tecnologías:</strong> React, Node.js/Express, SQLite, Android (Kotlin), IA aplicada.</p>
-            <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/decision-support-heridas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+          <article class="project project-card priority-1">
+            <div class="project-head">
+              <p class="project-rank">Proyecto 1</p>
+              <span class="project-tag">Decision support</span>
+            </div>
+            <h3>Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)</h3>
+            <p class="project-summary">Proyecto de título con validación en contexto clínico real, orientado a apoyar criterio profesional bajo estándares de uso responsable.</p>
+            <div class="project-grid">
+              <p><strong>Contexto:</strong> Centro Avanzado de Tratamiento de Heridas, con necesidad de estandarizar evaluaciones periódicas y continuidad de seguimiento.</p>
+              <p><strong>Problema:</strong> Alta variabilidad entre evaluaciones clínicas y dependencia de experiencia individual para decisiones reiteradas.</p>
+              <p><strong>Solución:</strong> Sistema de apoyo con IA aplicada para estructurar información clínica y entregar sugerencias sin reemplazar juicio profesional.</p>
+              <p><strong>Decisiones técnicas:</strong> Arquitectura modular, persistencia local controlada y separación estricta entre lógica de IA y capa de presentación.</p>
+              <p><strong>Validación:</strong> Prototipo académico validado en contexto clínico real, con énfasis en uso responsable y apoyo al criterio profesional.</p>
+              <p><strong>Impacto:</strong> Mayor consistencia de evaluación y mejor continuidad del seguimiento clínico.</p>
+            </div>
+            <p class="project-stack"><strong>Tecnologías:</strong> React, Node.js/Express, SQLite, Android (Kotlin), IA aplicada.</p>
+            <p class="project-link"><a href="https://github.com/tu-usuario/decision-support-heridas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
           </article>
 
-          <article class="project">
-            <h3>Proyecto 2 - Sistema de Gestión y Modernización para APR</h3>
-            <p><strong>Contexto:</strong> Las APR operan con procesos administrativos y contables altamente manuales, apoyados en registros físicos y hojas de cálculo no integradas.</p>
-            <p><strong>Problema:</strong> Cálculos manuales de consumo y cobros, falta de integración entre registros administrativos y financieros, alto costo de tiempo y dificultad para auditar información histórica.</p>
-            <p><strong>Solución:</strong> Diseño e implementación de un sistema web para digitalizar y automatizar procesos administrativos y financieros, centralizando información y acelerando operaciones críticas en un contexto de baja madurez tecnológica.</p>
-            <p><strong>Decisiones técnicas relevantes:</strong> Arquitectura web desacoplada para facilitar mantenimiento, consultas flexibles para distintos perfiles operativos y una interfaz orientada a usuarios no técnicos.</p>
-            <p><strong>Consideraciones:</strong> Se priorizó una arquitectura simple y mantenible por sobre soluciones más complejas, dado el contexto operativo y el perfil de los usuarios finales.</p>
-            <p><strong>Impacto:</strong> Reducción significativa de tiempos administrativos, disminución de errores manuales, mejora de trazabilidad y consistencia de datos, con base preparada para escalabilidad futura.</p>
-            <p><strong>Tecnologías:</strong> React, JavaScript, GraphQL, Docker.</p>
-            <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/apr-modernizacion" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+          <article class="project project-card priority-2">
+            <div class="project-head">
+              <p class="project-rank">Proyecto 2</p>
+              <span class="project-tag">Sistema productivo</span>
+            </div>
+            <h3>Sistema de Gestión y Modernización para APR</h3>
+            <p class="project-summary">Modernización operativa en contexto de baja madurez tecnológica, priorizando trazabilidad y mantenibilidad por sobre complejidad innecesaria.</p>
+            <div class="project-grid">
+              <p><strong>Contexto:</strong> Procesos administrativos y contables manuales, apoyados en registros físicos y planillas no integradas.</p>
+              <p><strong>Problema:</strong> Cálculos manuales de cobro, baja trazabilidad y alto costo de tiempo para auditoría histórica.</p>
+              <p><strong>Solución:</strong> Sistema web para centralizar información, automatizar procesos críticos y reducir errores operativos.</p>
+              <p><strong>Decisiones técnicas:</strong> Arquitectura desacoplada para mantenimiento, consultas flexibles y diseño de interfaz para usuarios no técnicos.</p>
+              <p><strong>Consideraciones:</strong> Trade-off explícito a favor de simplicidad operativa y continuidad del servicio.</p>
+              <p><strong>Impacto:</strong> Menor carga administrativa, mejor consistencia de datos y base sólida para escalabilidad futura.</p>
+            </div>
+            <p class="project-stack"><strong>Tecnologías:</strong> React, JavaScript, GraphQL, Docker.</p>
+            <p class="project-link"><a href="https://github.com/tu-usuario/apr-modernizacion" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
           </article>
 
-          <article class="project">
-            <h3>Proyecto 3 - PowerPoint Add-In para Automatización de Reportes Corporativos</h3>
-            <p><strong>Contexto:</strong> La generación de reportes en PowerPoint se realizaba de forma manual con datos provenientes de múltiples fuentes empresariales.</p>
-            <p><strong>Problema:</strong> Actualización manual de información, inconsistencias entre fuentes de datos, falta de control centralizado y dependencia excesiva del usuario final.</p>
-            <p><strong>Solución:</strong> Desarrollo de un Add-In para PowerPoint que integra datos empresariales directamente en presentaciones, automatizando la generación y actualización de contenido mediante una arquitectura híbrida.</p>
-            <p><strong>Decisiones técnicas relevantes:</strong> Integración nativa con Office usando VSTO y C#, backend desacoplado para acceso a datos, separación entre lógica de negocio y presentación, y compatibilidad con entornos corporativos existentes.</p>
-            <p><strong>Consideraciones:</strong> Se optó por integración directa con PowerPoint para reducir fricción organizacional, gestionar resistencia al cambio y favorecer adopción en equipos que dependen de flujos existentes.</p>
-            <p><strong>Impacto:</strong> Reducción de errores humanos, ahorro de tiempo en reportes, mayor consistencia de información ejecutiva e integración con sistemas legacy sin reemplazarlos.</p>
-            <p><strong>Tecnologías:</strong> C#, VSTO, backend de integración y Oracle.</p>
-            <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/ppt-addin-reportes" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+          <article class="project project-card priority-3">
+            <div class="project-head">
+              <p class="project-rank">Proyecto 3</p>
+              <span class="project-tag">Integración corporativa</span>
+            </div>
+            <h3>PowerPoint Add-In para Automatización de Reportes Corporativos</h3>
+            <p class="project-summary">Automatización en entorno corporativo con sistemas legacy, enfocada en adopción real y reducción de fricción organizacional.</p>
+            <div class="project-grid">
+              <p><strong>Contexto:</strong> Reportes ejecutivos en PowerPoint alimentados manualmente desde múltiples fuentes empresariales.</p>
+              <p><strong>Problema:</strong> Inconsistencias de datos, retrabajo reiterado y dependencia operativa del usuario final.</p>
+              <p><strong>Solución:</strong> Add-In integrado en PowerPoint para actualización directa de contenido desde fuentes corporativas.</p>
+              <p><strong>Decisiones técnicas:</strong> Integración nativa con Office, separación de lógica de negocio y compatibilidad con infraestructura existente.</p>
+              <p><strong>Consideraciones:</strong> Se priorizó adopción y bajo costo de cambio frente a reestructuraciones disruptivas.</p>
+              <p><strong>Impacto:</strong> Menos errores manuales, ahorro de tiempo y mayor consistencia en información ejecutiva.</p>
+            </div>
+            <p class="project-stack"><strong>Tecnologías:</strong> C#, VSTO, backend de integración y Oracle.</p>
+            <p class="project-link"><a href="https://github.com/tu-usuario/ppt-addin-reportes" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
           </article>
 
           <hr class="my-5" />
           <h3 class="text-muted">Automatizaciones operativas</h3>
           <p class="small text-muted">Soluciones livianas orientadas a reducir fricción y carga administrativa.</p>
 
-          <article class="project">
-            <h3>Proyecto 4 - Sistema de Coordinación de Reuniones (Google Apps Script)</h3>
-            <p><strong>Contexto:</strong> En programas de tutorías existía fricción operativa en coordinación de reuniones, seguimiento de participantes y gestión de disponibilidad.</p>
-            <p><strong>Problema:</strong> Coordinación manual repetitiva, falta de validaciones y reglas de negocio, y pérdida de tiempo administrativo.</p>
-            <p><strong>Solución:</strong> Implementación de un sistema liviano de automatización con Google Apps Script para orquestar flujos de coordinación y validación, integrado con herramientas existentes.</p>
-            <p><strong>Decisiones técnicas relevantes:</strong> Priorización de reducción de fricción humana, uso de herramientas livianas en lugar de sobrearquitectura y enfoque en reglas de negocio y validaciones.</p>
-            <p><strong>Consideraciones:</strong> Se eligió una solución de baja complejidad y rápida adopción para maximizar impacto operativo sin introducir infraestructura adicional.</p>
-            <p><strong>Impacto:</strong> Menor carga administrativa, mejor organización de tutorías y automatización sin necesidad de infraestructura adicional.</p>
-            <p><strong>Tecnologías:</strong> Google Apps Script.</p>
-            <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/coordinacion-tutorias-gas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+          <article class="project project-card priority-4 tactical">
+            <div class="project-head">
+              <p class="project-rank">Proyecto 4</p>
+              <span class="project-tag">Automatización táctica</span>
+            </div>
+            <h3>Sistema de Coordinación de Reuniones (Google Apps Script)</h3>
+            <p class="project-summary">Solución liviana para eliminar tareas repetitivas y reducir fricción administrativa sin agregar infraestructura.</p>
+            <div class="project-grid">
+              <p><strong>Contexto:</strong> Programas de tutorías con coordinación manual de reuniones y seguimiento de participantes.</p>
+              <p><strong>Problema:</strong> Tareas repetitivas, validaciones ausentes y pérdida de tiempo operativo.</p>
+              <p><strong>Solución:</strong> Automatización con Google Apps Script para orquestar flujos y reglas de coordinación.</p>
+              <p><strong>Decisiones técnicas:</strong> Herramienta liviana y de rápida adopción, evitando sobrearquitectura.</p>
+              <p><strong>Impacto:</strong> Menor carga administrativa y mejor organización de tutorías.</p>
+              <p><strong>Escenario ideal:</strong> Procesos de bajo costo donde velocidad de implementación es prioridad.</p>
+            </div>
+            <p class="project-stack"><strong>Tecnologías:</strong> Google Apps Script.</p>
+            <p class="project-link"><a href="https://github.com/tu-usuario/coordinacion-tutorias-gas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
           </article>
         </div>
       </section>
