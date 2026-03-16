@@ -319,6 +319,13 @@ h3 {
   justify-content: center;
 }
 
+.tech-badge-image {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}
+
 .tech-badge span {
   color: var(--ink-soft);
   font-size: 0.7rem;
