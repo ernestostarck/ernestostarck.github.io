@@ -98,6 +98,32 @@ button:focus-visible,
   filter: invert(0.65) sepia(1) saturate(3) hue-rotate(8deg);
 }
 
+/* Navbar collapse: Angular-controlled, sin dependencia de Bootstrap JS */
+.navbar-collapse {
+  display: none;
+  width: 100%;
+}
+
+.navbar-collapse.open {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: flex !important;
+    flex-direction: row;
+    flex-basis: auto;
+    width: auto;
+    padding-bottom: 0;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+}
+
 .navbar .nav-link {
   color: var(--ink-soft);
   font-weight: 500;

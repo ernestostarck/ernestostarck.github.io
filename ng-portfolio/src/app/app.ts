@@ -11,6 +11,15 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class App {
   currentYear = new Date().getFullYear();
   showScrollTop = false;
+  navOpen = false;
+
+  toggleNav(): void {
+    this.navOpen = !this.navOpen;
+  }
+
+  closeNav(): void {
+    this.navOpen = false;
+  }
 
   @HostListener('window:scroll')
   onWindowScroll(): void {

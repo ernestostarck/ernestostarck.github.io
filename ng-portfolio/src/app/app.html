@@ -2,16 +2,16 @@
   <nav class="navbar navbar-expand-md navbar-dark border-bottom shadow-sm" aria-label="Navegación principal">
     <div class="container">
       <a class="navbar-brand fw-semibold text-uppercase small" routerLink="/">Portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Mostrar navegación">
+      <button class="navbar-toggler" type="button" (click)="toggleNav()" [attr.aria-expanded]="navOpen" aria-controls="mainNav" aria-label="Mostrar navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="mainNav">
+      <div class="navbar-collapse" [class.open]="navOpen" id="mainNav">
         <ul class="navbar-nav ms-auto gap-lg-1">
-          <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/sobre-mi" routerLinkActive="active">Sobre mí</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/proyectos" routerLinkActive="active">Proyectos</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/certificaciones" routerLinkActive="active">Certificaciones</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeNav()">Home</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/sobre-mi" routerLinkActive="active" (click)="closeNav()">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/proyectos" routerLinkActive="active" (click)="closeNav()">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/certificaciones" routerLinkActive="active" (click)="closeNav()">Certificaciones</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/contacto" routerLinkActive="active" (click)="closeNav()">Contacto</a></li>
         </ul>
       </div>
     </div>
