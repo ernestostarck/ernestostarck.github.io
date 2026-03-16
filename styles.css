@@ -298,6 +298,14 @@ h3 {
   border-left: 4px solid #3a6f98;
 }
 
+.home-banner {
+  border-left: 4px solid #0d4f8b;
+}
+
+.about-banner {
+  border-left: 4px solid #2f6ea5;
+}
+
 .cert-list,
 .contact-list {
   margin: 0;
