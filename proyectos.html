@@ -37,14 +37,28 @@
       <section class="section" aria-label="Proyectos">
         <div class="panel card border-0 shadow-sm p-4 p-lg-5">
           <p class="eyebrow">Proyectos</p>
-          <h2>3-5 proyectos sólidos con contexto, decisión e impacto</h2>
+          <h2>Proyectos seleccionados por impacto, contexto y decisión técnica</h2>
+          <p class="lead text-muted">No es un catálogo de trabajos, sino una selección curada de sistemas donde tomé decisiones técnicas bajo restricciones reales.</p>
 
           <article class="project">
-            <h3>Proyecto 1 - Sistema de Gestión y Modernización para APR</h3>
+            <h3>Proyecto 1 - Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)</h3>
+            <p><strong>Contexto:</strong> Proyecto de Título validado en el Centro Avanzado de Tratamiento de Heridas para apoyar evaluaciones periódicas de heridas crónicas.</p>
+            <p><strong>Problema:</strong> Evaluaciones clínicas dependientes de experiencia individual, dificultad para estandarizar criterios y necesidad de soporte al profesional sin reemplazar su criterio.</p>
+            <p><strong>Solución:</strong> Diseño de un sistema de apoyo a la toma de decisiones clínicas basado en IA aplicada, orientado a entregar información estructurada y sugerencias para evaluación y seguimiento.</p>
+            <p><strong>Decisiones técnicas relevantes:</strong> Enfoque explícito en decision support, arquitectura modular para prototipado académico, persistencia local controlada y separación estricta entre lógica de IA y presentación.</p>
+            <p><strong>Consideraciones:</strong> Se priorizó un enfoque de apoyo clínico explicable y acotado por sobre automatizaciones de mayor alcance para resguardar uso responsable y adopción profesional.</p>
+            <p><strong>Validación:</strong> Prototipo académico validado en contexto clínico real, con énfasis en uso responsable y apoyo al criterio profesional.</p>
+            <p><strong>Impacto:</strong> Mayor consistencia en evaluación y mejor continuidad del seguimiento clínico mediante soporte estructurado.</p>
+            <p><strong>Tecnologías:</strong> React, Node.js/Express, SQLite, Android (Kotlin), IA aplicada.</p>
+            <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/decision-support-heridas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+          </article>
+
+          <article class="project">
+            <h3>Proyecto 2 - Sistema de Gestión y Modernización para APR</h3>
             <p><strong>Contexto:</strong> Las APR operan con procesos administrativos y contables altamente manuales, apoyados en registros físicos y hojas de cálculo no integradas.</p>
             <p><strong>Problema:</strong> Cálculos manuales de consumo y cobros, falta de integración entre registros administrativos y financieros, alto costo de tiempo y dificultad para auditar información histórica.</p>
             <p><strong>Solución:</strong> Diseño e implementación de un sistema web para digitalizar y automatizar procesos administrativos y financieros, centralizando información y acelerando operaciones críticas en un contexto de baja madurez tecnológica.</p>
-            <p><strong>Decisiones técnicas relevantes:</strong> Arquitectura web desacoplada para mantenimiento, contenerización con Docker para despliegues reproducibles, API GraphQL para consultas flexibles y una interfaz orientada a usuarios no técnicos.</p>
+            <p><strong>Decisiones técnicas relevantes:</strong> Arquitectura web desacoplada para facilitar mantenimiento, consultas flexibles para distintos perfiles operativos y una interfaz orientada a usuarios no técnicos.</p>
             <p><strong>Consideraciones:</strong> Se priorizó una arquitectura simple y mantenible por sobre soluciones más complejas, dado el contexto operativo y el perfil de los usuarios finales.</p>
             <p><strong>Impacto:</strong> Reducción significativa de tiempos administrativos, disminución de errores manuales, mejora de trazabilidad y consistencia de datos, con base preparada para escalabilidad futura.</p>
             <p><strong>Tecnologías:</strong> React, JavaScript, GraphQL, Docker.</p>
@@ -52,29 +66,20 @@
           </article>
 
           <article class="project">
-            <h3>Proyecto 2 - PowerPoint Add-In para Automatización de Reportes Corporativos</h3>
+            <h3>Proyecto 3 - PowerPoint Add-In para Automatización de Reportes Corporativos</h3>
             <p><strong>Contexto:</strong> La generación de reportes en PowerPoint se realizaba de forma manual con datos provenientes de múltiples fuentes empresariales.</p>
             <p><strong>Problema:</strong> Actualización manual de información, inconsistencias entre fuentes de datos, falta de control centralizado y dependencia excesiva del usuario final.</p>
             <p><strong>Solución:</strong> Desarrollo de un Add-In para PowerPoint que integra datos empresariales directamente en presentaciones, automatizando la generación y actualización de contenido mediante una arquitectura híbrida.</p>
             <p><strong>Decisiones técnicas relevantes:</strong> Integración nativa con Office usando VSTO y C#, backend desacoplado para acceso a datos, separación entre lógica de negocio y presentación, y compatibilidad con entornos corporativos existentes.</p>
-            <p><strong>Consideraciones:</strong> Se optó por integración directa con PowerPoint en lugar de soluciones externas para minimizar fricción y resistencia al cambio en entornos corporativos.</p>
+            <p><strong>Consideraciones:</strong> Se optó por integración directa con PowerPoint para reducir fricción organizacional, gestionar resistencia al cambio y favorecer adopción en equipos que dependen de flujos existentes.</p>
             <p><strong>Impacto:</strong> Reducción de errores humanos, ahorro de tiempo en reportes, mayor consistencia de información ejecutiva e integración con sistemas legacy sin reemplazarlos.</p>
-            <p><strong>Tecnologías:</strong> C#, VSTO, React, Node.js/Express, Oracle.</p>
+            <p><strong>Tecnologías:</strong> C#, VSTO, backend de integración y Oracle.</p>
             <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/ppt-addin-reportes" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
           </article>
 
-          <article class="project">
-            <h3>Proyecto 3 - Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)</h3>
-            <p><strong>Contexto:</strong> Proyecto de Título validado en el Centro Avanzado de Tratamiento de Heridas para apoyar evaluaciones periódicas de heridas crónicas.</p>
-            <p><strong>Problema:</strong> Evaluaciones clínicas dependientes de experiencia individual, dificultad para estandarizar criterios y necesidad de soporte al profesional sin reemplazar su criterio.</p>
-            <p><strong>Solución:</strong> Diseño de un sistema de apoyo a la toma de decisiones clínicas basado en IA aplicada, orientado a entregar información estructurada y sugerencias para evaluación y seguimiento.</p>
-            <p><strong>Decisiones técnicas relevantes:</strong> Enfoque explícito en decision support, arquitectura modular para prototipado académico, persistencia local controlada y separación estricta entre lógica de IA y presentación.</p>
-            <p><strong>Consideraciones:</strong> Se priorizó un enfoque de apoyo clínico explicable y acotado por sobre automatizaciones de mayor alcance para resguardar uso responsable y adopción profesional.</p>
-            <p><strong>Validación:</strong> Prototipo académico evaluado en contexto clínico real con retroalimentación directa de profesionales de la salud.</p>
-            <p><strong>Impacto:</strong> Mayor consistencia en evaluación y mejor continuidad del seguimiento clínico mediante soporte estructurado.</p>
-            <p><strong>Tecnologías:</strong> React, Node.js/Express, SQLite, Android (Kotlin), IA aplicada.</p>
-            <p><strong>Código:</strong> <a href="https://github.com/tu-usuario/decision-support-heridas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
-          </article>
+          <hr class="my-5" />
+          <h3 class="text-muted">Automatizaciones operativas</h3>
+          <p class="small text-muted">Soluciones livianas orientadas a reducir fricción y carga administrativa.</p>
 
           <article class="project">
             <h3>Proyecto 4 - Sistema de Coordinación de Reuniones (Google Apps Script)</h3>
