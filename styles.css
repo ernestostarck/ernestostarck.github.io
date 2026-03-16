@@ -238,6 +238,58 @@ h3 {
   gap: 0.38rem;
 }
 
+.skills-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.skill-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid rgba(193, 138, 14, 0.32);
+  background: rgba(193, 138, 14, 0.08);
+  color: var(--accent-bright);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.tech-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.tech-item {
+  border: 1px solid rgba(193, 138, 14, 0.25);
+  background: rgba(193, 138, 14, 0.04);
+  padding: 0.72rem 0.78rem;
+}
+
+.tech-item h4 {
+  margin: 0 0 0.28rem;
+  font-family: var(--font-mono);
+  color: var(--accent-bright);
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.tech-item p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
 /* ── Buttons ── */
 
 .cta,
@@ -746,6 +798,14 @@ h3 {
     padding: 0.8rem 0.84rem 0.8rem 0.9rem;
   }
 
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
   .conversion-cta {
     padding: 0.88rem;
   }
@@ -791,6 +851,11 @@ h3 {
   .banner-chips span {
     font-size: 0.68rem;
     padding: 0.14rem 0.44rem;
+  }
+
+  .skill-item {
+    min-height: 42px;
+    font-size: 0.72rem;
   }
 
   .scroll-top-btn {
