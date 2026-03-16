@@ -657,6 +657,55 @@ h3 {
   border-color: rgba(193, 138, 14, 0.45);
 }
 
+.cert-list-with-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.cert-item-with-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  border: 1px solid rgba(193, 138, 14, 0.18);
+  padding: 1rem;
+  background: rgba(12, 10, 7, 0.9);
+}
+
+.cert-item-with-icon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  border-color: rgba(193, 138, 14, 0.45);
+}
+
+.cert-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  flex-shrink: 0;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.cert-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.cert-content strong {
+  display: inline-block;
+  margin-bottom: 0.12rem;
+  color: var(--ink);
+}
+
+.cert-content span {
+  color: var(--muted);
+  display: block;
+  max-width: none;
+}
+
 .contact-list li {
   display: flex;
   align-items: center;
