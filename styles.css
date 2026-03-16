@@ -457,6 +457,50 @@ h3 {
   margin: 0.35rem 0 0;
 }
 
+.project-technologies {
+  margin-top: 0.75rem;
+}
+
+.project-technologies strong {
+  display: block;
+  margin-bottom: 0.46rem;
+}
+
+.tech-list-compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+  gap: 0.48rem;
+}
+
+.tech-icon-small {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.24rem;
+  padding: 0.38rem 0.32rem;
+  border: 1px solid rgba(193, 138, 14, 0.15);
+  background: rgba(193, 138, 14, 0.03);
+}
+
+.tech-icon-small i {
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-icon-small span {
+  color: var(--ink-soft);
+  font-size: 0.64rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+}
+
 .priority-1 {
   border-left-color: var(--accent-bright);
 }
