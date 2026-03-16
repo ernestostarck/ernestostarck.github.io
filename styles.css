@@ -2,6 +2,7 @@
   --bg: #edf2f8;
   --ink: #162234;
   --muted: #4e5f78;
+  --ink-soft: #243952;
   --card: rgba(255, 255, 255, 0.86);
   --line: rgba(22, 34, 52, 0.14);
   --accent: #0d4f8b;
@@ -39,6 +40,19 @@ body {
 p,
 li {
   font-size: clamp(0.98rem, 0.95rem + 0.12vw, 1.04rem);
+  color: var(--ink-soft);
+}
+
+a {
+  color: var(--accent-strong);
+}
+
+a:focus-visible,
+button:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid rgba(13, 79, 139, 0.58);
+  outline-offset: 2px;
+  border-radius: 0.45rem;
 }
 
 .site-header {
@@ -56,6 +70,9 @@ li {
   font-weight: 500;
   border-radius: 999px;
   padding: 0.35rem 0.68rem;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .navbar .nav-link:hover,
@@ -78,6 +95,7 @@ main {
   margin-inline: auto;
   padding: var(--space-5) !important;
   border-radius: 1rem;
+  backdrop-filter: blur(2px);
 }
 
 .page-shell > * + * {
@@ -308,6 +326,7 @@ h3 {
   font-weight: 500;
   font-size: clamp(1rem, 0.95rem + 0.25vw, 1.14rem);
   line-height: 1.55;
+  max-width: 66ch;
 }
 
 .banner-chips {
@@ -362,6 +381,10 @@ h3 {
   background: rgba(255, 255, 255, 0.58);
   padding: 0.8rem;
   transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+}
+
+.contact-list a {
+  overflow-wrap: anywhere;
 }
 
 .cert-list li:hover,
@@ -424,7 +447,7 @@ h3 {
 
 .site-footer {
   margin-top: var(--space-4);
-  padding: 0 0 1.25rem;
+  padding: 0 0 1.35rem;
 }
 
 .footer-copy {
@@ -434,7 +457,7 @@ h3 {
   border-top: 1px solid rgba(22, 34, 52, 0.14);
   text-align: center;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   letter-spacing: 0.015em;
 }
 
@@ -451,7 +474,7 @@ h3 {
 
 .scroll-top-btn {
   position: fixed;
-  bottom: 2rem;
+  bottom: max(1.2rem, env(safe-area-inset-bottom));
   right: 2rem;
   width: 44px;
   height: 44px;
@@ -495,6 +518,7 @@ h3 {
 
   .navbar .nav-link {
     padding: 0.4rem 0.65rem;
+    min-height: 38px;
   }
 
   .project {
@@ -528,10 +552,60 @@ h3 {
   }
 
   .scroll-top-btn {
-    bottom: 1.5rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
     right: 1.5rem;
     width: 40px;
     height: 40px;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-main {
+    padding-inline: 0.68rem;
+  }
+
+  .page-shell {
+    padding: 1rem !important;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 6vw, 2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.35rem, 5.2vw, 1.6rem);
+  }
+
+  .banner-chips span {
+    font-size: 0.71rem;
+    padding: 0.16rem 0.5rem;
+  }
+
+  .project-card,
+  .cert-list li,
+  .contact-list li,
+  .content-block {
+    border-radius: 0.62rem;
+  }
+
+  .scroll-top-btn {
+    right: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section,
+  .project-card,
+  .cert-list li,
+  .contact-list li,
+  .scroll-top-btn,
+  .cta {
+    animation: none !important;
+    transition: none !important;
   }
 }
