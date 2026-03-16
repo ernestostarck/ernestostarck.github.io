@@ -75,11 +75,34 @@ Opcional: usar Live Server en VS Code para recarga automática.
 
 ## Deploy
 
-Despliegue continuo mediante GitHub Pages desde la rama principal.
+El despliegue del sitio Angular vive en [ng-portfolio](ng-portfolio) y ahora puede publicarse de dos formas:
+
+1. Manual desde [ng-portfolio/package.json](ng-portfolio/package.json) con `npm run deploy`.
+2. Automática con GitHub Actions mediante [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml).
+
+### Configuración de GitHub Pages
+
+En el repositorio `ernestostarck/ernestostarck.github.io`, deja configurado GitHub Pages así:
+
+1. Ir a `Settings` > `Pages`.
+2. En `Build and deployment`, elegir `Deploy from a branch`.
+3. En `Branch`, seleccionar `gh-pages`.
+4. En carpeta, seleccionar `/ (root)`.
+5. Guardar.
+
+Notas:
+
+- Si la rama `gh-pages` todavía no aparece, haz primero un deploy manual o deja correr el workflow una vez.
+- El workflow toma el proyecto Angular desde [ng-portfolio](ng-portfolio), ejecuta `npm ci`, construye con `npm run build:gh` y publica el resultado a `gh-pages`.
+- Como el repositorio es `ernestostarck.github.io`, la URL final sigue siendo https://ernestostarck.github.io/.
+
+### Deploy automático
+
+El workflow se ejecuta automáticamente cuando hay cambios en [ng-portfolio](ng-portfolio) sobre `main`, y también puede ejecutarse manualmente desde la pestaña `Actions`.
 
 ---
 
 ## Estado
 
-Sitio estable y publicado.
-Las siguientes mejoras se enfocan en contenido y optimización fina de UX/SEO.
+Migración Angular lista en [ng-portfolio](ng-portfolio).
+Sitio publicado y preparado para despliegue automático con GitHub Pages.
