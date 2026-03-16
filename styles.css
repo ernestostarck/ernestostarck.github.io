@@ -29,6 +29,8 @@ body {
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
   z-index: 20;
 }
 
@@ -56,6 +58,7 @@ main {
 
 .section {
   padding: 1.05rem 0;
+  scroll-margin-top: 100px;
   animation: reveal 540ms ease both;
 }
 
