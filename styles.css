@@ -7,6 +7,14 @@
   --accent: #0d4f8b;
   --accent-strong: #0b3f6f;
   --shadow: 0 16px 38px rgba(11, 28, 52, 0.12);
+  --page-max: 1080px;
+  --surface-max: 980px;
+  --reading-max: 72ch;
+  --space-1: clamp(0.55rem, 0.5rem + 0.2vw, 0.72rem);
+  --space-2: clamp(0.8rem, 0.72rem + 0.35vw, 1rem);
+  --space-3: clamp(1.05rem, 0.95rem + 0.45vw, 1.28rem);
+  --space-4: clamp(1.35rem, 1.2rem + 0.65vw, 1.75rem);
+  --space-5: clamp(1.75rem, 1.52rem + 0.9vw, 2.3rem);
 }
 
 * {
@@ -53,11 +61,32 @@ body {
 }
 
 main {
-  max-width: 1120px;
+  max-width: var(--page-max);
+}
+
+.page-main {
+  padding-inline: clamp(0.95rem, 1.4vw, 1.3rem);
+}
+
+.page-shell {
+  width: min(100%, var(--surface-max));
+  margin-inline: auto;
+  padding: var(--space-5) !important;
+  border-radius: 1rem;
+}
+
+.page-shell > * + * {
+  margin-top: var(--space-3);
+}
+
+.page-shell p,
+.page-shell ul,
+.page-shell ol {
+  max-width: var(--reading-max);
 }
 
 .section {
-  padding: 1.05rem 0;
+  padding: var(--space-3) 0;
   scroll-margin-top: 100px;
   animation: reveal 540ms ease both;
 }
@@ -111,7 +140,7 @@ h3 {
 }
 
 .content-block {
-  margin-top: 1.1rem;
+  margin-top: var(--space-3);
   padding: 0.9rem 1rem;
   border-left: 3px solid rgba(13, 79, 139, 0.32);
   background: rgba(248, 251, 255, 0.8);
@@ -206,7 +235,7 @@ h3 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.35rem 0.8rem;
 }
 
@@ -313,6 +342,7 @@ h3 {
   list-style: none;
   display: grid;
   gap: 0.9rem;
+  max-width: 100%;
 }
 
 .cert-list li,
@@ -339,6 +369,7 @@ h3 {
 
 .contact-list li span {
   line-height: 1.45;
+  max-width: none;
 }
 
 .contact-icon {
@@ -361,6 +392,18 @@ h3 {
 .cert-list span {
   color: #27384f;
   display: block;
+  max-width: none;
+}
+
+.project-summary,
+.project-stack,
+.project-link,
+.project-grid p,
+.page-banner,
+.row,
+.cert-list li,
+.contact-list li {
+  max-width: 100%;
 }
 
 .cert-note {
@@ -415,6 +458,14 @@ h3 {
 }
 
 @media (max-width: 760px) {
+  .page-main {
+    padding-inline: 0.82rem;
+  }
+
+  .page-shell {
+    padding: var(--space-4) !important;
+  }
+
   .navbar .nav-link {
     padding: 0.4rem 0.65rem;
   }
@@ -430,7 +481,6 @@ h3 {
   }
 
   .project-grid {
-    grid-template-columns: 1fr;
     gap: 0.26rem;
   }
 
