@@ -1,76 +1,72 @@
 # Portafolio - Ernesto Starck
 
-Portfolio profesional moderno construido con **Angular 20.3.0** como Single Page Application (SPA).
+SPA profesional desarrollada con Angular para presentar perfil, proyectos, certificaciones y contacto.
 
-## 🚀 Tecnologías
+## Resumen
 
-- **Angular 20.3.0** - Framework frontend
-- **TypeScript** - Lenguaje de programación
-- **Bootstrap 5.3.8** - Framework CSS
-- **Tailwind CSS 4.2.1** - Utility-first CSS
-- **Devicon** - Iconos de tecnologías
-- **GitHub Pages** - Hosting con despliegue automático
+- Framework: Angular 20
+- Lenguaje: TypeScript
+- Estilos: CSS personalizado + Tailwind CSS v4 + utilidades Bootstrap
+- Hosting: GitHub Pages
+- Enrutamiento: Hash routing (`withHashLocation`) para compatibilidad con Pages
 
-## 📋 Secciones
+## Secciones del sitio
 
-- **Home** - Presentación ejecutiva con resumen profesional
-- **Sobre mí** - Perfil profesional, filosofía de trabajo y stack tecnológico
-- **Proyectos** - Portafolio priorizado de proyectos desarrollados
-- **Certificaciones** - Educación y certificaciones profesionales
-- **Contacto** - Información de contacto y enlaces sociales
+- Home
+- Sobre mí
+- Proyectos
+- Certificaciones
+- Contacto
 
-## 🛠️ Desarrollo
+## Requisitos
 
-### Instalación
+- Node.js 20+ (recomendado 22)
+- npm 10+
+
+## Instalación y ejecución local
 
 ```bash
 npm install
-```
-
-### Servidor de desarrollo
-
-```bash
 npm run dev
 ```
 
-Abre tu navegador y ve a `http://localhost:4200/`. Los cambios se reflejan automáticamente.
+Aplicación local: `http://localhost:4200/`
 
-### Construcción
+## Scripts disponibles
 
-**Producción general:**
-```bash
-npm run build
-```
+| Script | Uso |
+| --- | --- |
+| `npm run dev` | Levanta servidor de desarrollo |
+| `npm start` | Alias de `npm run dev` |
+| `npm run build` | Build de producción estándar |
+| `npm run build:gh` | Build para GitHub Pages (`--base-href ./`) |
+| `npm run deploy` | Build + publicación manual a `gh-pages` |
+| `npm run watch` | Build en modo watch |
+| `npm test` | Ejecuta pruebas |
 
-**Producción para GitHub Pages:**
-```bash
-npm run build:gh
-```
+## Despliegue
 
-## 🚢 Despliegue
+### Opción 1: Automático (recomendado)
 
-### Automático (CI/CD)
+El workflow [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml) despliega automáticamente cuando hay cambios en `main` dentro de `ng-portfolio/`.
 
-El proyecto está configurado con **GitHub Actions** para despliegue automático:
+Pipeline:
 
-1. Los cambios en `main` dentro de la carpeta `ng-portfolio/` disparan el workflow
-2. Se ejecuta automáticamente: `npm ci` → `npm run build:gh` → Deploy a `gh-pages`
-3. La rama `gh-pages` se publica en GitHub Pages
+1. `npm ci`
+2. `npm run build:gh`
+3. Publicación en rama `gh-pages`
 
-**Archivo:** `.github/workflows/deploy-pages.yml`
-
-### Manual
+### Opción 2: Manual
 
 ```bash
 npm run deploy
 ```
 
-Esto compila la app y la publica en la rama `gh-pages`.
+## Estructura principal
 
-## 📁 Estructura
-
-```
+```text
 ng-portfolio/
+├── public/
 ├── src/
 │   ├── app/
 │   │   ├── pages/
@@ -79,77 +75,32 @@ ng-portfolio/
 │   │   │   ├── proyectos/
 │   │   │   ├── certificaciones/
 │   │   │   └── contacto/
-│   │   ├── app.ts              (Root component)
-│   │   ├── app.config.ts       (Routing + providers)
-│   │   └── app.routes.ts       (Definición de rutas)
-│   ├── styles.css              (Estilos globales)
-│   └── main.ts
-├── public/                     (Assets estáticos)
+│   │   ├── app.ts
+│   │   ├── app.config.ts
+│   │   └── app.routes.ts
+│   ├── main.ts
+│   └── styles.css
 ├── angular.json
 ├── package.json
 └── tsconfig.json
 ```
 
-## 🔧 Scripts
+## Rutas
 
-| Script | Descripción |
-|--------|-------------|
-| `npm run dev` | Servidor de desarrollo con hot reload |
-| `npm start` | Alias para `npm run dev` |
-| `npm run build` | Build de producción |
-| `npm run build:gh` | Build para GitHub Pages (`--base-href ./`) |
-| `npm run deploy` | Build + Deploy a gh-pages |
-| `npm run watch` | Watch mode para desarrollo |
-| `npm test` | Ejecutar tests |
+- `/#/` Home
+- `/#/sobre-mi`
+- `/#/proyectos`
+- `/#/certificaciones`
+- `/#/contacto`
 
-## 🌐 Rutas
+## Notas técnicas
 
-La aplicación usa **hash routing** para compatibilidad con GitHub Pages:
+- Componentes standalone en todas las páginas.
+- Navbar controlado por estado Angular (sin dependencia de colapso JS de Bootstrap).
+- Diseño responsive con layout optimizado para desktop y mobile.
 
-- `/` → Home
-- `/#/sobre-mi` → Sobre mí
-- `/#/proyectos` → Proyectos
-- `/#/certificaciones` → Certificaciones
-- `/#/contacto` → Contacto
+## Contacto
 
-## 📦 Paquetes Principales
-
-```json
-{
-  "dependencies": {
-    "@angular/animations": "^20.3.0",
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/forms": "^20.3.0",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/platform-browser-dynamic": "^20.3.0",
-    "@angular/router": "^20.3.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
-  },
-  "devDependencies": {
-    "@angular/cli": "^20.3.0",
-    "@angular/compiler-cli": "^20.3.0",
-    "tailwindcss": "^4.2.1",
-    "@tailwindcss/postcss": "^4.2.1",
-    "postcss": "^8.5.8",
-    "angular-cli-ghpages": "^1.0.0"
-  }
-}
-```
-
-## 📝 Notas
-
-- Los componentes de página son **standalone** para mejor modularidad
-- Los estilos combinan **Tailwind CSS** con CSS personalizado
-- El sitio es completamente responsive
-- Usa **GitHub Pages** como hosting sin costo
-
-## 📧 Contacto
-
-Puedes encontrarme en:
 - Email: ernesto.starck.exe@gmail.com
-- LinkedIn: [Ernesto Starck](https://linkedin.com/in/ernestostarck)
-- GitHub: [ernestostarck](https://github.com/ernestostarck)
+- LinkedIn: https://linkedin.com/in/ernestostarck
+- GitHub: https://github.com/ernestostarck
