@@ -755,6 +755,34 @@ h3 {
   line-height: 1.3;
 }
 
+.cert-title-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.academic-badge {
+  display: inline-flex;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 999px;
+  padding: 0.16rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge-distincion-doble {
+  color: #b6d5ff;
+  border-color: rgba(122, 171, 230, 0.58);
+  background: rgba(122, 171, 230, 0.16);
+}
+
 .cert-card-meta {
   color: var(--muted);
   font-size: 0.85rem;
@@ -781,6 +809,10 @@ h3 {
   --state-color: #59c89c;
 }
 
+.edu-licenciado {
+  --state-color: #7aabe6;
+}
+
 .cert-completado {
   --state-color: #57c590;
 }
@@ -795,6 +827,10 @@ h3 {
 
 .status-titulado {
   --state-color: #59c89c;
+}
+
+.status-licenciado {
+  --state-color: #7aabe6;
 }
 
 .status-completado {
