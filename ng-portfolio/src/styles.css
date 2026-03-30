@@ -663,6 +663,13 @@ h3 {
   transition: opacity 200ms ease;
 }
 
+.education-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
 .cert-banner {
   border-left-color: var(--accent);
 }
