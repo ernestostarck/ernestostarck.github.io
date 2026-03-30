@@ -1,5 +1,5 @@
 <main class="container py-4 page-main">
-	<section class="section" aria-label="Proyectos">
+	<section class="section lang-es" aria-label="Proyectos">
 		<div class="panel card border-0 shadow-sm p-4 p-lg-5 page-shell">
 			<p class="eyebrow">Proyectos</p>
 			<h2>Proyectos seleccionados por impacto, contexto y decisión técnica</h2>
@@ -103,7 +103,7 @@
 				<div class="project-grid">
 						<p><strong>Contexto:</strong> Coordinación manual de tutorías con poca trazabilidad, validaciones débiles y alta fricción operativa.</p>
 						<p><strong>Problema:</strong> Agendamientos fuera de reglas (feriados, fines de semana, bloques no válidos) y riesgo de desorden en reservas.</p>
-						<p><strong>Solución:</strong> Routing por rol, disponibilidad en Google Sheets, bloqueo de concurrencia con `LockService` y creación de eventos con Google Meet.</p>
+						<p><strong>Solución:</strong> Routing por rol, disponibilidad en Google Sheets, bloqueo de concurrencia con <code>LockService</code> y creación de eventos con Google Meet.</p>
 						<p><strong>Decisiones técnicas:</strong> Arquitectura server-side en Apps Script para despliegue rápido, bajo costo y adopción inmediata por equipos académicos.</p>
 						<p><strong>Impacto:</strong> Menor carga administrativa, mejor control de agendas y trazabilidad de cambios en el programa.</p>
 						<p><strong>Escenario ideal:</strong> Operaciones institucionales que necesitan automatización confiable sin sobreinfraestructura.</p>
@@ -123,6 +123,90 @@
 				<div class="conversion-actions">
 					<a class="btn btn-primary" href="#/contacto">Ir a contacto</a>
 					<a class="btn btn-outline-primary" href="#/sobre-mi">Ver enfoque de trabajo</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section lang-en" aria-label="Projects">
+		<div class="panel card border-0 shadow-sm p-4 p-lg-5 page-shell">
+			<p class="eyebrow">Projects</p>
+			<h2>Selected projects by impact, context, and technical decisions</h2>
+			<p class="lead text-muted">This is not a job catalog. It is a curated set of systems where I made technical decisions under real constraints.</p>
+
+			<article class="project project-card priority-1">
+				<div class="project-head">
+					<p class="project-rank">Project 1</p>
+					<span class="project-tag">Decision support</span>
+				</div>
+				<h3>Clinical Decision Support System (AI)</h3>
+				<p class="project-summary">Degree project validated in a real clinical environment, focused on supporting professional judgment under responsible-use standards.</p>
+				<div class="project-grid">
+					<p><strong>Context:</strong> Advanced wound care center with a need to standardize periodic assessments and continuity of follow-up.</p>
+					<p><strong>Problem:</strong> High variability between clinical evaluations and strong dependence on individual experience.</p>
+					<p><strong>Solution:</strong> AI-assisted decision support to structure clinical information and provide recommendations without replacing professional judgment.</p>
+					<p><strong>Technical decisions:</strong> Modular architecture, controlled local persistence, and strict separation between AI logic and presentation layer.</p>
+					<p><strong>Validation:</strong> Academic prototype validated in a real clinical context.</p>
+					<p><strong>Impact:</strong> Better evaluation consistency and improved continuity in clinical follow-up.</p>
+				</div>
+			</article>
+
+			<article class="project project-card priority-2">
+				<div class="project-head">
+					<p class="project-rank">Project 2</p>
+					<span class="project-tag">Productive system</span>
+				</div>
+				<h3>Management and Modernization System for APR</h3>
+				<p class="project-summary">Operational modernization in low-maturity contexts, prioritizing traceability and maintainability over unnecessary complexity.</p>
+				<div class="project-grid">
+					<p><strong>Context:</strong> Manual administrative and accounting processes with fragmented spreadsheets and physical records.</p>
+					<p><strong>Problem:</strong> Manual billing calculations, low traceability, and high auditing effort.</p>
+					<p><strong>Solution:</strong> Web system to centralize information, automate critical workflows, and reduce operational errors.</p>
+					<p><strong>Technical decisions:</strong> Decoupled architecture and UX adapted for non-technical users.</p>
+					<p><strong>Impact:</strong> Reduced administrative load and stronger data consistency.</p>
+				</div>
+			</article>
+
+			<article class="project project-card priority-3">
+				<div class="project-head">
+					<p class="project-rank">Project 3</p>
+					<span class="project-tag">Fullstack automation</span>
+				</div>
+				<h3>SheetFlow Automation Hub</h3>
+				<p class="project-summary">Fullstack platform that automates XLSX processing with run-level traceability, logical tenant isolation, and auditable end-to-end operations.</p>
+				<div class="project-grid">
+					<p><strong>Context:</strong> Heterogeneous spreadsheets from direct uploads and remote URLs (OneDrive, SharePoint, Google Sheets).</p>
+					<p><strong>Problem:</strong> Fragile manual flow and low observability for repeatable outcomes.</p>
+					<p><strong>Solution:</strong> Single endpoint <code>POST /api/automation/run</code> with Node orchestration and a Python business engine.</p>
+					<p><strong>Technical decisions:</strong> Strict separation between Frontend/API/Python, run persistence in PostgreSQL, and normalized errors for UI consumption.</p>
+					<p><strong>Impact:</strong> Repeatable and auditable processing with lower operational friction and a path to async queues.</p>
+				</div>
+				<p class="project-link"><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">Repository available on GitHub</a></p>
+			</article>
+
+			<hr class="my-5" />
+			<h3 class="text-muted">Operational automations</h3>
+			<p class="small text-muted">Lightweight solutions focused on reducing friction and administrative burden.</p>
+
+			<article class="project project-card priority-4 tactical">
+				<div class="project-head">
+					<p class="project-rank">Project 4</p>
+					<span class="project-tag">Tactical automation</span>
+				</div>
+				<h3>Meeting Management System - UFT Tutoring Program (Google Apps Script)</h3>
+				<p class="project-summary">Web app in GAS to manage participants, schedule availability, and meeting booking with Google Meet.</p>
+				<div class="project-grid">
+					<p><strong>Impact:</strong> Reduced administrative workload and better scheduling control.</p>
+				</div>
+				<p class="project-link"><a href="https://github.com/ernestostarck/sistema-reuniones-tutorias" target="_blank" rel="noopener noreferrer">Repository available on GitHub</a></p>
+			</article>
+
+			<div class="conversion-cta mt-4" aria-label="Conversion close">
+				<h3>Do you want this level of execution in your team?</h3>
+				<p>I am available for roles or collaborations where real problems must be solved with clear technical decisions.</p>
+				<div class="conversion-actions">
+					<a class="btn btn-primary" href="#/contacto">Go to contact</a>
+					<a class="btn btn-outline-primary" href="#/sobre-mi">View working approach</a>
 				</div>
 			</div>
 		</div>
