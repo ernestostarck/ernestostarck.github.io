@@ -648,6 +648,21 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+.banner-logos {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.banner-logo {
+  height: 48px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 200ms ease;
+}
+
 .cert-banner {
   border-left-color: var(--accent);
 }

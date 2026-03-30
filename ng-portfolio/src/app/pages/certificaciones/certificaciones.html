@@ -10,6 +10,10 @@
 					<span>Machine Learning aplicado</span>
 					<span>Enfoque en implementación real</span>
 				</div>
+				<div class="banner-logos">
+					<img *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Universidad Finis Terrae" class="banner-logo">
+					<img *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Universidad Finis Terrae" class="banner-logo">
+				</div>
 			</div>
 
 			<h3 class="mt-5 mb-3">Educación</h3>
@@ -74,6 +78,10 @@
 					<span>Project management</span>
 					<span>Applied machine learning</span>
 					<span>Real implementation focus</span>
+				</div>
+				<div class="banner-logos">
+					<img *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Finis Terrae University" class="banner-logo">
+					<img *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Finis Terrae University" class="banner-logo">
 				</div>
 			</div>
 
