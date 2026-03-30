@@ -1,7 +1,10 @@
 ﻿<header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark border-bottom shadow-sm" aria-label="Navegación principal">
     <div class="container">
-      <a class="navbar-brand fw-semibold text-uppercase small" routerLink="/">Portfolio</a>
+      <a class="navbar-brand fw-semibold text-uppercase small" routerLink="/">
+        <img *ngIf="theme === 'light'" src="/icons/uft_logo.png" alt="Portfolio Logo" class="navbar-logo">
+        <img *ngIf="theme === 'dark'" src="/icons/logo_dark.png" alt="Portfolio Logo" class="navbar-logo">
+      </a>
       <button class="navbar-toggler" type="button" (click)="toggleNav()" [attr.aria-expanded]="navOpen" aria-controls="mainNav" [attr.aria-label]="t('Mostrar navegación', 'Show navigation')">
         <span class="navbar-toggler-icon"></span>
       </button>

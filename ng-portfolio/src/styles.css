@@ -1698,6 +1698,17 @@ h2 {
   color: #0b1118;
 }
 
+/* ── Navbar Logo ── */
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 200ms ease;
+}
+
 @media (max-width: 760px) {
   .page-shell,
   .page-banner,
