@@ -663,13 +663,6 @@ h3 {
   transition: opacity 200ms ease;
 }
 
-.education-banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
 .cert-banner {
   border-left-color: var(--accent);
 }
@@ -1919,6 +1912,26 @@ html[data-theme='light'] .navbar .nav-link:focus-visible,
 html[data-theme='light'] .navbar .nav-link.active {
   color: #17365a;
   background: rgba(76, 120, 171, 0.12) !important;
+}
+
+html[data-theme='dark'] .cert-banner .eyebrow,
+html[data-theme='dark'] .cert-banner h2,
+html[data-theme='dark'] .cert-banner .banner-lead {
+  color: #e8f1fd !important;
+}
+
+html[data-theme='light'] .cert-banner .eyebrow,
+html[data-theme='light'] .cert-banner h2,
+html[data-theme='light'] .cert-banner .banner-lead {
+  color: #11233a !important;
+}
+
+html[data-theme='dark'] .cert-banner .banner-chips span {
+  color: #d7e5f8 !important;
+}
+
+html[data-theme='light'] .cert-banner .banner-chips span {
+  color: #1a2f45 !important;
 }
 
 html[data-theme='light'] .page-shell,
