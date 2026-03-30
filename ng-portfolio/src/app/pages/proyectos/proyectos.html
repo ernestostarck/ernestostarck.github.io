@@ -63,27 +63,30 @@
 			<article class="project project-card priority-3">
 				<div class="project-head">
 					<p class="project-rank">Proyecto 3</p>
-					<span class="project-tag">Integración corporativa</span>
+					<span class="project-tag">Automatización fullstack</span>
 				</div>
-				<h3>PowerPoint Add-In para Automatización de Reportes Corporativos</h3>
-				<p class="project-summary">Automatización en entorno corporativo con sistemas legacy, enfocada en adopción real y reducción de fricción organizacional.</p>
+				<h3>SheetFlow Automation Hub</h3>
+				<p class="project-summary">Plataforma fullstack para automatizar procesamiento de planillas XLSX con trazabilidad por corrida, aislamiento lógico por empresa y operación auditable de extremo a extremo.</p>
 				<div class="project-grid">
-					<p><strong>Contexto:</strong> Reportes ejecutivos en PowerPoint alimentados manualmente desde múltiples fuentes empresariales.</p>
-					<p><strong>Problema:</strong> Inconsistencias de datos, retrabajo reiterado y dependencia operativa del usuario final.</p>
-					<p><strong>Solución:</strong> Add-In integrado en PowerPoint para actualización directa de contenido desde fuentes corporativas.</p>
-					<p><strong>Decisiones técnicas:</strong> Integración nativa con Office, separación de lógica de negocio y compatibilidad con infraestructura existente.</p>
-					<p><strong>Consideraciones:</strong> Se priorizó adopción y bajo costo de cambio frente a reestructuraciones disruptivas.</p>
-					<p><strong>Impacto:</strong> Menos errores manuales, ahorro de tiempo y mayor consistencia en información ejecutiva.</p>
+					<p><strong>Contexto:</strong> Operación con planillas heterogéneas provenientes de upload directo y URL remotas (OneDrive, SharePoint, Google Sheets).</p>
+					<p><strong>Problema:</strong> Flujo manual frágil, baja observabilidad y dificultad para repetir resultados de manera consistente entre empresas.</p>
+					<p><strong>Solución:</strong> Endpoint único <code>POST /api/automation/run</code> con backend Node como orquestador y motor Python para ejecución de negocio.</p>
+					<p><strong>Decisiones técnicas:</strong> Separación estricta Frontend/API/Python, persistencia de corridas en PostgreSQL y normalización de errores para consumo de UI.</p>
+					<p><strong>Seguridad y operación:</strong> Sesiones HTTP-only, CORS restringido, Helmet, control de upload XLSX y limpieza de temporales por corrida.</p>
+					<p><strong>Impacto:</strong> Procesamiento repetible y auditable, menor fricción operativa y base preparada para escalar a colas asíncronas.</p>
 				</div>
 				<div class="project-technologies">
 					<strong>Tecnologías:</strong>
 					<div class="tech-list-compact">
-						<span class="tech-icon-small"><i class="devicon-csharp-plain colored"></i><span>C#</span></span>
-						<span class="tech-icon-small"><i class="devicon-microsoftoffice-plain colored"></i><span>VSTO</span></span>
-						<span class="tech-icon-small"><i class="devicon-oracle-original colored"></i><span>Oracle</span></span>
+						<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React 18</span></span>
+						<span class="tech-icon-small"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
+						<span class="tech-icon-small"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
+						<span class="tech-icon-small"><i class="devicon-express-original colored"></i><span>Express</span></span>
+						<span class="tech-icon-small"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></span>
+						<span class="tech-icon-small"><i class="devicon-python-plain colored"></i><span>Python</span></span>
 					</div>
 				</div>
-				<p class="project-link"><a href="https://github.com/tu-usuario/ppt-addin-reportes" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+				<p class="project-link"><a href="https://github.com/tu-usuario/sheetflow-automation-hub" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
 			</article>
 
 			<hr class="my-5" />
