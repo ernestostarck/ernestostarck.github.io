@@ -1962,6 +1962,16 @@ html[data-theme='light'] .contact-list strong {
   color: #11233a;
 }
 
+html[data-theme='dark'] .cert-card strong,
+html[data-theme='dark'] .cert-title-line strong {
+  color: #edf3fb !important;
+}
+
+html[data-theme='light'] .cert-card strong,
+html[data-theme='light'] .cert-title-line strong {
+  color: #11233a !important;
+}
+
 html[data-theme='light'] p,
 html[data-theme='light'] li,
 html[data-theme='light'] .text-muted,

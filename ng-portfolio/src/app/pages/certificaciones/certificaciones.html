@@ -38,7 +38,8 @@
 			<h3 class="mt-5 mb-3">Certificaciones Profesionales</h3>
 			<div class="education-grid">
 				<div class="cert-card cert-completado">
-					<img src="icons/udemy-logo-big.o.avif" alt="Udemy" class="cert-card-icon" />
+					<img *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />
+					<img *ngIf="theme() === 'dark'" src="/icons/udemy_dark.png" alt="Udemy" class="cert-card-icon" />
 					<strong>✓ Professional Diploma in Business Project Manager</strong>
 					<span class="cert-card-description">Utilizado como marco práctico para planificación, priorización, gestión de alcance y trazabilidad en proyectos de software y automatización con múltiples actores y restricciones reales.</span>
 					<span class="cert-card-status status-completado">Completado</span>
@@ -105,7 +106,8 @@
 			<h3 class="mt-5 mb-3">Professional Certifications</h3>
 			<div class="education-grid">
 				<div class="cert-card cert-completado">
-					<img src="icons/udemy-logo-big.o.avif" alt="Udemy" class="cert-card-icon" />
+					<img *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />
+					<img *ngIf="theme() === 'dark'" src="/icons/udemy_dark.png" alt="Udemy" class="cert-card-icon" />
 					<strong>✓ Professional Diploma in Business Project Manager</strong>
 					<span class="cert-card-description">Used as a practical framework for planning, prioritization, scope management, and traceability in software and automation projects with multiple stakeholders and real constraints.</span>
 					<span class="cert-card-status status-completado">Completed</span>
