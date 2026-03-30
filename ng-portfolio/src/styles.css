@@ -1885,11 +1885,11 @@ html[data-theme='light'] .navbar {
 }
 
 html[data-theme='light'] .navbar-brand {
-  color: #315c8c !important;
+  color: #0d1b2a !important;
 }
 
 html[data-theme='light'] .navbar .nav-link {
-  color: #35516f;
+  color: #1a2f45 !important;
 }
 
 html[data-theme='light'] .navbar .nav-link:hover,
@@ -1941,9 +1941,9 @@ html[data-theme='light'] .banner-chips span,
 html[data-theme='light'] .skill-item,
 html[data-theme='light'] .lang-switch,
 html[data-theme='light'] .theme-toggle {
-  background: rgba(76, 120, 171, 0.1);
-  color: #224972;
-  border-color: rgba(76, 120, 171, 0.34);
+  background: rgba(76, 120, 171, 0.15);
+  color: #0d1b2a !important;
+  border-color: rgba(76, 120, 171, 0.4);
 }
 
 html[data-theme='light'] .btn.btn-primary,
@@ -1961,6 +1961,15 @@ html[data-theme='light'] .btn.btn-outline-primary:hover,
 html[data-theme='light'] .btn.btn-outline-primary:focus-visible {
   background: rgba(76, 120, 171, 0.13) !important;
   color: #17365a !important;
+}
+
+html[data-theme='light'] .lang-btn {
+  color: #0d1b2a !important;
+}
+
+html[data-theme='light'] .lang-btn.active {
+  background: rgba(76, 120, 171, 0.25) !important;
+  color: #0d1b2a !important;
 }
 
 html[data-theme='light'] .social-icon-link,
