@@ -798,6 +798,12 @@ h3 {
   background: rgba(122, 171, 230, 0.16);
 }
 
+.badge-distincion-maxima {
+  color: #dff6ec;
+  border-color: rgba(89, 200, 156, 0.58);
+  background: rgba(89, 200, 156, 0.14);
+}
+
 .cert-card-meta {
   color: var(--muted);
   font-size: 0.85rem;
