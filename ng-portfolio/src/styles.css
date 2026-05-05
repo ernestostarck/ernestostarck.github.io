@@ -679,6 +679,73 @@ h3 {
   border-left-color: var(--accent);
 }
 
+/* Mejoras visuales generales para banners */
+.page-banner {
+  padding: 1.1rem 1.25rem;
+  display: block;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+}
+
+.page-banner .eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin-bottom: 0.35rem;
+  color: var(--accent-bright);
+}
+
+.page-banner h2 {
+  margin: 0.25rem 0 0.4rem 0;
+  font-size: clamp(1.18rem, 1.05rem + 1.1vw, 1.48rem);
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.banner-lead {
+  opacity: 0.95;
+  margin-top: 0.25rem;
+}
+
+.banner-chips span {
+  border-radius: 6px;
+  padding: 0.22rem 0.6rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+}
+
+/* Theme-specific refinements for banners */
+html[data-theme='dark'] .page-banner {
+  background: linear-gradient(180deg, rgba(17,15,11,0.6), rgba(12,10,7,0.6));
+  border-left: 4px solid color-mix(in srgb, var(--accent-bright) 60%, transparent);
+}
+
+html[data-theme='dark'] .page-banner h2 {
+  color: #f3f7fb;
+}
+
+html[data-theme='light'] .page-banner {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,249,255,0.9));
+  border-left: 4px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  box-shadow: 0 6px 18px rgba(26,47,69,0.06);
+}
+
+html[data-theme='light'] .page-banner h2 {
+  color: #0d2538;
+}
+
+/* Ajustes para banners más compactos en pantallas pequeñas */
+@media (max-width: 767px) {
+  .page-banner {
+    padding: 0.9rem 0.9rem;
+  }
+  .banner-chips span {
+    font-size: 0.66rem;
+    padding: 0.14rem 0.5rem;
+  }
+}
+
 /* ── Cert / Contact lists ── */
 
 .cert-list,
