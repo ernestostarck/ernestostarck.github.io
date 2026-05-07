@@ -5,89 +5,105 @@
 			<h2>Proyectos seleccionados por impacto, contexto y decisión técnica</h2>
 			<p class="lead text-muted">No es un catálogo de trabajos, sino una selección curada de sistemas donde tomé decisiones técnicas bajo restricciones reales.</p>
 
-			<article class="project project-card priority-1">
-				<div class="project-head">
-					<p class="project-rank">Proyecto 1</p>
-					<span class="project-tag">Decision support</span>
-				</div>
-				<h3>Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)</h3>
-				<p class="project-summary">Proyecto de título con validación en contexto clínico real, orientado a apoyar criterio profesional bajo estándares de uso responsable.</p>
-				<div class="project-grid">
-					<p><strong>Contexto:</strong> Centro Avanzado de Tratamiento de Heridas, con necesidad de estandarizar evaluaciones periódicas y continuidad de seguimiento.</p>
-					<p><strong>Problema:</strong> Alta variabilidad entre evaluaciones clínicas y dependencia de experiencia individual para decisiones reiteradas.</p>
-					<p><strong>Solución:</strong> Sistema de apoyo con IA aplicada para estructurar información clínica y entregar sugerencias sin reemplazar juicio profesional.</p>
-					<p><strong>Decisiones técnicas:</strong> Arquitectura modular, persistencia local controlada y separación estricta entre lógica de IA y capa de presentación.</p>
-					<p><strong>Validación:</strong> Prototipo académico validado en contexto clínico real, con énfasis en uso responsable y apoyo al criterio profesional.</p>
-					<p><strong>Impacto:</strong> Mayor consistencia de evaluación y mejor continuidad del seguimiento clínico.</p>
-				</div>
-				<div class="project-technologies">
-					<strong>Tecnologías:</strong>
-					<div class="tech-list-compact">
-						<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
-						<span class="tech-icon-small"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
-						<span class="tech-icon-small"><i class="devicon-express-original colored"></i><span>Express</span></span>
-						<span class="tech-icon-small"><i class="devicon-sqlite-plain colored"></i><span>SQLite</span></span>
-						<span class="tech-icon-small"><i class="devicon-kotlin-plain colored"></i><span>Kotlin</span></span>
-					</div>
-				</div>
-				<p class="project-link"><a href="https://github.com/tu-usuario/decision-support-heridas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
-			</article>
+			<!-- SWIPER CAROUSEL FOR MAIN PROJECTS -->
+			<div class="projects-swiper swiper" role="region" aria-label="Carrusel de proyectos principales">
+				<div class="swiper-wrapper">
+					<article class="swiper-slide">
+						<article class="project project-card priority-1">
+							<div class="project-head">
+								<p class="project-rank">Proyecto 1</p>
+								<span class="project-tag">Decision support</span>
+							</div>
+							<h3>Sistema de Apoyo a la Toma de Decisiones Clínicas (IA)</h3>
+							<p class="project-summary">Proyecto de título con validación en contexto clínico real, orientado a apoyar criterio profesional bajo estándares de uso responsable.</p>
+							<div class="project-grid">
+								<p><strong>Contexto:</strong> Centro Avanzado de Tratamiento de Heridas, con necesidad de estandarizar evaluaciones periódicas y continuidad de seguimiento.</p>
+								<p><strong>Problema:</strong> Alta variabilidad entre evaluaciones clínicas y dependencia de experiencia individual para decisiones reiteradas.</p>
+								<p><strong>Solución:</strong> Sistema de apoyo con IA aplicada para estructurar información clínica y entregar sugerencias sin reemplazar juicio profesional.</p>
+								<p><strong>Decisiones técnicas:</strong> Arquitectura modular, persistencia local controlada y separación estricta entre lógica de IA y capa de presentación.</p>
+								<p><strong>Validación:</strong> Prototipo académico validado en contexto clínico real, con énfasis en uso responsable y apoyo al criterio profesional.</p>
+								<p><strong>Impacto:</strong> Mayor consistencia de evaluación y mejor continuidad del seguimiento clínico.</p>
+							</div>
+							<div class="project-technologies">
+								<strong>Tecnologías:</strong>
+								<div class="tech-list-compact">
+									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
+									<span class="tech-icon-small"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
+									<span class="tech-icon-small"><i class="devicon-express-original colored"></i><span>Express</span></span>
+									<span class="tech-icon-small"><i class="devicon-sqlite-plain colored"></i><span>SQLite</span></span>
+									<span class="tech-icon-small"><i class="devicon-kotlin-plain colored"></i><span>Kotlin</span></span>
+								</div>
+							</div>
+							<p class="project-link"><a href="https://github.com/tu-usuario/decision-support-heridas" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+						</article>
+					</article>
 
-			<article class="project project-card priority-2">
-				<div class="project-head">
-					<p class="project-rank">Proyecto 2</p>
-					<span class="project-tag">Sistema productivo</span>
-				</div>
-				<h3>Sistema de Gestión y Modernización para APR</h3>
-				<p class="project-summary">Modernización operativa en contexto de baja madurez tecnológica, priorizando trazabilidad y mantenibilidad por sobre complejidad innecesaria.</p>
-				<div class="project-grid">
-					<p><strong>Contexto:</strong> Procesos administrativos y contables manuales, apoyados en registros físicos y planillas no integradas.</p>
-					<p><strong>Problema:</strong> Cálculos manuales de cobro, baja trazabilidad y alto costo de tiempo para auditoría histórica.</p>
-					<p><strong>Solución:</strong> Sistema web para centralizar información, automatizar procesos críticos y reducir errores operativos.</p>
-					<p><strong>Decisiones técnicas:</strong> Arquitectura desacoplada para mantenimiento, consultas flexibles y diseño de interfaz para usuarios no técnicos.</p>
-					<p><strong>Consideraciones:</strong> Trade-off explícito a favor de simplicidad operativa y continuidad del servicio.</p>
-					<p><strong>Impacto:</strong> Menor carga administrativa, mejor consistencia de datos y base sólida para escalabilidad futura.</p>
-				</div>
-				<div class="project-technologies">
-					<strong>Tecnologías:</strong>
-					<div class="tech-list-compact">
-						<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
-						<span class="tech-icon-small"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></span>
-						<span class="tech-icon-small"><i class="devicon-graphql-plain colored"></i><span>GraphQL</span></span>
-						<span class="tech-icon-small"><i class="devicon-docker-plain colored"></i><span>Docker</span></span>
-					</div>
-				</div>
-				<p class="project-link"><a href="https://github.com/tu-usuario/apr-modernizacion" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
-			</article>
+					<article class="swiper-slide">
+						<article class="project project-card priority-2">
+							<div class="project-head">
+								<p class="project-rank">Proyecto 2</p>
+								<span class="project-tag">Sistema productivo</span>
+							</div>
+							<h3>Sistema de Gestión y Modernización para APR</h3>
+							<p class="project-summary">Modernización operativa en contexto de baja madurez tecnológica, priorizando trazabilidad y mantenibilidad por sobre complejidad innecesaria.</p>
+							<div class="project-grid">
+								<p><strong>Contexto:</strong> Procesos administrativos y contables manuales, apoyados en registros físicos y planillas no integradas.</p>
+								<p><strong>Problema:</strong> Cálculos manuales de cobro, baja trazabilidad y alto costo de tiempo para auditoría histórica.</p>
+								<p><strong>Solución:</strong> Sistema web para centralizar información, automatizar procesos críticos y reducir errores operativos.</p>
+								<p><strong>Decisiones técnicas:</strong> Arquitectura desacoplada para mantenimiento, consultas flexibles y diseño de interfaz para usuarios no técnicos.</p>
+								<p><strong>Consideraciones:</strong> Trade-off explícito a favor de simplicidad operativa y continuidad del servicio.</p>
+								<p><strong>Impacto:</strong> Menor carga administrativa, mejor consistencia de datos y base sólida para escalabilidad futura.</p>
+							</div>
+							<div class="project-technologies">
+								<strong>Tecnologías:</strong>
+								<div class="tech-list-compact">
+									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
+									<span class="tech-icon-small"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></span>
+									<span class="tech-icon-small"><i class="devicon-graphql-plain colored"></i><span>GraphQL</span></span>
+									<span class="tech-icon-small"><i class="devicon-docker-plain colored"></i><span>Docker</span></span>
+								</div>
+							</div>
+							<p class="project-link"><a href="https://github.com/tu-usuario/apr-modernizacion" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+						</article>
+					</article>
 
-			<article class="project project-card priority-3">
-				<div class="project-head">
-					<p class="project-rank">Proyecto 3</p>
-					<span class="project-tag">Automatización fullstack</span>
+					<article class="swiper-slide">
+						<article class="project project-card priority-3">
+							<div class="project-head">
+								<p class="project-rank">Proyecto 3</p>
+								<span class="project-tag">Automatización fullstack</span>
+							</div>
+							<h3>SheetFlow Automation Hub</h3>
+							<p class="project-summary">Plataforma fullstack para automatizar procesamiento de planillas XLSX con trazabilidad por corrida, aislamiento lógico por empresa y operación auditable de extremo a extremo.</p>
+							<div class="project-grid">
+								<p><strong>Contexto:</strong> Operación con planillas heterogéneas provenientes de upload directo y URL remotas (OneDrive, SharePoint, Google Sheets).</p>
+								<p><strong>Problema:</strong> Flujo manual frágil, baja observabilidad y dificultad para repetir resultados de manera consistente entre empresas.</p>
+								<p><strong>Solución:</strong> Endpoint único <code>POST /api/automation/run</code> con backend Node como orquestador y motor Python para ejecución de negocio.</p>
+								<p><strong>Decisiones técnicas:</strong> Separación estricta Frontend/API/Python, persistencia de corridas en PostgreSQL y normalización de errores para consumo de UI.</p>
+								<p><strong>Seguridad y operación:</strong> Sesiones HTTP-only, CORS restringido, Helmet, control de upload XLSX y limpieza de temporales por corrida.</p>
+								<p><strong>Impacto:</strong> Procesamiento repetible y auditable, menor fricción operativa y base preparada para escalar a colas asíncronas.</p>
+							</div>
+							<div class="project-technologies">
+								<strong>Tecnologías:</strong>
+								<div class="tech-list-compact">
+									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React 18</span></span>
+									<span class="tech-icon-small"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
+									<span class="tech-icon-small"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
+									<span class="tech-icon-small"><i class="devicon-express-original colored"></i><span>Express</span></span>
+									<span class="tech-icon-small"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></span>
+									<span class="tech-icon-small"><i class="devicon-python-plain colored"></i><span>Python</span></span>
+								</div>
+							</div>
+							<p class="project-link"><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+						</article>
+					</article>
 				</div>
-				<h3>SheetFlow Automation Hub</h3>
-				<p class="project-summary">Plataforma fullstack para automatizar procesamiento de planillas XLSX con trazabilidad por corrida, aislamiento lógico por empresa y operación auditable de extremo a extremo.</p>
-				<div class="project-grid">
-					<p><strong>Contexto:</strong> Operación con planillas heterogéneas provenientes de upload directo y URL remotas (OneDrive, SharePoint, Google Sheets).</p>
-					<p><strong>Problema:</strong> Flujo manual frágil, baja observabilidad y dificultad para repetir resultados de manera consistente entre empresas.</p>
-					<p><strong>Solución:</strong> Endpoint único <code>POST /api/automation/run</code> con backend Node como orquestador y motor Python para ejecución de negocio.</p>
-					<p><strong>Decisiones técnicas:</strong> Separación estricta Frontend/API/Python, persistencia de corridas en PostgreSQL y normalización de errores para consumo de UI.</p>
-					<p><strong>Seguridad y operación:</strong> Sesiones HTTP-only, CORS restringido, Helmet, control de upload XLSX y limpieza de temporales por corrida.</p>
-					<p><strong>Impacto:</strong> Procesamiento repetible y auditable, menor fricción operativa y base preparada para escalar a colas asíncronas.</p>
-				</div>
-				<div class="project-technologies">
-					<strong>Tecnologías:</strong>
-					<div class="tech-list-compact">
-						<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React 18</span></span>
-						<span class="tech-icon-small"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
-						<span class="tech-icon-small"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
-						<span class="tech-icon-small"><i class="devicon-express-original colored"></i><span>Express</span></span>
-						<span class="tech-icon-small"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></span>
-						<span class="tech-icon-small"><i class="devicon-python-plain colored"></i><span>Python</span></span>
-					</div>
-				</div>
-				<p class="project-link"><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
-			</article>
+
+				<!-- Navigation and Pagination -->
+				<button class="swiper-button-prev" aria-label="Proyecto anterior"></button>
+				<button class="swiper-button-next" aria-label="Siguiente proyecto"></button>
+				<div class="swiper-pagination"></div>
+			</div>
 
 			<hr class="my-5" />
 			<h3 class="text-muted">Automatizaciones operativas</h3>
@@ -134,55 +150,71 @@
 			<h2>Selected projects by impact, context, and technical decisions</h2>
 			<p class="lead text-muted">This is not a job catalog. It is a curated set of systems where I made technical decisions under real constraints.</p>
 
-			<article class="project project-card priority-1">
-				<div class="project-head">
-					<p class="project-rank">Project 1</p>
-					<span class="project-tag">Decision support</span>
-				</div>
-				<h3>Clinical Decision Support System (AI)</h3>
-				<p class="project-summary">Degree project validated in a real clinical environment, focused on supporting professional judgment under responsible-use standards.</p>
-				<div class="project-grid">
-					<p><strong>Context:</strong> Advanced wound care center with a need to standardize periodic assessments and continuity of follow-up.</p>
-					<p><strong>Problem:</strong> High variability between clinical evaluations and strong dependence on individual experience.</p>
-					<p><strong>Solution:</strong> AI-assisted decision support to structure clinical information and provide recommendations without replacing professional judgment.</p>
-					<p><strong>Technical decisions:</strong> Modular architecture, controlled local persistence, and strict separation between AI logic and presentation layer.</p>
-					<p><strong>Validation:</strong> Academic prototype validated in a real clinical context.</p>
-					<p><strong>Impact:</strong> Better evaluation consistency and improved continuity in clinical follow-up.</p>
-				</div>
-			</article>
+			<!-- SWIPER CAROUSEL FOR MAIN PROJECTS -->
+			<div class="projects-swiper swiper" role="region" aria-label="Main projects carousel">
+				<div class="swiper-wrapper">
+					<article class="swiper-slide">
+						<article class="project project-card priority-1">
+							<div class="project-head">
+								<p class="project-rank">Project 1</p>
+								<span class="project-tag">Decision support</span>
+							</div>
+							<h3>Clinical Decision Support System (AI)</h3>
+							<p class="project-summary">Degree project validated in a real clinical environment, focused on supporting professional judgment under responsible-use standards.</p>
+							<div class="project-grid">
+								<p><strong>Context:</strong> Advanced wound care center with a need to standardize periodic assessments and continuity of follow-up.</p>
+								<p><strong>Problem:</strong> High variability between clinical evaluations and strong dependence on individual experience.</p>
+								<p><strong>Solution:</strong> AI-assisted decision support to structure clinical information and provide recommendations without replacing professional judgment.</p>
+								<p><strong>Technical decisions:</strong> Modular architecture, controlled local persistence, and strict separation between AI logic and presentation layer.</p>
+								<p><strong>Validation:</strong> Academic prototype validated in a real clinical context.</p>
+								<p><strong>Impact:</strong> Better evaluation consistency and improved continuity in clinical follow-up.</p>
+							</div>
+						</article>
+					</article>
 
-			<article class="project project-card priority-2">
-				<div class="project-head">
-					<p class="project-rank">Project 2</p>
-					<span class="project-tag">Productive system</span>
-				</div>
-				<h3>Management and Modernization System for APR</h3>
-				<p class="project-summary">Operational modernization in low-maturity contexts, prioritizing traceability and maintainability over unnecessary complexity.</p>
-				<div class="project-grid">
-					<p><strong>Context:</strong> Manual administrative and accounting processes with fragmented spreadsheets and physical records.</p>
-					<p><strong>Problem:</strong> Manual billing calculations, low traceability, and high auditing effort.</p>
-					<p><strong>Solution:</strong> Web system to centralize information, automate critical workflows, and reduce operational errors.</p>
-					<p><strong>Technical decisions:</strong> Decoupled architecture and UX adapted for non-technical users.</p>
-					<p><strong>Impact:</strong> Reduced administrative load and stronger data consistency.</p>
-				</div>
-			</article>
+					<article class="swiper-slide">
+						<article class="project project-card priority-2">
+							<div class="project-head">
+								<p class="project-rank">Project 2</p>
+								<span class="project-tag">Productive system</span>
+							</div>
+							<h3>Management and Modernization System for APR</h3>
+							<p class="project-summary">Operational modernization in low-maturity contexts, prioritizing traceability and maintainability over unnecessary complexity.</p>
+							<div class="project-grid">
+								<p><strong>Context:</strong> Manual administrative and accounting processes with fragmented spreadsheets and physical records.</p>
+								<p><strong>Problem:</strong> Manual billing calculations, low traceability, and high auditing effort.</p>
+								<p><strong>Solution:</strong> Web system to centralize information, automate critical workflows, and reduce operational errors.</p>
+								<p><strong>Technical decisions:</strong> Decoupled architecture and UX adapted for non-technical users.</p>
+								<p><strong>Impact:</strong> Reduced administrative load and stronger data consistency.</p>
+							</div>
+						</article>
+					</article>
 
-			<article class="project project-card priority-3">
-				<div class="project-head">
-					<p class="project-rank">Project 3</p>
-					<span class="project-tag">Fullstack automation</span>
+					<article class="swiper-slide">
+						<article class="project project-card priority-3">
+							<div class="project-head">
+								<p class="project-rank">Project 3</p>
+								<span class="project-tag">Fullstack automation</span>
+							</div>
+							<h3>SheetFlow Automation Hub</h3>
+							<p class="project-summary">Fullstack platform that automates XLSX processing with run-level traceability, logical tenant isolation, and auditable end-to-end operations.</p>
+							<div class="project-grid">
+								<p><strong>Context:</strong> Heterogeneous spreadsheets from direct uploads and remote URLs (OneDrive, SharePoint, Google Sheets).</p>
+								<p><strong>Problem:</strong> Fragile manual flow and low observability for repeatable outcomes.</p>
+								<p><strong>Solution:</strong> Single endpoint <code>POST /api/automation/run</code> with Node orchestration and a Python business engine.</p>
+								<p><strong>Technical decisions:</strong> Strict separation between Frontend/API/Python, run persistence in PostgreSQL, and normalized errors for UI consumption.</p>
+								<p><strong>Impact:</strong> Repeatable and auditable processing with lower operational friction and a path to async queues.</p>
+							</div>
+							<p class="project-link"><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">Repository available on GitHub</a></p>
+						</article>
+					</article>
 				</div>
-				<h3>SheetFlow Automation Hub</h3>
-				<p class="project-summary">Fullstack platform that automates XLSX processing with run-level traceability, logical tenant isolation, and auditable end-to-end operations.</p>
-				<div class="project-grid">
-					<p><strong>Context:</strong> Heterogeneous spreadsheets from direct uploads and remote URLs (OneDrive, SharePoint, Google Sheets).</p>
-					<p><strong>Problem:</strong> Fragile manual flow and low observability for repeatable outcomes.</p>
-					<p><strong>Solution:</strong> Single endpoint <code>POST /api/automation/run</code> with Node orchestration and a Python business engine.</p>
-					<p><strong>Technical decisions:</strong> Strict separation between Frontend/API/Python, run persistence in PostgreSQL, and normalized errors for UI consumption.</p>
-					<p><strong>Impact:</strong> Repeatable and auditable processing with lower operational friction and a path to async queues.</p>
-				</div>
-				<p class="project-link"><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">Repository available on GitHub</a></p>
-			</article>
+
+				<!-- Navigation and Pagination -->
+				<button class="swiper-button-prev" aria-label="Previous project"></button>
+				<button class="swiper-button-next" aria-label="Next project"></button>
+				<div class="swiper-pagination"></div>
+			</div>
 
 			<hr class="my-5" />
 			<h3 class="text-muted">Operational automations</h3>
