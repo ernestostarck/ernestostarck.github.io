@@ -1,0 +1,282 @@
+/* ========================================
+   ANIMATIONS & MICRO-INTERACTIONS
+   Professional, subtle, performant
+   ======================================== */
+
+/* ── KEYFRAME ANIMATIONS ── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(201, 138, 14, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(201, 138, 14, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ── REVEAL ON SCROLL ── */
+
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.reveal.reveal-in {
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Staggered animations for lists */
+.reveal-list > * {
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+.reveal-list > *:nth-child(1) { animation-delay: 0.05s; }
+.reveal-list > *:nth-child(2) { animation-delay: 0.1s; }
+.reveal-list > *:nth-child(3) { animation-delay: 0.15s; }
+.reveal-list > *:nth-child(4) { animation-delay: 0.2s; }
+.reveal-list > *:nth-child(5) { animation-delay: 0.25s; }
+.reveal-list > *:nth-child(6) { animation-delay: 0.3s; }
+
+/* ── CARD ANIMATIONS ── */
+
+.card {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+.home-card {
+  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: both;
+}
+
+.home-card:nth-child(1) { animation-delay: 0.1s; }
+.home-card:nth-child(2) { animation-delay: 0.15s; }
+.home-card:nth-child(3) { animation-delay: 0.2s; }
+
+/* ── BUTTON & LINK ANIMATIONS ── */
+
+.btn {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+  box-shadow: 0 8px 24px rgba(201, 138, 14, 0.3);
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-bright);
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── BANNER PARALLAX ── */
+
+.home-banner {
+  animation: fadeInDown 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.banner-chips {
+  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.banner-chips span {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.banner-chips span:nth-child(1) { animation-delay: 0.3s; }
+.banner-chips span:nth-child(2) { animation-delay: 0.35s; }
+.banner-chips span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ── HERO ACTIONS ── */
+
+.hero-actions {
+  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.4s;
+  animation-fill-mode: both;
+}
+
+.cta {
+  animation: glow infinite 2s ease-in-out;
+}
+
+/* ── TECH TAGS ── */
+
+.tech-icon-small {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tech-icon-small:hover {
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(0 4px 12px rgba(201, 138, 14, 0.3));
+}
+
+/* ── SWIPER ANIMATIONS ── */
+
+.swiper {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.swiper-slide {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  transition: all 0.3s ease;
+  color: var(--accent-bright);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: var(--accent-bright);
+  filter: drop-shadow(0 0 8px rgba(201, 138, 14, 0.4));
+}
+
+.swiper-pagination-bullet {
+  transition: all 0.3s ease;
+  background: rgba(193, 138, 14, 0.4);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-bright);
+  box-shadow: 0 0 8px rgba(201, 138, 14, 0.5);
+}
+
+/* ── LOADING STATE ── */
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    rgba(193, 138, 14, 0.1) 50%,
+    var(--surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ── ACCESSIBILITY ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
