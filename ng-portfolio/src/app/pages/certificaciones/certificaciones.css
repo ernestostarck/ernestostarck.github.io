@@ -2,6 +2,34 @@
 
 .cert-banner {
   animation: fadeInDown 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.05) 0%, transparent 100%);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(201, 138, 14, 0.15);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.cert-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201, 138, 14, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cert-banner h2 {
+  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
+}
 }
 
 .cert-banner h2 {

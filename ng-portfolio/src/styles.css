@@ -12,6 +12,7 @@
    ===================================================== */
 
 :root {
+  /* Dark Mode (Default) */
   --bg: #0b0905;
   --surface: #110f0b;
   --ink: #ede8de;
@@ -31,6 +32,21 @@
   --space-3: clamp(1.05rem, 0.95rem + 0.45vw, 1.28rem);
   --space-4: clamp(1.35rem, 1.2rem + 0.65vw, 1.75rem);
   --space-5: clamp(1.75rem, 1.52rem + 0.9vw, 2.3rem);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8f6f2;
+    --surface: #ffffff;
+    --ink: #1a1814;
+    --ink-soft: #3e3a34;
+    --muted: #8b8277;
+    --card: rgba(255, 255, 255, 0.95);
+    --line: rgba(201, 138, 14, 0.2);
+    --accent: #c98a0e;
+    --accent-bright: #d4941f;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
 }
 
 * {

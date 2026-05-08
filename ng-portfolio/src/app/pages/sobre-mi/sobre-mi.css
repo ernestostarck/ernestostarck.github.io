@@ -1,0 +1,201 @@
+/* ── ABOUT PAGE ANIMATIONS ── */
+
+.about-banner {
+  animation: fadeInDown 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.05) 0%, transparent 100%);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(201, 138, 14, 0.15);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.about-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201, 138, 14, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.about-banner h2 {
+  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
+}
+
+.about-banner .banner-lead {
+  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.15s;
+  animation-fill-mode: both;
+  position: relative;
+  z-index: 1;
+}
+
+.about-banner .banner-chips {
+  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-banner .banner-chips span {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: both;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.15), rgba(201, 138, 14, 0.05));
+  border: 1px solid rgba(201, 138, 14, 0.3);
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-bright);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-banner .banner-chips span:hover {
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.25), rgba(201, 138, 14, 0.12));
+  border-color: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(201, 138, 14, 0.2);
+}
+
+.about-banner .banner-chips span:nth-child(1) { animation-delay: 0.3s; }
+.about-banner .banner-chips span:nth-child(2) { animation-delay: 0.35s; }
+.about-banner .banner-chips span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ── CONTENT BLOCKS ── */
+
+.content-block {
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: both;
+  border-left: 3px solid rgba(201, 138, 14, 0.2);
+  padding: 1.5rem;
+  padding-left: 2rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(201, 138, 14, 0.04) 0%, transparent 100%);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-bottom: 2rem;
+}
+
+.content-block:hover {
+  border-left-color: var(--accent-bright);
+  background: linear-gradient(90deg, rgba(201, 138, 14, 0.08) 0%, transparent 100%);
+  transform: translateX(4px);
+}
+
+.content-block h3 {
+  color: var(--accent-bright);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.content-block:nth-child(1) { animation-delay: 0.1s; }
+.content-block:nth-child(2) { animation-delay: 0.15s; }
+.content-block:nth-child(3) { animation-delay: 0.2s; }
+.content-block:nth-child(4) { animation-delay: 0.25s; }
+.content-block:nth-child(5) { animation-delay: 0.3s; }
+
+/* ── VALUE LIST ── */
+
+.value-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.value-list li {
+  padding: 0.8rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: both;
+  border-bottom: 1px solid rgba(201, 138, 14, 0.1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.value-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-bright);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.value-list li:last-child {
+  border-bottom: none;
+}
+
+.value-list li:hover {
+  padding-left: 2rem;
+  color: var(--accent-bright);
+}
+
+.value-list li:nth-child(1) { animation-delay: 0.35s; }
+.value-list li:nth-child(2) { animation-delay: 0.4s; }
+.value-list li:nth-child(3) { animation-delay: 0.45s; }
+
+/* ── SKILLS GRID ── */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: rgba(201, 138, 14, 0.08);
+  border: 1px solid rgba(201, 138, 14, 0.2);
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: both;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.skill-item:hover {
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.15), rgba(201, 138, 14, 0.08));
+  border-color: var(--accent-bright);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(201, 138, 14, 0.15);
+}
+
+.skill-item i {
+  font-size: 1.2rem;
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 768px) {
+  .content-block {
+    padding: 1.25rem;
+    padding-left: 1.5rem;
+    border-left-width: 2px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
