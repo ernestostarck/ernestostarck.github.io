@@ -1,7 +1,7 @@
 /* ── SWIPER CUSTOMIZATION ── */
 
 .projects-swiper {
-  padding: 2.5rem 0;
+  padding: 3rem 0 4.5rem 0;
   margin: 2rem -2rem 0 -2rem;
   position: relative;
 }
@@ -12,74 +12,80 @@
 
 .swiper-wrapper {
   align-items: stretch;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 }
 
 .swiper-slide {
   height: auto;
-  opacity: 0.65;
-  transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0.5;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   align-items: stretch;
+  filter: blur(0.8px);
 }
 
 .swiper-slide-active {
   opacity: 1;
   z-index: 10;
+  filter: blur(0);
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  width: 48px;
-  height: 48px;
-  background: rgba(201, 138, 14, 0.08);
-  border-radius: 0;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.12), rgba(201, 138, 14, 0.05));
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-bright);
-  border: 1px solid rgba(201, 138, 14, 0.25);
+  border: 2px solid rgba(201, 138, 14, 0.35);
   top: 50%;
   cursor: pointer;
   z-index: 15;
+  backdrop-filter: blur(8px);
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  background: rgba(201, 138, 14, 0.15);
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.25), rgba(201, 138, 14, 0.15));
   border-color: var(--accent-bright);
-  transform: scale(1.12);
-  filter: drop-shadow(0 4px 12px rgba(201, 138, 14, 0.25));
+  transform: scale(1.15) translateY(-2px);
+  filter: drop-shadow(0 8px 20px rgba(201, 138, 14, 0.35));
+  box-shadow: inset 0 0 20px rgba(201, 138, 14, 0.1);
 }
 
 .swiper-button-prev:disabled,
 .swiper-button-next:disabled {
-  opacity: 0.4;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
 .swiper-button-prev:disabled:hover,
 .swiper-button-next:disabled:hover {
-  background: rgba(201, 138, 14, 0.08);
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.08), rgba(201, 138, 14, 0.03));
   border-color: rgba(201, 138, 14, 0.25);
   transform: none;
   filter: none;
+  box-shadow: none;
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 600;
   content: '';
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .swiper-button-prev {
-  left: 0;
+  left: 1rem;
 }
 
 .swiper-button-next {
-  right: 0;
+  right: 1rem;
 }
 
 .swiper-button-prev::after {
@@ -96,28 +102,31 @@
 }
 
 .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: rgba(193, 138, 14, 0.25);
-  opacity: 0.6;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 1px solid rgba(193, 138, 14, 0.15);
-  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  background: rgba(193, 138, 14, 0.2);
+  opacity: 0.5;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid rgba(193, 138, 14, 0.2);
+  margin: 0 6px;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .swiper-pagination-bullet:hover {
-  background: rgba(201, 138, 14, 0.4);
-  opacity: 0.8;
+  background: rgba(201, 138, 14, 0.5);
+  opacity: 0.9;
+  border-color: var(--accent-bright);
+  transform: scale(1.15);
 }
 
 .swiper-pagination-bullet-active {
   background: var(--accent-bright);
   opacity: 1;
-  width: 28px;
-  border-radius: 10px;
+  width: 32px;
+  border-radius: 12px;
   border-color: var(--accent-bright);
-  box-shadow: 0 0 16px rgba(201, 138, 14, 0.35);
+  box-shadow: 0 0 20px rgba(201, 138, 14, 0.4), inset 0 0 8px rgba(201, 138, 14, 0.2);
 }
 
 /* ── PROJECT CARD ANIMATIONS ── */
@@ -125,10 +134,13 @@
 .project-card {
   animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   opacity: 0;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 138, 14, 0.15);
 }
 
 .swiper-slide-active .project-card {
@@ -136,16 +148,18 @@
 }
 
 .swiper-slide:not(.swiper-slide-active) .project-card {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(201, 138, 14, 0.15), 0 0 40px rgba(201, 138, 14, 0.08);
+  border-color: rgba(201, 138, 14, 0.35);
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.03), rgba(0, 0, 0, 0.1));
 }
 
 .swiper-slide-active .project-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .project-card:nth-child(1) { animation-delay: 0.1s; }

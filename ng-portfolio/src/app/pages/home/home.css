@@ -2,29 +2,81 @@
 
 .home-banner {
   animation: fadeInDown 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.05) 0%, transparent 100%);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 138, 14, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201, 138, 14, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .home-banner h1 {
   animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-delay: 0.1s;
   animation-fill-mode: both;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
 }
 
 .banner-lead {
   animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-delay: 0.15s;
   animation-fill-mode: both;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  position: relative;
+  z-index: 1;
 }
 
 .banner-chips {
   animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-delay: 0.2s;
   animation-fill-mode: both;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .banner-chips span {
   animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.15), rgba(201, 138, 14, 0.05));
+  border: 1px solid rgba(201, 138, 14, 0.3);
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-bright);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.banner-chips span:hover {
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.25), rgba(201, 138, 14, 0.12));
+  border-color: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(201, 138, 14, 0.2);
 }
 
 .banner-chips span:nth-child(1) { animation-delay: 0.3s; }
@@ -36,11 +88,43 @@
 .home-layout {
   display: grid;
   gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .home-card {
   animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
+  border: 1px solid rgba(201, 138, 14, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 138, 14, 0.5), transparent);
+}
+
+.home-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--accent-bright);
+}
+
+.home-card:hover {
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.12) 0%, rgba(0, 0, 0, 0.15) 100%);
+  border-color: rgba(201, 138, 14, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(201, 138, 14, 0.12), 0 0 32px rgba(201, 138, 14, 0.05);
 }
 
 .home-card:nth-child(1) { animation-delay: 0.1s; }
@@ -63,6 +147,44 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-actions .cta,
+.hero-actions .btn {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+}
+
+.hero-actions .cta {
+  animation: glow infinite 2.5s ease-in-out;
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+  border: 2px solid var(--accent-bright);
+  color: var(--bg);
+}
+
+.hero-actions .cta:hover {
+  animation-play-state: paused;
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 16px 40px rgba(201, 138, 14, 0.35), 0 0 32px rgba(201, 138, 14, 0.2);
+}
+
+.hero-actions .btn-outline-primary {
+  border: 2px solid var(--accent-bright);
+  color: var(--accent-bright);
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-actions .btn-outline-primary:hover {
+  background: rgba(201, 138, 14, 0.1);
+  border-color: var(--accent-bright);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(201, 138, 14, 0.15);
 }
 
 .cta {
@@ -77,13 +199,26 @@
 
 .executive-summary {
   grid-column: 1 / -1;
-  border-left: 3px solid var(--accent-bright);
+  border-left: 4px solid var(--accent-bright);
   padding-left: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.08) 0%, transparent 100%) !important;
+  position: relative;
+}
+
+.executive-summary::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent-bright), transparent);
 }
 
 .executive-summary h3 {
   color: var(--accent-bright);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .executive-summary .home-kicker {
@@ -91,6 +226,7 @@
   font-weight: 500;
   color: var(--accent-bright);
   margin-bottom: 0.75rem;
+  opacity: 0.9;
 }
 
 /* ── QUICK FACTS LIST ── */
@@ -102,10 +238,27 @@
 }
 
 .home-quick-facts li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(193, 138, 14, 0.1);
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(193, 138, 14, 0.15);
   animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.home-quick-facts li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--accent-bright);
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.home-quick-facts li:hover {
+  padding-left: 1.5rem;
+  color: var(--accent-bright);
 }
 
 .home-quick-facts li:last-child {
@@ -118,6 +271,7 @@
 
 .home-quick-facts strong {
   color: var(--accent-bright);
+  font-weight: 600;
 }
 
 /* ── RESPONSIVE ── */
