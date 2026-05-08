@@ -37,5 +37,5 @@ export class Home implements OnInit {
     // Initialize the observer with all reveal elements
     this.scrollReveal.initOnPageLoad();
   }
-}}
+}
 

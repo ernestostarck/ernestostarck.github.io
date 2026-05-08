@@ -99,5 +99,5 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
       });
     }
   }
-}}
+}
 

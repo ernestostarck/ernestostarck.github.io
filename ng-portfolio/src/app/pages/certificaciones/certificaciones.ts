@@ -46,5 +46,5 @@ export class Certificaciones implements OnInit {
     // Initialize the observer with all reveal elements
     this.scrollReveal.initOnPageLoad();
   }
-}}
+}
 
