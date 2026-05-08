@@ -30,13 +30,6 @@
   position: relative;
   z-index: 1;
 }
-}
-
-.cert-banner h2 {
-  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation-delay: 0.1s;
-  animation-fill-mode: both;
-}
 
 .cert-banner .banner-lead {
   animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -56,6 +49,8 @@
 .cert-card {
   padding: 1.5rem;
   border: 1px solid rgba(193, 138, 14, 0.2);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.03) 0%, transparent 100%);
   transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
@@ -115,7 +110,7 @@
 .cert-card-status {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  border-radius: 0;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -143,7 +138,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.25rem 0.5rem;
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 .badge-distincion-maxima {
@@ -152,87 +147,69 @@
   border: 1px solid rgba(201, 138, 14, 0.4);
 }
 
-.badge-distincion-doble {
-  background: rgba(201, 138, 14, 0.15);
-  color: var(--accent-bright);
-  border: 1px solid rgba(201, 138, 14, 0.3);
-}
-
-.cert-card-link {
-  margin-top: 0.5rem;
-}
-
-.cert-card-link a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(201, 138, 14, 0.1);
-  border: 1px solid rgba(201, 138, 14, 0.3);
-  color: var(--accent-bright);
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.cert-card-link a:hover {
-  background: rgba(201, 138, 14, 0.2);
-  border-color: var(--accent-bright);
-  transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(201, 138, 14, 0.2);
-}
-
-.cert-note {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin: 2rem 0;
-  padding: 1rem;
-  border-left: 3px solid rgba(201, 138, 14, 0.2);
-  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation-delay: 0.3s;
-  animation-fill-mode: both;
-  opacity: 0;
-}
-
 /* ── CONVERSION CTA ── */
 
 .conversion-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(201, 138, 14, 0.08) 0%, transparent 100%);
+  border: 1px solid rgba(201, 138, 14, 0.2);
   animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation-delay: 0.35s;
+  animation-delay: 0.3s;
   animation-fill-mode: both;
-  opacity: 0;
-  border-top: 1px solid rgba(193, 138, 14, 0.2);
-  padding-top: 2rem;
 }
 
 .conversion-cta h3 {
   color: var(--accent-bright);
-  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.4s;
+  animation-fill-mode: both;
 }
 
-.conversion-actions {
+.conversion-cta p {
+  color: var(--ink-soft);
+  line-height: 1.6;
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+.conversion-buttons {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-/* ── RESPONSIVE ── */
+.conversion-buttons a {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(201, 138, 14, 0.3);
+  color: var(--accent-bright);
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-delay: 0.6s;
+  animation-fill-mode: both;
+}
 
-@media (max-width: 768px) {
-  .education-grid {
-    grid-template-columns: 1fr;
-  }
+.conversion-buttons a:hover {
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 16px rgba(201, 138, 14, 0.3);
+  transform: scale(1.05);
+}
 
-  .cert-card {
-    padding: 1.25rem;
-  }
+/* ── SCROLL REVEAL ── */
 
-  .conversion-actions {
-    flex-direction: column;
-  }
+.cert-card.reveal {
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
-  .conversion-actions .btn {
-    width: 100%;
-    text-align: center;
-  }
+.cert-card.reveal-in {
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }

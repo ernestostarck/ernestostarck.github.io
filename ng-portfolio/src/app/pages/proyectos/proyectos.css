@@ -6,13 +6,14 @@
   position: relative;
 }
 
+
 .swiper {
   overflow: visible;
 }
 
 .swiper-wrapper {
   align-items: stretch;
-  padding: 0 2.5rem;
+  padding: 0 3rem;
 }
 
 .swiper-slide {
@@ -22,6 +23,7 @@
   display: flex;
   align-items: stretch;
   filter: blur(0.8px);
+  margin: 0 0.75rem;
 }
 
 .swiper-slide-active {
