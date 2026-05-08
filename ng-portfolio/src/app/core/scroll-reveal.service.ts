@@ -1,14 +1,13 @@
-import { Injectable, AfterViewInit, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ScrollRevealService implements AfterViewInit, OnDestroy {
+export class ScrollRevealService implements OnDestroy {
   private intersectionObserver: IntersectionObserver | null = null;
+  private isInitialized = false;
 
-  constructor() {}
-
-  ngAfterViewInit(): void {
+  constructor() {
     this.initObserver();
   }
 
@@ -18,7 +17,9 @@ export class ScrollRevealService implements AfterViewInit, OnDestroy {
     }
   }
 
-  initObserver(): void {
+  private initObserver(): void {
+    if (this.isInitialized) return;
+
     const options: IntersectionObserverInit = {
       root: null,
       rootMargin: '0px 0px -50px 0px',
@@ -34,6 +35,15 @@ export class ScrollRevealService implements AfterViewInit, OnDestroy {
       });
     }, options);
 
+    this.isInitialized = true;
+  }
+
+  initOnPageLoad(): void {
+    // Call this method when the page or component has loaded
+    if (!this.isInitialized) {
+      this.initObserver();
+    }
+    
     // Observe all elements with the 'reveal' class
     const revealElements = document.querySelectorAll('.reveal');
     revealElements.forEach((element) => {

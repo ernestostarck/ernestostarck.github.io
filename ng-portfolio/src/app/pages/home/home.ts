@@ -16,7 +16,7 @@ export class Home implements OnInit {
     // Initialize scroll reveal after view is rendered
     setTimeout(() => {
       this.initScrollReveal();
-    }, 0);
+    }, 100);
   }
 
   private initScrollReveal(): void {
@@ -26,15 +26,16 @@ export class Home implements OnInit {
       if (!card.classList.contains('reveal')) {
         card.classList.add('reveal');
       }
-      this.scrollReveal.observe(card as HTMLElement);
     });
 
     // Animate the executive summary
     const executiveSummary = document.querySelector('.executive-summary');
     if (executiveSummary && !executiveSummary.classList.contains('reveal')) {
       executiveSummary.classList.add('reveal');
-      this.scrollReveal.observe(executiveSummary as HTMLElement);
     }
+
+    // Initialize the observer with all reveal elements
+    this.scrollReveal.initOnPageLoad();
   }
-}
+}}
 

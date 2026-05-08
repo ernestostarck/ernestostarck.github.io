@@ -19,7 +19,7 @@ export class Certificaciones implements OnInit {
     // Initialize scroll reveal after view is rendered
     setTimeout(() => {
       this.initScrollReveal();
-    }, 0);
+    }, 100);
   }
 
   private initScrollReveal(): void {
@@ -29,22 +29,22 @@ export class Certificaciones implements OnInit {
       if (!card.classList.contains('reveal')) {
         card.classList.add('reveal');
       }
-      this.scrollReveal.observe(card as HTMLElement);
     });
 
     // Animate cert note
     const certNote = document.querySelector('.cert-note');
     if (certNote && !certNote.classList.contains('reveal')) {
       certNote.classList.add('reveal');
-      this.scrollReveal.observe(certNote as HTMLElement);
     }
 
     // Animate conversion CTA
     const conversionCta = document.querySelector('.conversion-cta');
     if (conversionCta && !conversionCta.classList.contains('reveal')) {
       conversionCta.classList.add('reveal');
-      this.scrollReveal.observe(conversionCta as HTMLElement);
     }
+
+    // Initialize the observer with all reveal elements
+    this.scrollReveal.initOnPageLoad();
   }
-}
+}}
 

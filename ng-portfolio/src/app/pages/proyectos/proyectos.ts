@@ -21,14 +21,14 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
     // Initialize scroll reveal after view is rendered
     setTimeout(() => {
       this.initScrollReveal();
-    }, 0);
+    }, 100);
   }
 
   ngAfterViewInit(): void {
     // Initialize Swiper after view is fully rendered
     setTimeout(() => {
       this.initSwiper();
-    }, 100);
+    }, 200);
   }
 
   ngOnDestroy(): void {
@@ -46,7 +46,6 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
       if (!card.classList.contains('reveal')) {
         card.classList.add('reveal');
       }
-      this.scrollReveal.observe(card as HTMLElement);
     });
 
     // Animate project grid items
@@ -56,6 +55,9 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
         grid.classList.add('reveal-list');
       }
     });
+
+    // Initialize the observer with all reveal elements
+    this.scrollReveal.initOnPageLoad();
   }
 
   private initSwiper(): void {
@@ -81,7 +83,6 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
           nextSlideMessage: 'Siguiente proyecto',
           firstSlideMessage: 'Este es el primer proyecto',
           lastSlideMessage: 'Este es el último proyecto',
-          roleDescription: 'carrusel',
         },
         breakpoints: {
           768: {
@@ -98,5 +99,5 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
       });
     }
   }
-}
+}}
 
