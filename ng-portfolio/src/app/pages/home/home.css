@@ -85,13 +85,13 @@
 
 /* ── HOME LAYOUT CARDS ── */
 
-.home-layout {
+#home .home-layout {
   display: grid;
   gap: 1.5rem;
   margin-top: 2rem;
 }
 
-.home-card {
+#home .home-card {
   animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
   background: linear-gradient(135deg, color-mix(in srgb, var(--card) 92%, var(--accent) 8%) 0%, var(--card) 100%);
@@ -103,7 +103,7 @@
   overflow: hidden;
 }
 
-.home-card::before {
+#home .home-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -113,30 +113,39 @@
   background: linear-gradient(90deg, transparent, rgba(201, 138, 14, 0.5), transparent);
 }
 
-.home-card h3 {
+#home .home-card h3 {
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.75rem;
-  color: var(--ink);
+  color: var(--ink) !important;
 }
 
-.home-card:hover {
+#home .home-card p,
+#home .home-card li {
+  color: var(--ink-soft) !important;
+}
+
+#home .home-card strong {
+  color: var(--ink) !important;
+}
+
+#home .home-card:hover {
   background: linear-gradient(135deg, color-mix(in srgb, var(--card) 84%, var(--accent) 16%) 0%, var(--card) 100%);
   border-color: color-mix(in srgb, var(--accent-bright) 50%, var(--line));
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(201, 138, 14, 0.12), 0 0 32px rgba(201, 138, 14, 0.05);
 }
 
-.home-card:nth-child(1) { animation-delay: 0.1s; }
-.home-card:nth-child(2) { animation-delay: 0.15s; }
+#home .home-card:nth-child(1) { animation-delay: 0.1s; }
+#home .home-card:nth-child(2) { animation-delay: 0.15s; }
 
-.home-stack > .home-card {
+#home .home-stack > .home-card {
   animation-name: slideInRight;
 }
 
-.home-stack > .home-card:nth-child(1) { animation-delay: 0.15s; }
-.home-stack > .home-card:nth-child(2) { animation-delay: 0.2s; }
-.home-stack > .home-card:nth-child(3) { animation-delay: 0.25s; }
+#home .home-stack > .home-card:nth-child(1) { animation-delay: 0.15s; }
+#home .home-stack > .home-card:nth-child(2) { animation-delay: 0.2s; }
+#home .home-stack > .home-card:nth-child(3) { animation-delay: 0.25s; }
 
 /* ── HERO ACTIONS ── */
 
@@ -277,20 +286,22 @@
 /* ── RESPONSIVE ── */
 
 @media (min-width: 768px) {
-  .home-layout {
-    grid-template-columns: 1fr 1fr;
+  #home .home-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    align-items: start;
   }
 
-  .executive-summary {
-    grid-column: 1 / -1;
+  #home .executive-summary {
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  .home-stack {
+  #home .home-stack {
     grid-column: 2;
-    grid-row: 1 / 3;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: flex-start;
   }
 }
