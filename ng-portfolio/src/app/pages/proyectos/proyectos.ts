@@ -70,11 +70,8 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
         slidesPerView: 1,
         spaceBetween: 30,
         grabCursor: true,
-        centeredSlides: true,
-        centeredSlidesBounds: true,
-        slideToClickedSlide: true,
         slidesPerGroup: 1,
-        rewind: true,
+        rewind: false,
         roundLengths: true,
         watchOverflow: true,
         navigation: {
@@ -95,11 +92,11 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
         },
         breakpoints: {
           768: {
-            slidesPerView: 1.08,
+            slidesPerView: 1,
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 1.12,
+            slidesPerView: 1,
             spaceBetween: 50,
           },
         },

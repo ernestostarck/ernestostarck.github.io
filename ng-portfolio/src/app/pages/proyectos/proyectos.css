@@ -2,8 +2,9 @@
 
 .projects-swiper {
   padding: 3rem 0 4.5rem 0;
-  margin: 2rem -2rem 0 -2rem;
+  margin: 2rem 0 4.25rem 0;
   position: relative;
+  overflow: visible;
 }
 
 
@@ -13,17 +14,17 @@
 
 .swiper-wrapper {
   align-items: stretch;
-  padding: 0 2.5rem;
+  padding: 0;
 }
 
 .swiper-slide {
   height: auto;
-  opacity: 0.34;
-  transform: scale(0.94);
-  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease, filter 0.35s ease;
+  opacity: 0.2;
+  transform: scale(0.98);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease, filter 0.35s ease;
   display: flex;
   align-items: stretch;
-  filter: blur(1px) saturate(0.82);
+  filter: blur(0.75px) saturate(0.88);
 }
 
 .swiper-slide-active {
@@ -35,9 +36,9 @@
 
 .swiper-slide-next,
 .swiper-slide-prev {
-  opacity: 0.72;
-  transform: scale(0.975);
-  filter: blur(0.35px) saturate(0.95);
+  opacity: 0.45;
+  transform: scale(0.985);
+  filter: blur(0.4px) saturate(0.92);
 }
 
 .swiper-button-next,
@@ -108,7 +109,7 @@
 }
 
 .swiper-pagination {
-  bottom: -46px;
+  bottom: -42px;
   z-index: 12;
 }
 
@@ -199,6 +200,10 @@
   line-height: 1.65;
 }
 
+.project-link {
+  margin-top: auto;
+}
+
 .project-grid {
   gap: 0.55rem 0.9rem;
 }
@@ -234,6 +239,56 @@
   color: var(--ink);
 }
 
+:host-context(html[data-theme='dark']) .project-card {
+  background: linear-gradient(180deg, rgba(17, 15, 11, 0.96), rgba(12, 10, 7, 0.98));
+  border-color: rgba(193, 138, 14, 0.2);
+}
+
+:host-context(html[data-theme='dark']) .project-card h3,
+:host-context(html[data-theme='dark']) .project-summary,
+:host-context(html[data-theme='dark']) .project-grid p,
+:host-context(html[data-theme='dark']) .project-grid strong,
+:host-context(html[data-theme='dark']) .project-rank,
+:host-context(html[data-theme='dark']) .project-tag,
+:host-context(html[data-theme='dark']) .project-technologies strong,
+:host-context(html[data-theme='dark']) .tech-icon-small span {
+  color: #e8f1fd;
+}
+
+:host-context(html[data-theme='dark']) .project-tag,
+:host-context(html[data-theme='dark']) .tech-icon-small {
+  border-color: rgba(193, 138, 14, 0.18);
+}
+
+:host-context(html[data-theme='dark']) .tech-icon-small {
+  background: linear-gradient(180deg, rgba(22, 20, 16, 0.96), rgba(16, 14, 10, 0.98));
+}
+
+:host-context(html[data-theme='light']) .project-card {
+  background: linear-gradient(180deg, rgba(248, 251, 255, 0.98), rgba(240, 246, 255, 0.98));
+  border-color: rgba(95, 128, 170, 0.22);
+}
+
+:host-context(html[data-theme='light']) .project-card h3,
+:host-context(html[data-theme='light']) .project-summary,
+:host-context(html[data-theme='light']) .project-grid p,
+:host-context(html[data-theme='light']) .project-grid strong,
+:host-context(html[data-theme='light']) .project-rank,
+:host-context(html[data-theme='light']) .project-tag,
+:host-context(html[data-theme='light']) .project-technologies strong,
+:host-context(html[data-theme='light']) .tech-icon-small span {
+  color: #11233a;
+}
+
+:host-context(html[data-theme='light']) .project-tag,
+:host-context(html[data-theme='light']) .tech-icon-small {
+  border-color: rgba(95, 128, 170, 0.22);
+}
+
+:host-context(html[data-theme='light']) .tech-icon-small {
+  background: linear-gradient(180deg, rgba(248, 251, 255, 0.96), rgba(241, 247, 255, 0.99));
+}
+
 .project-card.reveal-in {
   opacity: 1;
 }
@@ -243,11 +298,11 @@
 @media (max-width: 768px) {
   .projects-swiper {
     padding: 2rem 0;
-    margin: 1.5rem -1rem 0 -1rem;
+    margin: 1.5rem 0 4.5rem 0;
   }
 
   .swiper-wrapper {
-    padding: 0 0.75rem;
+    padding: 0;
   }
 
   .swiper-button-next,
@@ -279,11 +334,11 @@
 @media (min-width: 1024px) {
   .projects-swiper {
     padding: 3rem 0;
-    margin: 2.5rem -3rem 0 -3rem;
+    margin: 2.5rem 0 5rem 0;
   }
 
   .swiper-wrapper {
-    padding: 0 2.5rem;
+    padding: 0;
   }
 
   .swiper-button-next,
