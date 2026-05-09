@@ -1,8 +1,8 @@
 /* ── SWIPER CUSTOMIZATION ── */
 
 .projects-swiper {
-  padding: 3rem 0 4.5rem 0;
-  margin: 2rem 0 4.25rem 0;
+  padding: 3rem 0 5.25rem 0;
+  margin: 2rem 0 5.5rem 0;
   position: relative;
   overflow: visible;
 }
@@ -109,7 +109,7 @@
 }
 
 .swiper-pagination {
-  bottom: -42px;
+  bottom: -28px;
   z-index: 12;
 }
 
@@ -202,6 +202,10 @@
 
 .project-link {
   margin-top: auto;
+}
+
+.conversion-cta {
+  margin-top: 3rem;
 }
 
 .project-grid {
@@ -297,8 +301,8 @@
 
 @media (max-width: 768px) {
   .projects-swiper {
-    padding: 2rem 0;
-    margin: 1.5rem 0 4.5rem 0;
+    padding: 2rem 0 4rem 0;
+    margin: 1.5rem 0 5rem 0;
   }
 
   .swiper-wrapper {
@@ -333,8 +337,8 @@
 
 @media (min-width: 1024px) {
   .projects-swiper {
-    padding: 3rem 0;
-    margin: 2.5rem 0 5rem 0;
+    padding: 3rem 0 5rem 0;
+    margin: 2.5rem 0 6rem 0;
   }
 
   .swiper-wrapper {

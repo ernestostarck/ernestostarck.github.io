@@ -634,34 +634,51 @@ h3 {
 /* ── Banners ── */
 
 .page-banner {
+  --banner-accent: var(--accent-bright);
+  --banner-accent-soft: color-mix(in srgb, var(--banner-accent) 30%, transparent);
+  --banner-bg: linear-gradient(180deg, rgba(17, 15, 11, 0.68), rgba(12, 10, 7, 0.82));
+  --banner-border: rgba(193, 138, 14, 0.2);
+  --banner-ink: var(--ink);
+  --banner-soft: var(--ink-soft);
+  --banner-chip-bg: rgba(193, 138, 14, 0.07);
+  --banner-chip-border: rgba(193, 138, 14, 0.35);
+  --banner-chip-ink: var(--banner-accent);
+  padding: 1.1rem 1.25rem;
+  display: block;
   border: 0;
-  border-left: 2px solid var(--accent);
+  border-left: 4px solid var(--banner-accent);
   border-radius: 0;
-  padding: 0.85rem 1rem;
-  background: rgba(193, 138, 14, 0.04);
+  background: var(--banner-bg);
+  border-color: var(--banner-border);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.38);
 }
 
-#home .page-shell {
-  min-height: calc(100vh - 148px);
-  display: grid;
-  align-content: center;
+.page-banner .eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin-bottom: 0.35rem;
+  color: var(--banner-accent);
 }
 
-#home .page-banner {
-  text-align: left;
-  background: transparent;
-  border: 0;
-  border-left: 2px solid var(--accent-bright);
-  padding: 0 0 0 1.2rem;
+.page-banner h1,
+.page-banner h2 {
+  margin: 0.25rem 0 0.4rem 0;
+  line-height: 1.2;
+  color: var(--banner-ink);
 }
 
-#home .banner-chips {
-  justify-content: flex-start;
+.page-banner h2 {
+  font-size: clamp(1.18rem, 1.05rem + 1.1vw, 1.48rem);
 }
 
 .banner-lead {
-  margin: 0;
-  color: var(--ink-soft);
+  opacity: 0.95;
+  margin: 0.25rem 0 0;
+  color: var(--banner-soft);
   font-weight: 400;
   font-size: clamp(1rem, 0.95rem + 0.25vw, 1.14rem);
   line-height: 1.6;
@@ -678,9 +695,9 @@ h3 {
 .banner-chips span {
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(193, 138, 14, 0.35);
-  background: rgba(193, 138, 14, 0.07);
-  color: var(--accent-bright);
+  border: 1px solid var(--banner-chip-border);
+  background: var(--banner-chip-bg);
+  color: var(--banner-chip-ink);
   border-radius: 0;
   padding: 0.18rem 0.58rem;
   font-size: 0.7rem;
@@ -704,76 +721,85 @@ h3 {
   transition: opacity 200ms ease;
 }
 
+.home-banner {
+  --banner-accent: #e8a020;
+  --banner-chip-ink: #f4ead7;
+}
+
+.projects-banner {
+  --banner-accent: #6d94c4;
+  --banner-chip-ink: #e2edf9;
+}
+
 .cert-banner {
-  border-left-color: var(--accent);
+  --banner-accent: #57c590;
+  --banner-chip-ink: #e5f6ee;
 }
 
 .contact-banner {
-  border-left-color: var(--accent);
-}
-
-.home-banner {
-  border-left-color: var(--accent-bright);
+  --banner-accent: #7aabe6;
+  --banner-chip-ink: #e7f1fb;
 }
 
 .about-banner {
-  border-left-color: var(--accent);
+  --banner-accent: #a9c2df;
+  --banner-chip-ink: #edf4fb;
 }
 
-/* Mejoras visuales generales para banners */
-.page-banner {
-  padding: 1.1rem 1.25rem;
-  display: block;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+#home .page-shell {
+  min-height: calc(100vh - 148px);
+  display: grid;
+  align-content: center;
 }
 
-.page-banner .eyebrow {
-  display: block;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  margin-bottom: 0.35rem;
-  color: var(--accent-bright);
+#home .page-banner {
+  text-align: left;
+  background: var(--banner-bg);
+  border-left-width: 4px;
 }
 
-.page-banner h2 {
-  margin: 0.25rem 0 0.4rem 0;
-  font-size: clamp(1.18rem, 1.05rem + 1.1vw, 1.48rem);
-  line-height: 1.2;
-  color: var(--ink);
-}
-
-.banner-lead {
-  opacity: 0.95;
-  margin-top: 0.25rem;
-}
-
-.banner-chips span {
-  border-radius: 6px;
-  padding: 0.22rem 0.6rem;
-  background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+#home .banner-chips {
+  justify-content: flex-start;
 }
 
 /* Theme-specific refinements for banners */
 html[data-theme='dark'] .page-banner {
-  background: linear-gradient(180deg, rgba(17,15,11,0.6), rgba(12,10,7,0.6));
-  border-left: 4px solid color-mix(in srgb, var(--accent-bright) 60%, transparent);
+  --banner-bg: linear-gradient(180deg, rgba(17, 15, 11, 0.78), rgba(12, 10, 7, 0.9));
+  --banner-border: rgba(193, 138, 14, 0.18);
+  --banner-ink: #f3f7fb;
+  --banner-soft: #d8e2ef;
+  --banner-chip-bg: rgba(193, 138, 14, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+html[data-theme='light'] .page-banner {
+  --banner-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 249, 255, 0.92));
+  --banner-border: rgba(95, 128, 170, 0.22);
+  --banner-ink: #0d2538;
+  --banner-soft: #3d5673;
+  --banner-chip-bg: rgba(76, 120, 171, 0.1);
+  --banner-chip-border: rgba(76, 120, 171, 0.22);
+  box-shadow: 0 6px 18px rgba(26, 47, 69, 0.06);
+}
+
+html[data-theme='light'] .page-banner h1,
+html[data-theme='light'] .page-banner h2 {
+  color: #0d2538;
+}
+
+html[data-theme='dark'] .page-banner h1,
 html[data-theme='dark'] .page-banner h2 {
   color: #f3f7fb;
 }
 
-html[data-theme='light'] .page-banner {
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,249,255,0.9));
-  border-left: 4px solid color-mix(in srgb, var(--accent) 70%, transparent);
-  box-shadow: 0 6px 18px rgba(26,47,69,0.06);
-}
-
-html[data-theme='light'] .page-banner h2 {
-  color: #0d2538;
+@media (max-width: 767px) {
+  .page-banner {
+    padding: 0.9rem 0.9rem;
+  }
+  .banner-chips span {
+    font-size: 0.66rem;
+    padding: 0.14rem 0.5rem;
+  }
 }
 
 /* Ajustes para banners más compactos en pantallas pequeñas */
