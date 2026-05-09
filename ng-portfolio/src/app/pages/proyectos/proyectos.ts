@@ -15,7 +15,7 @@ Swiper.use([Navigation, Pagination, A11y]);
 })
 export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
   private readonly scrollReveal = inject(ScrollRevealService);
-  private swiper: Swiper | null = null;
+  private swipers: Swiper[] = [];
 
   ngOnInit(): void {
     // Initialize scroll reveal after view is rendered
@@ -32,11 +32,8 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Clean up Swiper instance
-    if (this.swiper) {
-      this.swiper.destroy(true, true);
-      this.swiper = null;
-    }
+    this.swipers.forEach((swiper) => swiper.destroy(true, true));
+    this.swipers = [];
   }
 
   private initScrollReveal(): void {
@@ -61,21 +58,33 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initSwiper(): void {
-    const swiperElement = document.querySelector('.projects-swiper') as any;
-    if (swiperElement && !this.swiper) {
-      this.swiper = new Swiper(swiperElement, {
+    const swiperElements = document.querySelectorAll<HTMLElement>('.projects-swiper');
+
+    swiperElements.forEach((swiperElement) => {
+      if (this.swipers.some((swiper) => swiper.el === swiperElement)) {
+        return;
+      }
+
+      const swiper = new Swiper(swiperElement, {
         modules: [Navigation, Pagination, A11y],
         slidesPerView: 1,
         spaceBetween: 30,
         grabCursor: true,
+        centeredSlides: true,
+        centeredSlidesBounds: true,
+        slideToClickedSlide: true,
+        slidesPerGroup: 1,
+        rewind: true,
+        roundLengths: true,
+        watchOverflow: true,
         navigation: {
-          nextEl: '.projects-swiper .swiper-button-next',
-          prevEl: '.projects-swiper .swiper-button-prev',
+          nextEl: swiperElement.querySelector('.swiper-button-next') as HTMLElement | null,
+          prevEl: swiperElement.querySelector('.swiper-button-prev') as HTMLElement | null,
         },
         pagination: {
-          el: '.projects-swiper .swiper-pagination',
+          el: swiperElement.querySelector('.swiper-pagination') as HTMLElement | null,
           clickable: true,
-          dynamicBullets: true,
+          dynamicBullets: false,
         },
         a11y: {
           enabled: true,
@@ -86,18 +95,20 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
         },
         breakpoints: {
           768: {
-            slidesPerView: 1.15,
+            slidesPerView: 1.08,
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 1.2,
+            slidesPerView: 1.12,
             spaceBetween: 50,
           },
         },
         speed: 500,
         autoplay: false,
       });
-    }
+
+      this.swipers.push(swiper);
+    });
   }
 }
 
