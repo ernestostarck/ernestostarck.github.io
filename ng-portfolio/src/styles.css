@@ -635,22 +635,22 @@ h3 {
 
 .page-banner {
   --banner-accent: var(--accent-bright);
-  --banner-accent-soft: color-mix(in srgb, var(--banner-accent) 30%, transparent);
-  --banner-bg: linear-gradient(180deg, rgba(17, 15, 11, 0.68), rgba(12, 10, 7, 0.82));
-  --banner-border: rgba(193, 138, 14, 0.2);
+  --banner-accent-soft: color-mix(in srgb, var(--banner-accent) 18%, transparent);
+  --banner-bg: transparent; /* inherit panel background to avoid white jump */
+  --banner-border: rgba(0,0,0,0.04);
   --banner-ink: var(--ink);
   --banner-soft: var(--ink-soft);
-  --banner-chip-bg: rgba(193, 138, 14, 0.07);
-  --banner-chip-border: rgba(193, 138, 14, 0.35);
+  --banner-chip-bg: color-mix(in srgb, var(--banner-accent) 6%, transparent);
+  --banner-chip-border: color-mix(in srgb, var(--banner-accent) 14%, transparent);
   --banner-chip-ink: var(--banner-accent);
-  padding: 1.1rem 1.25rem;
+  padding: 1rem 1.25rem;
   display: block;
   border: 0;
-  border-left: 4px solid var(--banner-accent);
-  border-radius: 0;
-  background: var(--banner-bg);
-  border-color: var(--banner-border);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.38);
+  border-radius: 6px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, var(--banner-accent-soft) 8%), color-mix(in srgb, var(--card) 96%, transparent 4%));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
 }
 
 .page-banner .eyebrow {
@@ -662,6 +662,16 @@ h3 {
   font-size: 0.78rem;
   margin-bottom: 0.35rem;
   color: var(--banner-accent);
+}
+
+.page-banner::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--banner-accent) 70%, transparent), transparent 60%);
 }
 
 .page-banner h1,
