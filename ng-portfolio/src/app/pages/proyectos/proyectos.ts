@@ -1,10 +1,6 @@
-import { Component, OnInit, inject, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollRevealService } from '../../core/scroll-reveal.service';
-import { Swiper } from 'swiper';
-import { Navigation, Pagination, A11y } from 'swiper/modules';
-
-Swiper.use([Navigation, Pagination, A11y]);
 
 @Component({
   selector: 'app-proyectos',
@@ -13,27 +9,18 @@ Swiper.use([Navigation, Pagination, A11y]);
   templateUrl: './proyectos.html',
   styleUrl: './proyectos.css',
 })
-export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
+export class Proyectos implements OnInit {
   private readonly scrollReveal = inject(ScrollRevealService);
-  private swipers: Swiper[] = [];
+
+  activeProjectIndex = 0;
+  readonly projectCount = 4;
+  readonly projectIndexes = [0, 1, 2, 3];
 
   ngOnInit(): void {
     // Initialize scroll reveal after view is rendered
     setTimeout(() => {
       this.initScrollReveal();
     }, 100);
-  }
-
-  ngAfterViewInit(): void {
-    // Initialize Swiper after view is fully rendered
-    setTimeout(() => {
-      this.initSwiper();
-    }, 200);
-  }
-
-  ngOnDestroy(): void {
-    this.swipers.forEach((swiper) => swiper.destroy(true, true));
-    this.swipers = [];
   }
 
   private initScrollReveal(): void {
@@ -53,59 +40,23 @@ export class Proyectos implements OnInit, AfterViewInit, OnDestroy {
       }
     });
 
-    // Initialize the observer with all reveal elements
     this.scrollReveal.initOnPageLoad();
   }
 
-  private initSwiper(): void {
-    const swiperElements = document.querySelectorAll<HTMLElement>('.projects-swiper');
+  nextProject(): void {
+    this.activeProjectIndex = (this.activeProjectIndex + 1) % this.projectCount;
+  }
 
-    swiperElements.forEach((swiperElement) => {
-      if (this.swipers.some((swiper) => swiper.el === swiperElement)) {
-        return;
-      }
+  prevProject(): void {
+    this.activeProjectIndex = (this.activeProjectIndex - 1 + this.projectCount) % this.projectCount;
+  }
 
-      const swiper = new Swiper(swiperElement, {
-        modules: [Navigation, Pagination, A11y],
-        slidesPerView: 1,
-        spaceBetween: 30,
-        grabCursor: true,
-        slidesPerGroup: 1,
-        rewind: false,
-        roundLengths: true,
-        watchOverflow: true,
-        navigation: {
-          nextEl: swiperElement.querySelector('.swiper-button-next') as HTMLElement | null,
-          prevEl: swiperElement.querySelector('.swiper-button-prev') as HTMLElement | null,
-        },
-        pagination: {
-          el: swiperElement.querySelector('.swiper-pagination') as HTMLElement | null,
-          clickable: true,
-          dynamicBullets: false,
-        },
-        a11y: {
-          enabled: true,
-          prevSlideMessage: 'Proyecto anterior',
-          nextSlideMessage: 'Siguiente proyecto',
-          firstSlideMessage: 'Este es el primer proyecto',
-          lastSlideMessage: 'Este es el último proyecto',
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 1,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 1,
-            spaceBetween: 50,
-          },
-        },
-        speed: 500,
-        autoplay: false,
-      });
+  goToProject(index: number): void {
+    if (index < 0 || index >= this.projectCount) {
+      return;
+    }
 
-      this.swipers.push(swiper);
-    });
+    this.activeProjectIndex = index;
   }
 }
 

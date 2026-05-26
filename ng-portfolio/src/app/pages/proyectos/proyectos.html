@@ -7,10 +7,10 @@
 				<p class="banner-lead">No es un catálogo de trabajos, sino una selección curada de sistemas donde tomé decisiones técnicas bajo restricciones reales.</p>
 			</div>
 
-			<!-- SWIPER CAROUSEL FOR MAIN PROJECTS -->
-			<div class="projects-swiper swiper" role="region" aria-label="Carrusel de proyectos principales">
+			<!-- Carrusel manual de proyectos -->
+			<div class="projects-swiper" role="region" aria-label="Carrusel de proyectos principales">
 				<div class="swiper-wrapper">
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 0">
 						<article class="project project-card priority-1">
 							<div class="project-head">
 								<p class="project-rank">Proyecto 1</p>
@@ -41,7 +41,7 @@
 						</article>
 					</article>
 
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 1">
 						<article class="project project-card priority-2">
 							<div class="project-head">
 								<p class="project-rank">Proyecto 2</p>
@@ -70,7 +70,7 @@
 						</article>
 					</article>
 
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 2">
 						<article class="project project-card priority-3">
 							<div class="project-head">
 								<p class="project-rank">Proyecto 3</p>
@@ -101,7 +101,7 @@
 						</article>
 					</article>
 
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 3">
 						<article class="project project-card priority-4 tactical">
 							<div class="project-head">
 								<p class="project-rank">Proyecto 4</p>
@@ -129,9 +129,11 @@
 				</div>
 
 				<!-- Navigation and Pagination -->
-				<button class="swiper-button-prev" aria-label="Proyecto anterior"></button>
-				<button class="swiper-button-next" aria-label="Siguiente proyecto"></button>
-				<div class="swiper-pagination"></div>
+				<button class="swiper-button-prev" type="button" (click)="prevProject()" aria-label="Proyecto anterior"></button>
+				<button class="swiper-button-next" type="button" (click)="nextProject()" aria-label="Siguiente proyecto"></button>
+				<div class="swiper-pagination" aria-label="Paginación de proyectos">
+					<button *ngFor="let projectIndex of projectIndexes" type="button" class="swiper-pagination-bullet" [class.swiper-pagination-bullet-active]="activeProjectIndex === projectIndex" (click)="goToProject(projectIndex)" [attr.aria-label]="'Ir al proyecto ' + (projectIndex + 1)"></button>
+				</div>
 			</div>
 
 			<div class="conversion-cta mt-4" aria-label="Cierre de conversión">
@@ -153,10 +155,10 @@
 				<p class="banner-lead">This is not a job catalog. It is a curated set of systems where I made technical decisions under real constraints.</p>
 			</div>
 
-			<!-- SWIPER CAROUSEL FOR MAIN PROJECTS -->
-			<div class="projects-swiper swiper" role="region" aria-label="Main projects carousel">
+			<!-- Manual project carousel -->
+			<div class="projects-swiper" role="region" aria-label="Main projects carousel">
 				<div class="swiper-wrapper">
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 0">
 						<article class="project project-card priority-1">
 							<div class="project-head">
 								<p class="project-rank">Project 1</p>
@@ -187,7 +189,7 @@
 						</article>
 					</article>
 
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 1">
 						<article class="project project-card priority-2">
 							<div class="project-head">
 								<p class="project-rank">Project 2</p>
@@ -205,7 +207,7 @@
 						</article>
 					</article>
 
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 2">
 						<article class="project project-card priority-3">
 							<div class="project-head">
 								<p class="project-rank">Project 3</p>
@@ -224,7 +226,7 @@
 						</article>
 					</article>
 
-					<article class="swiper-slide">
+					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 3">
 						<article class="project project-card priority-4 tactical">
 							<div class="project-head">
 								<p class="project-rank">Project 4</p>
@@ -253,9 +255,11 @@
 				</div>
 
 				<!-- Navigation and Pagination -->
-				<button class="swiper-button-prev" aria-label="Previous project"></button>
-				<button class="swiper-button-next" aria-label="Next project"></button>
-				<div class="swiper-pagination"></div>
+				<button class="swiper-button-prev" type="button" (click)="prevProject()" aria-label="Previous project"></button>
+				<button class="swiper-button-next" type="button" (click)="nextProject()" aria-label="Next project"></button>
+				<div class="swiper-pagination" aria-label="Project pagination">
+					<button *ngFor="let projectIndex of projectIndexes" type="button" class="swiper-pagination-bullet" [class.swiper-pagination-bullet-active]="activeProjectIndex === projectIndex" (click)="goToProject(projectIndex)" [attr.aria-label]="'Go to project ' + (projectIndex + 1)"></button>
+				</div>
 			</div>
 
 			<div class="conversion-cta mt-4" aria-label="Conversion close">
