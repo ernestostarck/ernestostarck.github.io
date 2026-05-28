@@ -45,28 +45,29 @@
 						<article class="project project-card priority-2">
 							<div class="project-head">
 								<p class="project-rank">Proyecto 2</p>
-								<span class="project-tag">Sistema productivo</span>
+								<span class="project-tag">Clinical DSS</span>
 							</div>
-							<h3>Sistema de Gestión y Modernización para APR</h3>
-							<p class="project-summary">Modernización operativa en contexto de baja madurez tecnológica, priorizando trazabilidad y mantenibilidad por sobre complejidad innecesaria.</p>
+							<h3>MedDecide DSS</h3>
+							<p class="project-summary">Sistema de soporte a decisiones clínicas orientado a portafolio técnico, construido con Next.js App Router y rutas API serverless para simular triaje, diagnóstico diferencial e interacciones farmacológicas.</p>
 							<div class="project-grid">
-								<p><strong>Contexto:</strong> Procesos administrativos y contables manuales, apoyados en registros físicos y planillas no integradas.</p>
-								<p><strong>Problema:</strong> Cálculos manuales de cobro, baja trazabilidad y alto costo de tiempo para auditoría histórica.</p>
-								<p><strong>Solución:</strong> Sistema web para centralizar información, automatizar procesos críticos y reducir errores operativos.</p>
-								<p><strong>Decisiones técnicas:</strong> Arquitectura desacoplada para mantenimiento, consultas flexibles y diseño de interfaz para usuarios no técnicos.</p>
-								<p><strong>Consideraciones:</strong> Trade-off explícito a favor de simplicidad operativa y continuidad del servicio.</p>
-								<p><strong>Impacto:</strong> Menor carga administrativa, mejor consistencia de datos y base sólida para escalabilidad futura.</p>
+								<p><strong>Contexto:</strong> Demo educativa de un flujo clínico realista para triaje, diagnóstico diferencial y revisión de interacciones farmacológicas.</p>
+								<p><strong>Problema:</strong> Necesidad de mostrar cómo un panel clínico puede priorizar pacientes, calcular puntajes rápidos y resumir hallazgos sin depender de infraestructura pesada.</p>
+								<p><strong>Solución:</strong> Dashboard con cola de pacientes, nueva evaluación clínica, calculadoras qSOFA, CURB-65 y CHA2DS2-VASc, y tres endpoints serverless consumiendo una base de conocimiento local.</p>
+								<p><strong>Decisiones técnicas:</strong> Next.js 16 con App Router, React 19, API Routes, Lucide React, CSS global custom y base estática en JavaScript; el panel usa una visualización SVG manual para la distribución de triaje.</p>
+								<p><strong>Validación:</strong> Flujo en paralelo hacia <code>/api/triage</code>, <code>/api/diagnose</code> y <code>/api/interactions</code> para mantener baja latencia percibida.</p>
+								<p><strong>Impacto:</strong> Experiencia clara para demo técnica, reglas clínicas visibles y una arquitectura fácil de extender con persistencia o autenticación posterior.</p>
 							</div>
 							<div class="project-technologies">
 								<strong>Tecnologías:</strong>
 								<div class="tech-list-compact">
-									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
-									<span class="tech-icon-small"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></span>
-									<span class="tech-icon-small"><i class="devicon-graphql-plain colored"></i><span>GraphQL</span></span>
-									<span class="tech-icon-small"><i class="devicon-docker-plain colored"></i><span>Docker</span></span>
+									<span class="tech-icon-small"><i class="devicon-nextjs-plain colored"></i><span>Next.js</span></span>
+									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React 19</span></span>
+									<span class="tech-icon-small"><i class="devicon-javascript-plain colored"></i><span>API Routes</span></span>
+									<span class="tech-icon-small"><i class="devicon-css3-plain colored"></i><span>CSS custom</span></span>
+									<span class="tech-icon-small"><i class="devicon-html5-plain colored"></i><span>Knowledge Base JS</span></span>
 								</div>
 							</div>
-							<p class="project-link"><a href="https://github.com/tu-usuario/apr-modernizacion" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
+							<p class="project-link"><a href="https://github.com/ernestostarck/meddecide-cdss" target="_blank" rel="noopener noreferrer">Repositorio disponible en GitHub</a></p>
 						</article>
 					</article>
 
@@ -193,17 +194,29 @@
 						<article class="project project-card priority-2">
 							<div class="project-head">
 								<p class="project-rank">Project 2</p>
-								<span class="project-tag">Productive system</span>
+								<span class="project-tag">Clinical DSS</span>
 							</div>
-							<h3>Management and Modernization System for APR</h3>
-							<p class="project-summary">Operational modernization in low-maturity contexts, prioritizing traceability and maintainability over unnecessary complexity.</p>
+							<h3>MedDecide DSS</h3>
+							<p class="project-summary">A clinical decision support system built for a technical portfolio, using Next.js App Router and serverless API routes to simulate triage, differential diagnosis, and drug interaction checks.</p>
 							<div class="project-grid">
-								<p><strong>Context:</strong> Manual administrative and accounting processes with fragmented spreadsheets and physical records.</p>
-								<p><strong>Problem:</strong> Manual billing calculations, low traceability, and high auditing effort.</p>
-								<p><strong>Solution:</strong> Web system to centralize information, automate critical workflows, and reduce operational errors.</p>
-								<p><strong>Technical decisions:</strong> Decoupled architecture and UX adapted for non-technical users.</p>
-								<p><strong>Impact:</strong> Reduced administrative load and stronger data consistency.</p>
+								<p><strong>Context:</strong> An educational demo of a realistic clinical flow for triage, differential diagnosis, and medication interaction review.</p>
+								<p><strong>Problem:</strong> The need to show how a clinical dashboard can prioritize patients, compute quick scores, and summarize findings without heavy infrastructure.</p>
+								<p><strong>Solution:</strong> Dashboard with a patient queue, new clinical assessment flow, qSOFA, CURB-65, and CHA2DS2-VASc calculators, plus three serverless endpoints backed by a local knowledge base.</p>
+								<p><strong>Technical decisions:</strong> Next.js 16 with App Router, React 19, API Routes, Lucide React, custom global CSS, and a static JavaScript knowledge base; the dashboard uses manual SVG visualization for triage distribution.</p>
+								<p><strong>Validation:</strong> Parallel requests to <code>/api/triage</code>, <code>/api/diagnose</code>, and <code>/api/interactions</code> keep perceived latency low.</p>
+								<p><strong>Impact:</strong> Clear technical demo experience, visible clinical rules, and an architecture that is easy to extend with persistence or authentication later.</p>
 							</div>
+							<div class="project-technologies">
+								<strong>Technologies:</strong>
+								<div class="tech-list-compact">
+									<span class="tech-icon-small"><i class="devicon-nextjs-plain colored"></i><span>Next.js</span></span>
+									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React 19</span></span>
+									<span class="tech-icon-small"><i class="devicon-javascript-plain colored"></i><span>API Routes</span></span>
+									<span class="tech-icon-small"><i class="devicon-css3-plain colored"></i><span>Custom CSS</span></span>
+									<span class="tech-icon-small"><i class="devicon-html5-plain colored"></i><span>JS Knowledge Base</span></span>
+								</div>
+							</div>
+							<p class="project-link"><a href="https://github.com/ernestostarck/meddecide-cdss" target="_blank" rel="noopener noreferrer">Repository available on GitHub</a></p>
 						</article>
 					</article>
 
