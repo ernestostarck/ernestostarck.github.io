@@ -2,10 +2,10 @@
 
 .contact-banner {
   animation: fadeInDown 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: linear-gradient(135deg, rgba(201, 138, 14, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(109, 148, 196, 0.05) 0%, transparent 100%);
   padding: 2.5rem;
   border-radius: 8px;
-  border: 1px solid rgba(201, 138, 14, 0.15);
+  border: 1px solid rgba(109, 148, 196, 0.15);
   position: relative;
   overflow: hidden;
   margin-bottom: 2rem;
@@ -18,7 +18,7 @@
   right: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(201, 138, 14, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(94, 200, 255, 0.06) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -56,8 +56,8 @@
 .contact-banner .banner-chips span {
   animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
-  background: linear-gradient(135deg, rgba(201, 138, 14, 0.15), rgba(201, 138, 14, 0.05));
-  border: 1px solid rgba(201, 138, 14, 0.3);
+  background: linear-gradient(135deg, rgba(109, 148, 196, 0.15), rgba(109, 148, 196, 0.05));
+  border: 1px solid rgba(109, 148, 196, 0.3);
   padding: 0.6rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -68,10 +68,10 @@
 }
 
 .contact-banner .banner-chips span:hover {
-  background: linear-gradient(135deg, rgba(201, 138, 14, 0.25), rgba(201, 138, 14, 0.12));
+  background: linear-gradient(135deg, rgba(109, 148, 196, 0.25), rgba(109, 148, 196, 0.12));
   border-color: var(--accent-bright);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(201, 138, 14, 0.2);
+  box-shadow: 0 8px 16px rgba(94, 200, 255, 0.2);
 }
 
 .contact-banner .banner-chips span:nth-child(1) { animation-delay: 0.3s; }
@@ -94,18 +94,18 @@
   gap: 1.5rem;
   padding: 1.25rem;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(201, 138, 14, 0.08) 0%, transparent 100%);
-  border: 1px solid rgba(201, 138, 14, 0.15);
+  background: linear-gradient(135deg, rgba(109, 148, 196, 0.08) 0%, transparent 100%);
+  border: 1px solid rgba(109, 148, 196, 0.15);
   animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .contact-list li:hover {
-  background: linear-gradient(135deg, rgba(201, 138, 14, 0.15) 0%, rgba(201, 138, 14, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(109, 148, 196, 0.15) 0%, rgba(109, 148, 196, 0.04) 100%);
   border-color: var(--accent-bright);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(201, 138, 14, 0.12);
+  box-shadow: 0 12px 32px rgba(94, 200, 255, 0.12);
 }
 
 .contact-list li:nth-child(1) { animation-delay: 0.1s; }
@@ -118,12 +118,12 @@
   height: 28px;
   opacity: 0.8;
   transition: opacity 0.3s ease;
-  filter: drop-shadow(0 2px 4px rgba(201, 138, 14, 0.2));
+  filter: drop-shadow(0 2px 4px rgba(94, 200, 255, 0.2));
 }
 
 .contact-list li:hover .contact-icon {
   opacity: 1;
-  filter: drop-shadow(0 4px 8px rgba(201, 138, 14, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(94, 200, 255, 0.3));
 }
 
 .contact-list span {

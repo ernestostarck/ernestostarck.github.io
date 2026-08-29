@@ -17,7 +17,7 @@
   right: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(201, 138, 14, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(94, 200, 255, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -76,7 +76,7 @@
   background: linear-gradient(135deg, color-mix(in srgb, var(--card) 78%, var(--accent) 22%), var(--card));
   border-color: var(--accent-bright);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(201, 138, 14, 0.2);
+  box-shadow: 0 8px 16px rgba(94, 200, 255, 0.2);
 }
 
 .banner-chips span:nth-child(1) { animation-delay: 0.3s; }
@@ -110,7 +110,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 138, 14, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(109, 148, 196, 0.5), transparent);
 }
 
 #home .home-card h3 {
@@ -133,7 +133,7 @@
   background: linear-gradient(135deg, color-mix(in srgb, var(--card) 84%, var(--accent) 16%) 0%, var(--card) 100%);
   border-color: color-mix(in srgb, var(--accent-bright) 50%, var(--line));
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(201, 138, 14, 0.12), 0 0 32px rgba(201, 138, 14, 0.05);
+  box-shadow: 0 12px 32px rgba(94, 200, 255, 0.12), 0 0 32px rgba(94, 200, 255, 0.05);
 }
 
 #home .home-card:nth-child(1) { animation-delay: 0.1s; }
@@ -179,7 +179,7 @@
 .hero-actions .cta:hover {
   animation-play-state: paused;
   transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 16px 40px rgba(201, 138, 14, 0.35), 0 0 32px rgba(201, 138, 14, 0.2);
+  box-shadow: 0 16px 40px rgba(94, 200, 255, 0.35), 0 0 32px rgba(94, 200, 255, 0.2);
 }
 
 .hero-actions .btn-outline-primary {
@@ -190,10 +190,10 @@
 }
 
 .hero-actions .btn-outline-primary:hover {
-  background: rgba(201, 138, 14, 0.1);
+  background: rgba(109, 148, 196, 0.1);
   border-color: var(--accent-bright);
   transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 12px 30px rgba(201, 138, 14, 0.15);
+  box-shadow: 0 12px 30px rgba(94, 200, 255, 0.15);
 }
 
 .cta {
