@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GitHubRepositoriesService } from '../../core/github-repositories.service';
 import { ScrollRevealService } from '../../core/scroll-reveal.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { ScrollRevealService } from '../../core/scroll-reveal.service';
 })
 export class Proyectos implements OnInit {
   private readonly scrollReveal = inject(ScrollRevealService);
+  readonly githubRepositories = inject(GitHubRepositoriesService);
 
   activeProjectIndex = 0;
   readonly projectCount = 4;

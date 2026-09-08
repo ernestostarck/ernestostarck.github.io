@@ -137,6 +137,19 @@
 				</div>
 			</div>
 
+			<section class="github-repositories" aria-labelledby="github-repositories-title">
+				<div class="section-heading"><p class="eyebrow">GitHub</p><h2 id="github-repositories-title">Proyectos públicos</h2></div>
+				<div class="github-grid" *ngIf="githubRepositories.repositories$ | async as repositories">
+					<article class="github-repository" *ngFor="let repository of repositories">
+						<p class="project-code">{{ repository.language || 'REPOSITORY' }}</p>
+						<h3>{{ repository.name }}</h3>
+						<p>{{ repository.description || 'Repositorio público de software y experimentación técnica.' }}</p>
+						<div class="github-meta"><span *ngIf="repository.topics.length">{{ repository.topics.slice(0, 3).join(' · ') }}</span><span>Actualizado {{ repository.updated_at | date: 'MMM yyyy' }}</span></div>
+						<a [href]="repository.html_url" target="_blank" rel="noopener noreferrer">Ver en GitHub <span aria-hidden="true">↗</span></a>
+					</article>
+				</div>
+			</section>
+
 			<div class="conversion-cta mt-4" aria-label="Cierre de conversión">
 				<h3>¿Quieres aplicar este nivel de ejecución en tu equipo?</h3>
 				<p>Estoy disponible para roles o colaboraciones donde se requiera resolver problemas reales con decisiones técnicas claras.</p>
@@ -274,6 +287,19 @@
 					<button *ngFor="let projectIndex of projectIndexes" type="button" class="swiper-pagination-bullet" [class.swiper-pagination-bullet-active]="activeProjectIndex === projectIndex" (click)="goToProject(projectIndex)" [attr.aria-label]="'Go to project ' + (projectIndex + 1)"></button>
 				</div>
 			</div>
+
+			<section class="github-repositories" aria-labelledby="github-repositories-title-en">
+				<div class="section-heading"><p class="eyebrow">GitHub</p><h2 id="github-repositories-title-en">Public projects</h2></div>
+				<div class="github-grid" *ngIf="githubRepositories.repositories$ | async as repositories">
+					<article class="github-repository" *ngFor="let repository of repositories">
+						<p class="project-code">{{ repository.language || 'REPOSITORY' }}</p>
+						<h3>{{ repository.name }}</h3>
+						<p>{{ repository.description || 'Public repository for software and technical experimentation.' }}</p>
+						<div class="github-meta"><span *ngIf="repository.topics.length">{{ repository.topics.slice(0, 3).join(' · ') }}</span><span>Updated {{ repository.updated_at | date: 'MMM yyyy' }}</span></div>
+						<a [href]="repository.html_url" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+					</article>
+				</div>
+			</section>
 
 			<div class="conversion-cta mt-4" aria-label="Conversion close">
 				<h3>Do you want this level of execution in your team?</h3>

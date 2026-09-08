@@ -53,11 +53,18 @@
 
 			<section class="featured-projects" aria-labelledby="featured-projects-title">
 				<div class="section-heading"><p class="eyebrow">Evidencia</p><h2 id="featured-projects-title">Proyectos destacados</h2><a class="text-link" href="#/proyectos">Ver todos <span aria-hidden="true">→</span></a></div>
-				<div class="featured-grid">
-					<article class="featured-project"><p class="project-code">PROJECT / 001</p><h3>Zenith Flow</h3><p>Productividad con tablero Kanban, métricas visuales y persistencia local.</p><div class="project-stack">React · Vite · IndexedDB</div><a href="https://github.com/ernestostarck/zenith-flow" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a></article>
-					<article class="featured-project"><p class="project-code">PROJECT / 002</p><h3>MedDecide DSS</h3><p>Sistema de apoyo a decisiones clínicas con triaje y diagnóstico diferencial.</p><div class="project-stack">Next.js · React · API Routes</div><a href="https://github.com/ernestostarck/meddecide-cdss" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a></article>
-					<article class="featured-project"><p class="project-code">PROJECT / 003</p><h3>SheetFlow Automation Hub</h3><p>Procesamiento de planillas con trazabilidad por corrida y operación auditable.</p><div class="project-stack">React · Node.js · Python · PostgreSQL</div><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a></article>
-				</div>
+				<ng-container *ngIf="githubRepositories.featuredRepositories$ | async as featuredRepositories">
+					<div class="featured-grid" *ngIf="featuredRepositories.length; else featuredEmpty">
+						<article class="featured-project" *ngFor="let repository of featuredRepositories; let index = index">
+							<p class="project-code">PROJECT / {{ (index + 1).toString().padStart(3, '0') }}</p>
+							<h3>{{ repository.name }}</h3>
+							<p>{{ repository.description || 'Repositorio público de software y experimentación técnica.' }}</p>
+							<div class="project-stack">{{ repository.language || 'Software' }}<span *ngIf="repository.topics.length"> · {{ repository.topics.slice(0, 3).join(' · ') }}</span></div>
+							<a [href]="repository.html_url" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a>
+						</article>
+					</div>
+				</ng-container>
+				<ng-template #featuredEmpty><p class="github-empty">No se pudieron cargar los proyectos destacados.</p></ng-template>
 			</section>
 
 			<div class="home-bottom mt-4 pt-2">
@@ -141,11 +148,18 @@
 
 			<section class="featured-projects" aria-labelledby="featured-projects-title-en">
 				<div class="section-heading"><p class="eyebrow">Evidence</p><h2 id="featured-projects-title-en">Featured projects</h2><a class="text-link" href="#/proyectos">View all <span aria-hidden="true">→</span></a></div>
-				<div class="featured-grid">
-					<article class="featured-project"><p class="project-code">PROJECT / 001</p><h3>Zenith Flow</h3><p>Productivity app with a Kanban board, visual metrics, and local persistence.</p><div class="project-stack">React · Vite · IndexedDB</div><a href="https://github.com/ernestostarck/zenith-flow" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></article>
-					<article class="featured-project"><p class="project-code">PROJECT / 002</p><h3>MedDecide DSS</h3><p>Clinical decision-support system with triage and differential diagnosis flows.</p><div class="project-stack">Next.js · React · API Routes</div><a href="https://github.com/ernestostarck/meddecide-cdss" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></article>
-					<article class="featured-project"><p class="project-code">PROJECT / 003</p><h3>SheetFlow Automation Hub</h3><p>Spreadsheet processing with run-level traceability and auditable operations.</p><div class="project-stack">React · Node.js · Python · PostgreSQL</div><a href="https://github.com/ernestostarck/automation-pipeline" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></article>
-				</div>
+				<ng-container *ngIf="githubRepositories.featuredRepositories$ | async as featuredRepositories">
+					<div class="featured-grid" *ngIf="featuredRepositories.length; else featuredEmptyEn">
+						<article class="featured-project" *ngFor="let repository of featuredRepositories; let index = index">
+							<p class="project-code">PROJECT / {{ (index + 1).toString().padStart(3, '0') }}</p>
+							<h3>{{ repository.name }}</h3>
+							<p>{{ repository.description || 'Public repository for software and technical experimentation.' }}</p>
+							<div class="project-stack">{{ repository.language || 'Software' }}<span *ngIf="repository.topics.length"> · {{ repository.topics.slice(0, 3).join(' · ') }}</span></div>
+							<a [href]="repository.html_url" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+						</article>
+					</div>
+				</ng-container>
+				<ng-template #featuredEmptyEn><p class="github-empty">Featured projects could not be loaded.</p></ng-template>
 			</section>
 
 			<div class="home-bottom mt-4 pt-2">

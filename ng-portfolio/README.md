@@ -9,6 +9,7 @@ Portafolio SPA orientado a perfil de Software Engineer, construido con Angular 2
 - Enrutamiento compatible con GitHub Pages usando hash location para evitar dependencias de rewrites del servidor.
 - Sistema de diseño basado en tokens CSS, con variantes coherentes para modo claro/oscuro y responsive mobile-first.
 - Internacionalización práctica ES/EN a nivel de contenido y navegación.
+- Integración con la API pública de GitHub para actualizar repositorios sin editar el portafolio manualmente.
 - Despliegue automatizado por pipeline para reducir fricción operacional.
 
 ## Stack técnico

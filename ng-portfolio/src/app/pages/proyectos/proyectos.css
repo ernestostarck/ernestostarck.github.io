@@ -221,6 +221,65 @@
   margin-top: 3rem;
 }
 
+.github-repositories {
+  margin-top: 3rem;
+}
+
+.github-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.github-repository {
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  min-height: 210px;
+  padding: 1.15rem;
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.github-repository:hover {
+  background: color-mix(in srgb, var(--card) 82%, var(--accent) 18%);
+  border-color: var(--accent-bright);
+  transform: translateY(-3px);
+}
+
+.github-repository h3 {
+  font-size: 1.05rem;
+  margin: 0.45rem 0 0.6rem;
+  overflow-wrap: anywhere;
+}
+
+.github-repository p:not(.project-code) {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.github-meta {
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  gap: 0.45rem;
+  line-height: 1.45;
+  margin: auto 0 0.9rem;
+  text-transform: uppercase;
+}
+
+.github-repository a {
+  color: var(--accent-bright);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .project-grid {
   gap: 0.55rem 0.9rem;
 }
