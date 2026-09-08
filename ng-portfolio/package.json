@@ -9,7 +9,10 @@
     "build:gh": "ng build --configuration production --base-href ./",
     "deploy": "npm run build:gh && ngh --dir=dist/ng-portfolio/browser",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "lint": "prettier --check scripts/accessibility-check.mjs src/app/app.routes.spec.ts src/app/core/preferences.service.spec.ts",
+    "audit:accessibility": "node scripts/accessibility-check.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -50,6 +53,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.5.8",
+    "prettier": "^3.9.6",
     "tailwindcss": "^4.2.1",
     "typescript": "~5.9.2"
   }

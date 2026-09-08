@@ -1,0 +1,53 @@
+name: Quality checks
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ng-portfolio/**
+      - .github/workflows/quality.yml
+  pull_request:
+    paths:
+      - ng-portfolio/**
+      - .github/workflows/quality.yml
+  workflow_dispatch:
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ng-portfolio/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ng-portfolio
+        run: npm ci
+
+      - name: Lint quality files
+        working-directory: ng-portfolio
+        run: npm run lint
+
+      - name: Accessibility checks
+        working-directory: ng-portfolio
+        run: npm run audit:accessibility
+
+      - name: Unit tests with coverage
+        working-directory: ng-portfolio
+        run: npm run test:ci
+
+      - name: Production build
+        working-directory: ng-portfolio
+        run: npm run build:gh

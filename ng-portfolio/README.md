@@ -129,15 +129,26 @@ ng-portfolio/
 - Convenciones de UI consistentes entre idiomas y temas.
 - Enfoque en mantenibilidad antes que soluciones ad-hoc.
 
-## Roadmap técnico sugerido
+## Validaciones de calidad
 
-1. Tests unitarios para preferencias (tema/idioma) y navegación.
-2. Auditoría de accesibilidad (contraste, foco, navegación teclado).
-3. Métricas de performance web (LCP, CLS, INP) con presupuesto de rendimiento.
-4. Integración de validaciones de calidad en CI (lint, test, coverage).
+- Tests unitarios para preferencias, navegación y componentes Angular.
+- Auditoría estructural de accesibilidad para alt text, tipos de botón y enlaces externos.
+- Presupuesto de rendimiento para el bundle inicial y los estilos de componentes.
+- Workflow CI con lint, auditoría de accesibilidad, tests con cobertura y build de producción.
+
+Comandos locales:
+
+```bash
+npm run lint
+npm run audit:accessibility
+npm run test:ci
+npm run build:gh
+```
+
+La auditoría estructural complementa, pero no reemplaza, una revisión manual de contraste, foco y navegación completa con teclado.
 
 ## Contacto
 
-- Email: ernesto.starck.exe@gmail.com
+- Email: ernesto.starck@gmail.com
 - LinkedIn: https://linkedin.com/in/ernestostarck
 - GitHub: https://github.com/ernestostarck
