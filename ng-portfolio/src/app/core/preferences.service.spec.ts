@@ -27,6 +27,7 @@ describe('PreferencesService', () => {
   });
 
   it('persists and applies a toggled theme', () => {
+    localStorage.setItem('portfolio.theme', 'dark');
     service.init();
 
     service.toggleTheme();
