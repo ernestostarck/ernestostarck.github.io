@@ -9,7 +9,31 @@
 
 			<!-- Carrusel manual de proyectos -->
 			<div class="projects-swiper" role="region" aria-label="Carrusel de proyectos principales">
-				<div class="swiper-wrapper">
+				<div class="swiper-wrapper github-swiper-wrapper" *ngIf="githubRepositories.projects$ | async as projects">
+					<article class="swiper-slide" *ngFor="let project of projects; let index = index" [class.is-active]="activeProjectIndex === index">
+						<article class="project project-card github-project-card">
+							<div class="project-head">
+								<p class="project-rank">Proyecto {{ index + 1 }}</p>
+								<span class="project-tag">{{ project.repository.language || 'Software' }}</span>
+							</div>
+							<h3>{{ project.repository.name }}</h3>
+							<p class="project-summary">{{ project.repository.description || project.context }}</p>
+							<div class="project-grid">
+								<p><strong>Contexto:</strong> {{ project.context }}</p>
+								<p><strong>Problema:</strong> {{ project.problem }}</p>
+								<p><strong>Solución:</strong> {{ project.solution }}</p>
+								<p><strong>Decisiones técnicas:</strong> {{ project.technicalDecisions }}</p>
+								<p><strong>Impacto:</strong> {{ project.impact }}</p>
+							</div>
+							<div class="project-technologies" *ngIf="project.stack.length">
+								<strong>Tecnologías:</strong>
+								<div class="github-stack-line">{{ project.stack.join(' · ') }}</div>
+							</div>
+							<p class="project-link"><a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub <span aria-hidden="true">↗</span></a></p>
+						</article>
+					</article>
+				</div>
+				<div class="swiper-wrapper" *ngIf="false">
 					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 0">
 						<article class="project project-card priority-1">
 							<div class="project-head">
@@ -137,7 +161,7 @@
 				</div>
 			</div>
 
-			<section class="github-repositories" aria-labelledby="github-repositories-title">
+			<section class="github-repositories" aria-labelledby="github-repositories-title" *ngIf="false">
 				<div class="section-heading"><p class="eyebrow">GitHub</p><h2 id="github-repositories-title">Proyectos públicos</h2></div>
 				<div class="github-grid" *ngIf="githubRepositories.repositories$ | async as repositories">
 					<article class="github-repository" *ngFor="let repository of repositories">
@@ -171,7 +195,31 @@
 
 			<!-- Manual project carousel -->
 			<div class="projects-swiper" role="region" aria-label="Main projects carousel">
-				<div class="swiper-wrapper">
+				<div class="swiper-wrapper github-swiper-wrapper" *ngIf="githubRepositories.projects$ | async as projects">
+					<article class="swiper-slide" *ngFor="let project of projects; let index = index" [class.is-active]="activeProjectIndex === index">
+						<article class="project project-card github-project-card">
+							<div class="project-head">
+								<p class="project-rank">Project {{ index + 1 }}</p>
+								<span class="project-tag">{{ project.repository.language || 'Software' }}</span>
+							</div>
+							<h3>{{ project.repository.name }}</h3>
+							<p class="project-summary">{{ project.repository.description || project.context }}</p>
+							<div class="project-grid">
+								<p><strong>Context:</strong> {{ project.context }}</p>
+								<p><strong>Problem:</strong> {{ project.problem }}</p>
+								<p><strong>Solution:</strong> {{ project.solution }}</p>
+								<p><strong>Technical decisions:</strong> {{ project.technicalDecisions }}</p>
+								<p><strong>Impact:</strong> {{ project.impact }}</p>
+							</div>
+							<div class="project-technologies" *ngIf="project.stack.length">
+								<strong>Technologies:</strong>
+								<div class="github-stack-line">{{ project.stack.join(' · ') }}</div>
+							</div>
+							<p class="project-link"><a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">View repository on GitHub <span aria-hidden="true">↗</span></a></p>
+						</article>
+					</article>
+				</div>
+				<div class="swiper-wrapper" *ngIf="false">
 					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 0">
 						<article class="project project-card priority-1">
 							<div class="project-head">
@@ -288,7 +336,7 @@
 				</div>
 			</div>
 
-			<section class="github-repositories" aria-labelledby="github-repositories-title-en">
+			<section class="github-repositories" aria-labelledby="github-repositories-title-en" *ngIf="false">
 				<div class="section-heading"><p class="eyebrow">GitHub</p><h2 id="github-repositories-title-en">Public projects</h2></div>
 				<div class="github-grid" *ngIf="githubRepositories.repositories$ | async as repositories">
 					<article class="github-repository" *ngFor="let repository of repositories">

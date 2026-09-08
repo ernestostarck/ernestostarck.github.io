@@ -1,7 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GitHubRepositoriesService } from '../../core/github-repositories.service';
 import { ScrollRevealService } from '../../core/scroll-reveal.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-proyectos',
@@ -12,13 +13,22 @@ import { ScrollRevealService } from '../../core/scroll-reveal.service';
 })
 export class Proyectos implements OnInit {
   private readonly scrollReveal = inject(ScrollRevealService);
+  private readonly destroyRef = inject(DestroyRef);
   readonly githubRepositories = inject(GitHubRepositoriesService);
 
   activeProjectIndex = 0;
-  readonly projectCount = 4;
-  readonly projectIndexes = [0, 1, 2, 3];
+  projectCount = 0;
+  projectIndexes: number[] = [];
 
   ngOnInit(): void {
+    this.githubRepositories.projects$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((projects) => {
+      this.projectCount = projects.length;
+      this.projectIndexes = projects.map((_, index) => index);
+      if (this.activeProjectIndex >= this.projectCount) {
+        this.activeProjectIndex = 0;
+      }
+    });
+
     // Initialize scroll reveal after view is rendered
     setTimeout(() => {
       this.initScrollReveal();

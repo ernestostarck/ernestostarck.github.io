@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+.github-swiper-wrapper {
+  min-height: 1px;
+}
+
 .swiper-slide {
   display: none;
   height: auto;
@@ -215,6 +219,15 @@
 
 .project-link {
   margin-top: auto;
+}
+
+.github-stack-line {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  margin-top: 0.55rem;
+  text-transform: uppercase;
 }
 
 .conversion-cta {
