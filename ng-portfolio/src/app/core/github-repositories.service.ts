@@ -17,6 +17,7 @@ export interface GitHubRepository {
 
 export interface GitHubProject {
   repository: GitHubRepository;
+  title: string;
   context: string;
   problem: string;
   solution: string;
@@ -77,7 +78,15 @@ export class GitHubRepositoriesService {
     readme: string,
     languages: Record<string, number>,
   ): GitHubProject {
-    const readmeStack = this.readmeList(readme, ['stack técnico', 'stack tecnico', 'technologies', 'tecnologías']);
+    const readmeStack = this.readmeList(readme, [
+      'stack',
+      'stack técnico',
+      'stack tecnico',
+      'tech stack',
+      'technologies',
+      'tecnologías',
+      'tecnologías y herramientas',
+    ]);
     const languageStack = Object.keys(languages).sort((a, b) => languages[b] - languages[a]);
     const stack = [repository.language, ...languageStack, ...repository.topics, ...readmeStack].filter(
       (technology): technology is string => Boolean(technology),
@@ -87,10 +96,11 @@ export class GitHubRepositoriesService {
 
     return {
       repository,
+      title: this.readmeTitle(readme) || this.toProjectTitle(repository.name),
       context: this.readmeSection(readme, ['contexto', 'context', 'resumen ejecutivo', 'summary']) || this.readmeIntro(readme) || repository.description || 'Repositorio público de software.',
       problem: this.readmeSection(readme, ['problema', 'problem', 'qué resuelve', 'que resuelve', 'objetivo', 'goal', 'características', 'caracteristicas', 'features']) || this.readmeIntro(readme) || repository.description || 'Problema descrito en el README del repositorio.',
-      solution: this.readmeSection(readme, ['solución', 'solucion', 'solution', 'arquitectura funcional', 'arquitectura del sistema', 'arquitectura tecnica', 'flujo funcional']) || `Implementación disponible en el repositorio con ${stackText}.`,
-      technicalDecisions: this.readmeSection(readme, ['decisiones técnicas', 'decisiones tecnicas', 'technical decisions', 'principios de diseño', 'principios de diseno', 'arquitectura del sistema', 'stack técnico', 'stack tecnico', 'technologies']) || `Stack utilizado: ${stackText}.`,
+      solution: this.readmeSection(readme, ['qué resuelve', 'que resuelve', 'objetivo', 'goal', 'solución', 'solucion', 'solution', 'características', 'caracteristicas', 'features']) || `Implementación disponible en el repositorio con ${stackText}.`,
+      technicalDecisions: this.readmeSection(readme, ['decisiones técnicas', 'decisiones tecnicas', 'technical decisions', 'principios de diseño', 'principios de diseno', 'arquitectura del sistema', 'arquitectura funcional', 'arquitectura tecnica', 'flujo funcional']) || 'La solución prioriza una estructura clara y adecuada al problema que aborda.',
       impact: this.readmeSection(readme, ['impacto', 'impact', 'objetivo', 'goal', 'estado actual y roadmap']) || 'La solución y su documentación están disponibles en GitHub.',
       stack: uniqueStack,
     };
@@ -102,6 +112,8 @@ export class GitHubRepositoriesService {
 
   private cleanMarkdown(text: string): string {
     return text
+      .replace(/```[\s\S]*?```/g, '')
+      .replace(/^\s*(?:mermaid|flowchart|graph)\s+.*$/gim, '')
       .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
       .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
       .replace(/<[^>]+>/g, '')
@@ -109,6 +121,18 @@ export class GitHubRepositoriesService {
       .replace(/[`*_]/g, '')
       .replace(/\s+/g, ' ')
       .trim();
+  }
+
+  private readmeTitle(readme: string): string | null {
+    const title = readme.match(/^#\s+(.+)$/m)?.[1];
+    return title ? this.cleanMarkdown(title) : null;
+  }
+
+  private toProjectTitle(repositoryName: string): string {
+    return repositoryName
+      .split(/[-_]/)
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(' ');
   }
 
   private readmeIntro(readme: string): string | null {
@@ -125,7 +149,7 @@ export class GitHubRepositoriesService {
 
     return section
       .split(/[\n·,]/)
-      .map((item) => item.replace(/^[-*\d.\s]+/, '').trim())
+      .map((item) => this.cleanMarkdown(item.replace(/^[-*\d.\s]+/, '').trim()))
       .filter((item) => item.length > 1 && item.length < 40)
       .slice(0, 8);
   }
@@ -140,8 +164,40 @@ export class GitHubRepositoriesService {
       return null;
     }
 
-    const headingPattern = headings.map((heading) => heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
-    const match = readme.match(new RegExp(`^#{2,4}\\s*(?:${headingPattern})\\s*$([\\s\\S]*?)(?=^#{2,4}\\s|$)`, 'im'));
-    return match?.[1] || null;
+    const normalizedHeadings = headings.map((heading) => this.normalizeHeading(heading));
+    const lines = readme.split(/\r?\n/);
+    const start = lines.findIndex((line) => {
+      const match = line.match(/^(#{2,4})\s+(.+)$/);
+      if (!match) {
+        return false;
+      }
+
+      const normalizedTitle = this.normalizeHeading(match[2]);
+      return normalizedHeadings.some(
+        (heading) => normalizedTitle === heading || normalizedTitle.startsWith(`${heading}y`),
+      );
+    });
+
+    if (start < 0) {
+      return null;
+    }
+
+    const content = [];
+    for (let index = start + 1; index < lines.length; index += 1) {
+      if (/^#{2,4}\s+/.test(lines[index])) {
+        break;
+      }
+      content.push(lines[index]);
+    }
+
+    return content.join('\n').trim() || null;
+  }
+
+  private normalizeHeading(value: string): string {
+    return value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '');
   }
 }

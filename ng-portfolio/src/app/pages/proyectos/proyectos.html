@@ -16,7 +16,7 @@
 								<p class="project-rank">Proyecto {{ index + 1 }}</p>
 								<span class="project-tag">{{ project.repository.language || 'Software' }}</span>
 							</div>
-							<h3>{{ project.repository.name }}</h3>
+							<h3>{{ project.title }}</h3>
 							<p class="project-summary">{{ project.repository.description || project.context }}</p>
 							<div class="project-grid">
 								<p><strong>Contexto:</strong> {{ project.context }}</p>
@@ -27,7 +27,9 @@
 							</div>
 							<div class="project-technologies" *ngIf="project.stack.length">
 								<strong>Tecnologías:</strong>
-								<div class="github-stack-line">{{ project.stack.join(' · ') }}</div>
+								<div class="github-stack-chips">
+									<span *ngFor="let technology of project.stack">{{ technology }}</span>
+								</div>
 							</div>
 							<p class="project-link"><a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub <span aria-hidden="true">↗</span></a></p>
 						</article>
@@ -202,7 +204,7 @@
 								<p class="project-rank">Project {{ index + 1 }}</p>
 								<span class="project-tag">{{ project.repository.language || 'Software' }}</span>
 							</div>
-							<h3>{{ project.repository.name }}</h3>
+							<h3>{{ project.title }}</h3>
 							<p class="project-summary">{{ project.repository.description || project.context }}</p>
 							<div class="project-grid">
 								<p><strong>Context:</strong> {{ project.context }}</p>
@@ -213,7 +215,9 @@
 							</div>
 							<div class="project-technologies" *ngIf="project.stack.length">
 								<strong>Technologies:</strong>
-								<div class="github-stack-line">{{ project.stack.join(' · ') }}</div>
+								<div class="github-stack-chips">
+									<span *ngFor="let technology of project.stack">{{ technology }}</span>
+								</div>
 							</div>
 							<p class="project-link"><a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">View repository on GitHub <span aria-hidden="true">↗</span></a></p>
 						</article>
