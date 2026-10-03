@@ -2479,3 +2479,151 @@ html body .page-banner.page-banner .banner-chips.banner-chips span:hover {
     transition: none !important;
   }
 }
+
+
+/* =====================================================
+   Theme-correct banners + technologies section
+   ===================================================== */
+
+html[data-theme='light'] body .page-banner.page-banner.page-banner {
+  background:
+    radial-gradient(520px 240px at 100% 0%, rgba(34, 211, 238, 0.22), transparent 70%),
+    radial-gradient(480px 240px at 0% 100%, rgba(124, 92, 255, 0.16), transparent 70%),
+    linear-gradient(160deg, #ffffff, #f1f4ff) !important;
+  border-color: rgba(91, 63, 224, 0.25) !important;
+  box-shadow: 0 18px 40px -22px rgba(91, 63, 224, 0.45), inset 0 1px 0 #fff !important;
+}
+
+html[data-theme='light'] body .page-banner.page-banner .banner-lead {
+  color: #33425f !important;
+  opacity: 1;
+}
+
+html[data-theme='light'] body .page-banner.page-banner .eyebrow {
+  color: #0e7490 !important;
+  background: rgba(8, 145, 178, 0.1);
+  border-color: rgba(8, 145, 178, 0.35);
+}
+
+html[data-theme='light'] body .page-banner.page-banner .banner-chips.banner-chips span {
+  color: #1f2a4a !important;
+  background: rgba(91, 63, 224, 0.08) !important;
+  border-color: rgba(91, 63, 224, 0.3) !important;
+}
+
+html[data-theme='dark'] body .page-banner.page-banner.page-banner {
+  background:
+    radial-gradient(520px 240px at 100% 0%, rgba(34, 211, 238, 0.16), transparent 70%),
+    radial-gradient(480px 240px at 0% 100%, rgba(124, 92, 255, 0.2), transparent 70%),
+    linear-gradient(160deg, #141b2b, #1a1f3a) !important;
+}
+
+html[data-theme='dark'] body .page-banner.page-banner .banner-lead {
+  color: #cfd8ea !important;
+  opacity: 1;
+}
+
+html[data-theme='dark'] body .page-banner.page-banner .banner-chips.banner-chips span {
+  color: #eef2fb !important;
+}
+
+/* ── Technologies & tools ── */
+
+.tech-grid {
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+html body .tech-item {
+  --t-bg: rgba(124, 92, 255, 0.07);
+  --t-line: rgba(124, 92, 255, 0.28);
+  --t-ink: #e9edf8;
+  --t-badge: rgba(255, 255, 255, 0.06);
+  position: relative;
+  padding: 1rem 1.1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid var(--t-line);
+  background: linear-gradient(160deg, var(--t-bg), transparent 80%);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+html[data-theme='light'] body .tech-item {
+  --t-bg: rgba(91, 63, 224, 0.07);
+  --t-line: rgba(91, 63, 224, 0.28);
+  --t-ink: #1f2a4a;
+  --t-badge: #ffffff;
+  background: linear-gradient(160deg, var(--t-bg), rgba(255, 255, 255, 0.7) 80%) !important;
+}
+
+html body .tech-item::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--aurora);
+  opacity: 0.85;
+}
+
+html body .tech-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-glow);
+  box-shadow: 0 16px 34px -18px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+html body .tech-item h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent-bright) !important;
+  opacity: 1;
+}
+
+html[data-theme='light'] body .tech-item h4 {
+  color: #4a2fd0 !important;
+}
+
+html body .tech-list {
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 0.7rem;
+}
+
+html body .tech-badge {
+  min-height: 84px;
+  justify-content: center;
+  padding: 0.7rem 0.4rem;
+  border-radius: 12px;
+  border: 1px solid var(--t-line);
+  background: var(--t-badge) !important;
+  opacity: 1 !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+html body .tech-badge:hover {
+  transform: translateY(-4px) scale(1.04);
+  border-color: var(--accent-glow);
+  box-shadow: 0 12px 24px -12px color-mix(in srgb, var(--accent-glow) 80%, transparent);
+}
+
+html body .tech-badge > span {
+  color: var(--t-ink) !important;
+  opacity: 1 !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+html body .tech-badge i {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+html body .tech-badge-image {
+  width: 32px;
+  height: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .tech-item,
+  html body .tech-badge { transition: none !important; }
+}
