@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio de Ernesto Starck</title>
+  <desc id="desc">Ingenieria aplicada a automatizacion, analisis de datos y sistemas reales.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9f0f8" />
+      <stop offset="55%" stop-color="#f5f8fc" />
+      <stop offset="100%" stop-color="#e8eef7" />
+    </linearGradient>
+    <radialGradient id="orbA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(180 120) rotate(35) scale(420 280)">
+      <stop offset="0" stop-color="#0d4f8b" stop-opacity="0.23" />
+      <stop offset="1" stop-color="#0d4f8b" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="orbB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1020 70) rotate(12) scale(360 230)">
+      <stop offset="0" stop-color="#436fa8" stop-opacity="0.2" />
+      <stop offset="1" stop-color="#436fa8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#orbA)" />
+  <rect width="1200" height="630" fill="url(#orbB)" />
+
+  <rect x="72" y="56" width="1056" height="518" rx="20" fill="#ffffff" fill-opacity="0.78" stroke="#a9bfd8" stroke-opacity="0.45" />
+
+  <text x="120" y="140" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="2" fill="#4e5f78">PORTFOLIO</text>
+
+  <text x="120" y="235" font-family="IBM Plex Serif, Georgia, serif" font-size="66" font-weight="600" fill="#162234">
+    Ernesto Starck H.
+  </text>
+
+  <text x="120" y="305" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="34" font-weight="500" fill="#1f334d">
+    Ingenieria aplicada a automatizacion,
+  </text>
+  <text x="120" y="353" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="34" font-weight="500" fill="#1f334d">
+    analisis de datos y sistemas reales.
+  </text>
+
+  <g transform="translate(120 420)">
+    <rect x="0" y="0" width="250" height="44" rx="22" fill="#0d4f8b" fill-opacity="0.12" stroke="#0d4f8b" stroke-opacity="0.3" />
+    <text x="24" y="29" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#0b3f6f">Criterio tecnico</text>
+
+    <rect x="270" y="0" width="305" height="44" rx="22" fill="#0d4f8b" fill-opacity="0.12" stroke="#0d4f8b" stroke-opacity="0.3" />
+    <text x="294" y="29" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#0b3f6f">Impacto operativo</text>
+
+    <rect x="595" y="0" width="332" height="44" rx="22" fill="#0d4f8b" fill-opacity="0.12" stroke="#0d4f8b" stroke-opacity="0.3" />
+    <text x="619" y="29" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#0b3f6f">Soluciones mantenibles</text>
+  </g>
+
+  <text x="120" y="535" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="21" font-weight="500" fill="#3a4d67">ernestostarck.github.io</text>
+</svg>
