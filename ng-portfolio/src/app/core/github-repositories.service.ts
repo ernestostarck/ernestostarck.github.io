@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { catchError, forkJoin, map, of, shareReplay, switchMap } from 'rxjs';
+import { catchError, defer, forkJoin, map, of, shareReplay, switchMap, tap } from 'rxjs';
 
 export interface GitHubRepository {
   name: string;
@@ -17,6 +17,7 @@ export interface GitHubRepository {
 
 export interface GitHubProject {
   repository: GitHubRepository;
+  liveDemoUrl: string | null;
   title: string;
   context: string;
   problem: string;
@@ -32,6 +33,10 @@ export class GitHubRepositoriesService {
   private readonly username = 'ernestostarck';
   private readonly excludedRepositories = new Set(['ernestostarck.github.io', 'ernestostarck']);
   private readonly featuredRepositories = ['zenith-flow', 'meddecide-cdss', 'automation-pipeline'];
+  private readonly liveDemoUrls: Record<string, string> = {
+    starkio: 'https://starkio.vercel.app/',
+    'market-insight': 'https://market-insight-seven.vercel.app/dashboard',
+  };
 
   readonly repositories$ = this.http
     .get<GitHubRepository[]>(
@@ -55,12 +60,39 @@ export class GitHubRepositoriesService {
     ),
   );
 
-  readonly projects$ = this.repositories$.pipe(
-    switchMap((repositories) =>
-      forkJoin(repositories.slice(0, 12).map((repository) => this.createProject(repository))),
-    ),
-    shareReplay({ bufferSize: 1, refCount: true }),
-  );
+  private readonly cacheKey = 'gh-projects-cache-v1';
+  private readonly cacheTtlMs = 60 * 60 * 1000;
+
+  readonly projects$ = defer(() => {
+    const cached = this.readCache();
+    if (cached) {
+      return of(cached);
+    }
+    return this.repositories$.pipe(
+      switchMap((repositories) =>
+        forkJoin(repositories.slice(0, 12).map((repository) => this.createProject(repository))),
+      ),
+      tap((projects) => this.writeCache(projects)),
+    );
+  }).pipe(shareReplay({ bufferSize: 1, refCount: true }));
+
+  private readCache(): any[] | null {
+    try {
+      const raw = localStorage.getItem(this.cacheKey);
+      if (!raw) return null;
+      const { time, data } = JSON.parse(raw);
+      return Date.now() - time < this.cacheTtlMs && Array.isArray(data) && data.length ? data : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private writeCache(projects: unknown[]) {
+    if (!projects.length) return;
+    try {
+      localStorage.setItem(this.cacheKey, JSON.stringify({ time: Date.now(), data: projects }));
+    } catch {}
+  }
 
   private createProject(repository: GitHubRepository) {
     const readmeUrl = `https://raw.githubusercontent.com/${this.username}/${repository.name}/${repository.default_branch}/README.md`;
@@ -96,6 +128,7 @@ export class GitHubRepositoriesService {
 
     return {
       repository,
+      liveDemoUrl: this.liveDemoUrls[repository.name.toLowerCase()] ?? null,
       title: this.readmeTitle(readme) || this.toProjectTitle(repository.name),
       context: this.readmeSection(readme, ['contexto', 'context', 'resumen ejecutivo', 'summary']) || this.readmeIntro(readme) || repository.description || 'Repositorio público de software.',
       problem: this.readmeSection(readme, ['problema', 'problem', 'qué resuelve', 'que resuelve', 'objetivo', 'goal', 'características', 'caracteristicas', 'features']) || this.readmeIntro(readme) || repository.description || 'Problema descrito en el README del repositorio.',

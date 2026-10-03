@@ -1,4 +1,4 @@
-<main class="container py-4 page-main">
+﻿<main class="container py-4 page-main">
 	<section class="section lang-es" aria-label="Proyectos">
 		<div class="panel card border-0 shadow-sm p-4 p-lg-5 page-shell">
 			<div class="page-banner projects-banner mb-4">
@@ -28,14 +28,17 @@
 							<div class="project-technologies" *ngIf="project.stack.length">
 								<strong>Tecnologías:</strong>
 								<div class="github-stack-chips">
-									<span *ngFor="let technology of project.stack">{{ technology }}</span>
+									<span *ngFor="let technology of project.stack" class="stack-chip"><i *ngIf="techIcon(technology)" [class]="techIcon(technology)" aria-hidden="true"></i>{{ technology }}</span>
 								</div>
 							</div>
-							<p class="project-link"><a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub <span aria-hidden="true">↗</span></a></p>
+							<p class="project-link">
+								<a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub <span aria-hidden="true">↗</span></a>
+								<a *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" rel="noopener noreferrer">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+							</p>
 						</article>
 					</article>
 				</div>
-				<div class="swiper-wrapper" *ngIf="false">
+				<div class="swiper-wrapper" *ngIf="useStaticProjects">
 					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 0">
 						<article class="project project-card priority-1">
 							<div class="project-head">
@@ -56,7 +59,7 @@
 								<strong>Tecnologías:</strong>
 								<div class="tech-list-compact">
 									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
-									<span class="tech-icon-small"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
+									<span class="tech-icon-small"><img src="https://cdn.simpleicons.org/vite/646CFF" alt="" class="tech-icon-img" /><span>Vite</span></span>
 									<span class="tech-icon-small"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></span>
 									<span class="tech-icon-small"><i class="devicon-bootstrap-plain colored"></i><span>React Bootstrap</span></span>
 									<span class="tech-icon-small"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap Icons</span></span>
@@ -117,7 +120,7 @@
 								<strong>Tecnologías:</strong>
 								<div class="tech-list-compact">
 									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React 18</span></span>
-									<span class="tech-icon-small"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
+									<span class="tech-icon-small"><img src="https://cdn.simpleicons.org/vite/646CFF" alt="" class="tech-icon-img" /><span>Vite</span></span>
 									<span class="tech-icon-small"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
 									<span class="tech-icon-small"><i class="devicon-express-original colored"></i><span>Express</span></span>
 									<span class="tech-icon-small"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></span>
@@ -216,14 +219,17 @@
 							<div class="project-technologies" *ngIf="project.stack.length">
 								<strong>Technologies:</strong>
 								<div class="github-stack-chips">
-									<span *ngFor="let technology of project.stack">{{ technology }}</span>
+									<span *ngFor="let technology of project.stack" class="stack-chip"><i *ngIf="techIcon(technology)" [class]="techIcon(technology)" aria-hidden="true"></i>{{ technology }}</span>
 								</div>
 							</div>
-							<p class="project-link"><a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">View repository on GitHub <span aria-hidden="true">↗</span></a></p>
+							<p class="project-link">
+								<a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">View repository on GitHub <span aria-hidden="true">↗</span></a>
+								<a *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" rel="noopener noreferrer">View live demo <span aria-hidden="true">↗</span></a>
+							</p>
 						</article>
 					</article>
 				</div>
-				<div class="swiper-wrapper" *ngIf="false">
+				<div class="swiper-wrapper" *ngIf="useStaticProjects">
 					<article class="swiper-slide" [class.is-active]="activeProjectIndex === 0">
 						<article class="project project-card priority-1">
 							<div class="project-head">
@@ -244,7 +250,7 @@
 								<strong>Technologies:</strong>
 								<div class="tech-list-compact">
 									<span class="tech-icon-small"><i class="devicon-react-original colored"></i><span>React</span></span>
-									<span class="tech-icon-small"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
+									<span class="tech-icon-small"><img src="https://cdn.simpleicons.org/vite/646CFF" alt="" class="tech-icon-img" /><span>Vite</span></span>
 									<span class="tech-icon-small"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></span>
 									<span class="tech-icon-small"><i class="devicon-bootstrap-plain colored"></i><span>React Bootstrap</span></span>
 									<span class="tech-icon-small"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap Icons</span></span>
@@ -364,3 +370,6 @@
 		</div>
 	</section>
 </main>
+
+
+

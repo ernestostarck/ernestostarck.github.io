@@ -1,4 +1,4 @@
-/* ── SWIPER CUSTOMIZATION ── */
+﻿/* ── SWIPER CUSTOMIZATION ── */
 
 .projects-swiper {
   /* Reducir espacio para evitar salto blanco entre banner y contenido siguiente */
@@ -270,10 +270,6 @@
   background: linear-gradient(180deg, color-mix(in srgb, var(--card) 90%, var(--accent) 10%), var(--card));
 }
 
-.tech-icon-small i {
-  color: var(--accent-bright) !important;
-}
-
 .tech-icon-small span {
   color: var(--ink);
 }
@@ -391,5 +387,33 @@
   .swiper-button-prev::after {
     font-size: 22px;
   }
+}
+
+
+.github-stack-chips .stack-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem 0.35rem 0.55rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.github-stack-chips .stack-chip i {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.github-stack-chips .stack-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-glow);
+  box-shadow: 0 8px 18px -10px var(--accent-glow);
+}
+
+
+.tech-icon-img {
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
 }
 
