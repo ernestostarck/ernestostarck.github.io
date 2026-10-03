@@ -2317,3 +2317,165 @@ html[data-theme='light'] .footer-copy {
     justify-content: flex-start;
   }
 }
+
+
+/* =====================================================
+   Banner redesign: aurora gradient, Sora headings, motion
+   (final overrides; keep at end of file)
+   ===================================================== */
+
+:root {
+  --accent: #7c5cff;
+  --accent-bright: #8b7bff;
+  --accent-glow: #22d3ee;
+  --font-heading: "Sora", "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --aurora: linear-gradient(120deg, #7c5cff 0%, #22d3ee 55%, #34d399 100%);
+}
+
+html[data-theme='light'] {
+  --accent: #5b3fe0;
+  --accent-bright: #6a4df0;
+  --accent-glow: #0891b2;
+  --aurora: linear-gradient(120deg, #5b3fe0 0%, #0891b2 60%, #059669 100%);
+}
+
+@keyframes auroraShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-30px, 24px, 0) scale(1.12); }
+}
+
+@keyframes bannerIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+
+html body .page-banner.page-banner.page-banner {
+  --banner-accent: var(--accent-glow);
+  padding: clamp(1.5rem, 1.1rem + 2vw, 2.6rem);
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--accent-bright) 35%, transparent);
+  background:
+    radial-gradient(600px 260px at 100% 0%, color-mix(in srgb, var(--accent-glow) 18%, transparent), transparent 70%),
+    radial-gradient(520px 260px at 0% 100%, color-mix(in srgb, var(--accent-bright) 22%, transparent), transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--card) 94%, transparent), color-mix(in srgb, var(--card) 80%, var(--accent) 20%));
+  box-shadow: 0 20px 50px -20px color-mix(in srgb, var(--accent) 55%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: bannerIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+html body .page-banner.page-banner.page-banner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 60px -18px color-mix(in srgb, var(--accent-bright) 60%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+html body .page-banner.page-banner.page-banner::before {
+  inset: 0 0 auto 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 4px;
+  border-radius: 0;
+  background: var(--aurora);
+  background-size: 200% 100%;
+  animation: auroraShift 8s ease-in-out infinite;
+  opacity: 1;
+}
+
+html body .page-banner.page-banner.page-banner::after {
+  content: '';
+  position: absolute;
+  top: -90px;
+  right: -70px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-glow) 40%, transparent), transparent 68%);
+  filter: blur(8px);
+  pointer-events: none;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+html body .page-banner.page-banner .eyebrow {
+  display: inline-block;
+  padding: 0.28rem 0.75rem;
+  margin-bottom: 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-glow);
+  background: color-mix(in srgb, var(--accent-glow) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-glow) 35%, transparent);
+}
+
+html body .page-banner.page-banner h1,
+html body .page-banner.page-banner h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  background: var(--aurora);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: auroraShift 10s ease-in-out infinite, bannerIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+html body .page-banner.page-banner .banner-lead {
+  color: var(--ink-soft);
+  animation: bannerIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+html body .page-banner.page-banner .banner-chips.banner-chips {
+  animation: none;
+}
+
+html body .page-banner.page-banner .banner-chips.banner-chips span {
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent-bright) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-bright) 38%, transparent);
+  backdrop-filter: blur(10px);
+  animation: chipIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+html body .page-banner.page-banner .banner-chips.banner-chips span:nth-child(1) { animation-delay: 0.35s; }
+html body .page-banner.page-banner .banner-chips.banner-chips span:nth-child(2) { animation-delay: 0.45s; }
+html body .page-banner.page-banner .banner-chips.banner-chips span:nth-child(3) { animation-delay: 0.55s; }
+html body .page-banner.page-banner .banner-chips.banner-chips span:nth-child(n+4) { animation-delay: 0.65s; }
+
+html body .page-banner.page-banner .banner-chips.banner-chips span:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--accent-glow) 20%, transparent);
+  border-color: var(--accent-glow);
+  box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--accent-glow) 70%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .page-banner.page-banner.page-banner,
+  html body .page-banner.page-banner.page-banner::before,
+  html body .page-banner.page-banner.page-banner::after,
+  html body .page-banner.page-banner h1,
+  html body .page-banner.page-banner h2,
+  html body .page-banner.page-banner .banner-lead,
+  html body .page-banner.page-banner .banner-chips.banner-chips span {
+    animation: none !important;
+    transition: none !important;
+  }
+}
