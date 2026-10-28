@@ -174,7 +174,7 @@
 
 /* ── BANNER ART (SVG) ── */
 
-html body .page-banner.page-banner.page-banner.contact-banner {
+.page-banner.page-banner.page-banner.contact-banner {
   padding-right: clamp(1.5rem, 1rem + 20vw, 17rem);
 }
 
@@ -207,7 +207,7 @@ html body .page-banner.page-banner.page-banner.contact-banner {
 }
 
 @media (max-width: 768px) {
-  html body .page-banner.page-banner.page-banner.contact-banner { padding-right: clamp(1.5rem, 1.1rem + 2vw, 2.6rem); }
+  .page-banner.page-banner.page-banner.contact-banner { padding-right: clamp(1.5rem, 1.1rem + 2vw, 2.6rem); }
   .contact-banner .banner-art { display: none; }
 }
 

@@ -10,7 +10,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-html[data-theme='light'] .cert-banner {
+:host-context(html[data-theme='light']) .cert-banner {
   background: linear-gradient(135deg, #f0f6ff 0%, #edf2f9 100%);
   border-color: rgba(76, 120, 171, 0.25);
   box-shadow: 0 8px 24px rgba(41, 66, 101, 0.08);
@@ -86,10 +86,10 @@ html[data-theme='light'] .cert-banner {
   background: rgba(251, 191, 36, 0.08);
 }
 
-html[data-theme='light'] .chip-data { color: #0284c7; border-color: rgba(2, 132, 199, 0.35); background: rgba(2, 132, 199, 0.08); }
-html[data-theme='light'] .chip-ai { color: #9333ea; border-color: rgba(147, 51, 234, 0.35); background: rgba(147, 51, 234, 0.08); }
-html[data-theme='light'] .chip-software { color: #16a34a; border-color: rgba(22, 163, 74, 0.35); background: rgba(22, 163, 74, 0.08); }
-html[data-theme='light'] .chip-general { color: #d97706; border-color: rgba(217, 119, 6, 0.35); background: rgba(217, 119, 6, 0.08); }
+:host-context(html[data-theme='light']) .chip-data { color: #0284c7; border-color: rgba(2, 132, 199, 0.35); background: rgba(2, 132, 199, 0.08); }
+:host-context(html[data-theme='light']) .chip-ai { color: #9333ea; border-color: rgba(147, 51, 234, 0.35); background: rgba(147, 51, 234, 0.08); }
+:host-context(html[data-theme='light']) .chip-software { color: #16a34a; border-color: rgba(22, 163, 74, 0.35); background: rgba(22, 163, 74, 0.08); }
+:host-context(html[data-theme='light']) .chip-general { color: #d97706; border-color: rgba(217, 119, 6, 0.35); background: rgba(217, 119, 6, 0.08); }
 
 /* ── TITLES & HEADINGS ── */
 
@@ -100,12 +100,12 @@ html[data-theme='light'] .chip-general { color: #d97706; border-color: rgba(217,
   padding-bottom: 0.65rem;
 }
 
-html[data-theme='light'] .section-title-main {
+:host-context(html[data-theme='light']) .section-title-main {
   color: #0f1f33 !important;
   border-bottom: 2px solid rgba(76, 120, 171, 0.28) !important;
 }
 
-html[data-theme='dark'] .section-title-main {
+:host-context(html[data-theme='dark']) .section-title-main {
   color: #edf2f8 !important;
   border-bottom: 2px solid rgba(109, 148, 196, 0.22) !important;
 }
@@ -163,39 +163,39 @@ html[data-theme='dark'] .section-title-main {
 .badge-software { background: rgba(74, 222, 128, 0.12); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.35); }
 .badge-general { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); }
 
-html[data-theme='dark'] .area-data h4 { color: #7dd3fc !important; text-shadow: 0 0 18px rgba(56, 189, 248, 0.35); }
-html[data-theme='dark'] .area-ai h4 { color: #d8b4fe !important; text-shadow: 0 0 18px rgba(192, 132, 252, 0.35); }
-html[data-theme='dark'] .area-software h4 { color: #86efac !important; text-shadow: 0 0 18px rgba(74, 222, 128, 0.35); }
-html[data-theme='dark'] .area-general h4 { color: #fcd34d !important; text-shadow: 0 0 18px rgba(251, 191, 36, 0.35); }
+:host-context(html[data-theme='dark']) .area-data h4 { color: #7dd3fc !important; text-shadow: 0 0 18px rgba(56, 189, 248, 0.35); }
+:host-context(html[data-theme='dark']) .area-ai h4 { color: #d8b4fe !important; text-shadow: 0 0 18px rgba(192, 132, 252, 0.35); }
+:host-context(html[data-theme='dark']) .area-software h4 { color: #86efac !important; text-shadow: 0 0 18px rgba(74, 222, 128, 0.35); }
+:host-context(html[data-theme='dark']) .area-general h4 { color: #fcd34d !important; text-shadow: 0 0 18px rgba(251, 191, 36, 0.35); }
 
-html[data-theme='dark'] .cert-area-header {
+:host-context(html[data-theme='dark']) .cert-area-header {
   padding-bottom: 0.7rem;
   border-bottom: 1px solid rgba(148, 170, 205, 0.16);
 }
 
-html[data-theme='dark'] .cert-card {
+:host-context(html[data-theme='dark']) .cert-card {
   background: linear-gradient(160deg, rgba(30, 40, 58, 0.95), rgba(20, 27, 40, 0.95));
   border-color: rgba(148, 170, 205, 0.24);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-html[data-theme='dark'] .cert-card strong { color: #f4f7fc; }
-html[data-theme='dark'] .cert-card-description { color: #c3cee2; }
-html[data-theme='dark'] .cert-card-meta,
-html[data-theme='dark'] .cert-counter-chip { color: #b4c0d6; }
-html[data-theme='dark'] .cert-card-link a { color: #9db8ff; }
-html[data-theme='dark'] .cert-card-link a:hover { color: #c7d6ff; }
-html[data-theme='dark'] .cert-note { color: #b4c0d6; }
+:host-context(html[data-theme='dark']) .cert-card strong { color: #f4f7fc; }
+:host-context(html[data-theme='dark']) .cert-card-description { color: #c3cee2; }
+:host-context(html[data-theme='dark']) .cert-card-meta,
+:host-context(html[data-theme='dark']) .cert-counter-chip { color: #b4c0d6; }
+:host-context(html[data-theme='dark']) .cert-card-link a { color: #9db8ff; }
+:host-context(html[data-theme='dark']) .cert-card-link a:hover { color: #c7d6ff; }
+:host-context(html[data-theme='dark']) .cert-note { color: #b4c0d6; }
 
-html[data-theme='light'] .area-data h4 { color: #0284c7 !important; }
-html[data-theme='light'] .area-ai h4 { color: #9333ea !important; }
-html[data-theme='light'] .area-software h4 { color: #16a34a !important; }
-html[data-theme='light'] .area-general h4 { color: #d97706 !important; }
+:host-context(html[data-theme='light']) .area-data h4 { color: #0284c7 !important; }
+:host-context(html[data-theme='light']) .area-ai h4 { color: #9333ea !important; }
+:host-context(html[data-theme='light']) .area-software h4 { color: #16a34a !important; }
+:host-context(html[data-theme='light']) .area-general h4 { color: #d97706 !important; }
 
-html[data-theme='light'] .badge-data { color: #0284c7; background: rgba(2, 132, 199, 0.1); border-color: rgba(2, 132, 199, 0.35); }
-html[data-theme='light'] .badge-ai { color: #9333ea; background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.35); }
-html[data-theme='light'] .badge-software { color: #16a34a; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.35); }
-html[data-theme='light'] .badge-general { color: #d97706; background: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.35); }
+:host-context(html[data-theme='light']) .badge-data { color: #0284c7; background: rgba(2, 132, 199, 0.1); border-color: rgba(2, 132, 199, 0.35); }
+:host-context(html[data-theme='light']) .badge-ai { color: #9333ea; background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.35); }
+:host-context(html[data-theme='light']) .badge-software { color: #16a34a; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.35); }
+:host-context(html[data-theme='light']) .badge-general { color: #d97706; background: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.35); }
 
 /* ── EDUCATION GRID ── */
 
@@ -227,13 +227,13 @@ html[data-theme='light'] .badge-general { color: #d97706; background: rgba(217, 
   border: 1px solid rgba(122, 171, 230, 0.35);
 }
 
-html[data-theme='light'] .badge-distincion-maxima {
+:host-context(html[data-theme='light']) .badge-distincion-maxima {
   background: rgba(4, 120, 87, 0.12);
   color: #047857;
   border-color: rgba(4, 120, 87, 0.35);
 }
 
-html[data-theme='light'] .badge-distincion-doble {
+:host-context(html[data-theme='light']) .badge-distincion-doble {
   background: rgba(29, 92, 156, 0.12);
   color: #1d5c9c;
   border-color: rgba(29, 92, 156, 0.35);
@@ -286,7 +286,7 @@ html[data-theme='light'] .badge-distincion-doble {
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
 }
 
-html[data-theme='light'] .cert-card {
+:host-context(html[data-theme='light']) .cert-card {
   background: #ffffff;
   border-color: rgba(76, 120, 171, 0.2);
   box-shadow: 0 4px 18px rgba(41, 66, 101, 0.06);
@@ -413,33 +413,33 @@ html[data-theme='light'] .cert-card {
   border: 1px solid rgba(251, 191, 36, 0.35) !important;
 }
 
-html[data-theme='light'] .status-data,
-html[data-theme='light'] #area-data .status-completado,
-html[data-theme='light'] #area-data-en .status-completado {
+:host-context(html[data-theme='light']) .status-data,
+:host-context(html[data-theme='light']) #area-data .status-completado,
+:host-context(html[data-theme='light']) #area-data-en .status-completado {
   color: #0284c7 !important;
   background: rgba(2, 132, 199, 0.1) !important;
   border-color: rgba(2, 132, 199, 0.35) !important;
 }
 
-html[data-theme='light'] .status-ai,
-html[data-theme='light'] #area-ai .status-completado,
-html[data-theme='light'] #area-ai-en .status-completado {
+:host-context(html[data-theme='light']) .status-ai,
+:host-context(html[data-theme='light']) #area-ai .status-completado,
+:host-context(html[data-theme='light']) #area-ai-en .status-completado {
   color: #9333ea !important;
   background: rgba(147, 51, 234, 0.1) !important;
   border-color: rgba(147, 51, 234, 0.35) !important;
 }
 
-html[data-theme='light'] .status-software,
-html[data-theme='light'] #area-software .status-completado,
-html[data-theme='light'] #area-software-en .status-completado {
+:host-context(html[data-theme='light']) .status-software,
+:host-context(html[data-theme='light']) #area-software .status-completado,
+:host-context(html[data-theme='light']) #area-software-en .status-completado {
   color: #16a34a !important;
   background: rgba(22, 163, 74, 0.1) !important;
   border-color: rgba(22, 163, 74, 0.35) !important;
 }
 
-html[data-theme='light'] .status-general,
-html[data-theme='light'] #area-general .status-completado,
-html[data-theme='light'] #area-general-en .status-completado {
+:host-context(html[data-theme='light']) .status-general,
+:host-context(html[data-theme='light']) #area-general .status-completado,
+:host-context(html[data-theme='light']) #area-general-en .status-completado {
   color: #d97706 !important;
   background: rgba(217, 119, 6, 0.1) !important;
   border-color: rgba(217, 119, 6, 0.35) !important;
@@ -518,10 +518,10 @@ html[data-theme='light'] #area-general-en .status-completado {
 .area-software .cert-bullet.is-active { background: #4ade80; }
 .area-general .cert-bullet.is-active { background: #fbbf24; }
 
-html[data-theme='light'] .area-data .cert-bullet.is-active { background: #0284c7; }
-html[data-theme='light'] .area-ai .cert-bullet.is-active { background: #9333ea; }
-html[data-theme='light'] .area-software .cert-bullet.is-active { background: #16a34a; }
-html[data-theme='light'] .area-general .cert-bullet.is-active { background: #d97706; }
+:host-context(html[data-theme='light']) .area-data .cert-bullet.is-active { background: #0284c7; }
+:host-context(html[data-theme='light']) .area-ai .cert-bullet.is-active { background: #9333ea; }
+:host-context(html[data-theme='light']) .area-software .cert-bullet.is-active { background: #16a34a; }
+:host-context(html[data-theme='light']) .area-general .cert-bullet.is-active { background: #d97706; }
 
 .cert-note {
   font-size: 0.88rem;
@@ -532,7 +532,7 @@ html[data-theme='light'] .area-general .cert-bullet.is-active { background: #d97
 
 /* ── CHIP ICONS (SVG masks) ── */
 
-html body .page-banner.page-banner .banner-chips.banner-chips .chip-area .chip-dot {
+.page-banner .banner-chips .chip-area .chip-dot {
   width: 18px;
   height: 18px;
   padding: 0 !important;
@@ -554,6 +554,6 @@ html body .page-banner.page-banner .banner-chips.banner-chips .chip-area .chip-d
 .chip-data { --chip-color: #38bdf8; }
 .chip-ai { --chip-color: #c084fc; }
 .chip-general { --chip-color: #fbbf24; }
-html[data-theme='light'] .chip-data { --chip-color: #0284c7; }
-html[data-theme='light'] .chip-ai { --chip-color: #9333ea; }
-html[data-theme='light'] .chip-general { --chip-color: #d97706; }
+:host-context(html[data-theme='light']) .chip-data { --chip-color: #0284c7; }
+:host-context(html[data-theme='light']) .chip-ai { --chip-color: #9333ea; }
+:host-context(html[data-theme='light']) .chip-general { --chip-color: #d97706; }
