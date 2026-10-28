@@ -1,12 +1,21 @@
 import { createHash } from 'node:crypto';
 import { execSync } from 'node:child_process';
-import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, watch } from 'node:fs';
+import {
+  copyFileSync,
+  existsSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  watch,
+  writeFileSync,
+} from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..', '..');
 const targetFile = resolve(__dirname, '..', 'public', 'CV Ernesto Starck.pdf');
+const appHtmlFile = resolve(__dirname, '..', 'src', 'app', 'app.html');
 
 function getDocumentDirs() {
   const userProfile = process.env.USERPROFILE || process.env.HOME || '';
@@ -78,9 +87,18 @@ function syncCV() {
   console.log('🔄 Copiando nueva versión del CV al portafolio...');
   copyFileSync(latestSource, targetFile);
 
+  if (existsSync(appHtmlFile)) {
+    const html = readFileSync(appHtmlFile, 'utf8');
+    const updatedHtml = html.replace(
+      /href="CV%20Ernesto%20Starck\.pdf(\?v=[^"]*)?"/,
+      `href="CV%20Ernesto%20Starck.pdf?v=${Date.now()}"`,
+    );
+    writeFileSync(appHtmlFile, updatedHtml, 'utf8');
+  }
+
   console.log('🚀 Subiendo cambios a GitHub...');
   try {
-    execSync(`git add "${targetFile}"`, { cwd: repoRoot, stdio: 'inherit' });
+    execSync(`git add "${targetFile}" "${appHtmlFile}"`, { cwd: repoRoot, stdio: 'inherit' });
     execSync('git commit -m "Actualizar CV Ernesto Starck.pdf"', {
       cwd: repoRoot,
       stdio: 'inherit',
