@@ -511,10 +511,10 @@ html[data-theme='light'] .area-general .cert-bullet.is-active { background: #d97
 html body .page-banner.page-banner .banner-chips.banner-chips .chip-area .chip-dot {
   width: 18px;
   height: 18px;
-  padding: 0;
-  border: 0;
+  padding: 0 !important;
+  border: 0 !important;
   border-radius: 0;
-  background: var(--chip-color, currentColor);
+  background: var(--chip-color, currentColor) !important;
   box-shadow: none;
   backdrop-filter: none;
   animation: none;
