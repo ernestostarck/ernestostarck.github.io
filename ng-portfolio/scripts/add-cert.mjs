@@ -16,6 +16,41 @@ const certHtmlPath = resolve(
   'certificaciones.html',
 );
 
+const AREA_CONFIG = {
+  data: {
+    labelEs: 'Data',
+    labelEn: 'Data',
+    chipLabelEs: 'Data',
+    chipLabelEn: 'Data',
+    badgeClass: 'badge-data',
+    chipClass: 'chip-data',
+  },
+  ai: {
+    labelEs: 'AI & Machine Learning',
+    labelEn: 'AI & Machine Learning',
+    chipLabelEs: 'AI',
+    chipLabelEn: 'AI',
+    badgeClass: 'badge-ai',
+    chipClass: 'chip-ai',
+  },
+  software: {
+    labelEs: 'Software & Cloud',
+    labelEn: 'Software & Cloud',
+    chipLabelEs: 'Software',
+    chipLabelEn: 'Software',
+    badgeClass: 'badge-software',
+    chipClass: 'chip-software',
+  },
+  general: {
+    labelEs: 'Gestión & Metodología',
+    labelEn: 'Management & Methodology',
+    chipLabelEs: 'Gestión & Proyectos',
+    chipLabelEn: 'Management & Projects',
+    badgeClass: 'badge-general',
+    chipClass: 'chip-general',
+  },
+};
+
 function prompt(question) {
   const rl = createInterface({
     input: process.stdin,
@@ -39,10 +74,37 @@ function decodeHtmlEntities(str) {
     .replace(/&gt;/g, '>');
 }
 
+function detectArea(title, description = '') {
+  const text = `${title} ${description}`.toLowerCase();
+  if (
+    /\b(machine learning|deep learning|ai|ia|inteligencia artificial|neural|redes neuronales|nlp|llm|computer vision|prompt|supervised|unsupervised|clasificaci[oó]n|regresi[oó]n|reinforcement)\b/i.test(
+      text,
+    )
+  ) {
+    return 'ai';
+  }
+  if (
+    /\b(data|datos|analytics|anal[ií]tica|analisis|sql|tableau|power bi|bigquery|etl|bi|database|business intelligence)\b/i.test(
+      text,
+    )
+  ) {
+    return 'data';
+  }
+  if (
+    /\b(software|programming|programaci[oó]n|desarrollo|web|frontend|backend|fullstack|cloud|devops|docker|kubernetes|git|api|rest|angular|react|vue|node|java|c#|python|html|css|ciberseguridad|cybersecurity|azure|aws|gcp)\b/i.test(
+      text,
+    )
+  ) {
+    return 'software';
+  }
+  return 'general';
+}
+
 async function extractMetadata(url) {
   let title = '';
   let provider = 'Coursera';
   let issuer = '';
+  let description = '';
 
   const lowerUrl = url.toLowerCase();
   if (lowerUrl.includes('udemy.com')) provider = 'Udemy';
@@ -75,6 +137,7 @@ async function extractMetadata(url) {
 
     if (descMatch) {
       const rawDesc = decodeHtmlEntities(descMatch[1]);
+      description = rawDesc;
       const orgMatch = rawDesc.match(/successful completion of ([^'"]+)'s/i);
       if (orgMatch) {
         issuer = orgMatch[1].trim();
@@ -84,7 +147,7 @@ async function extractMetadata(url) {
     console.warn('⚠️ No se pudo obtener metadatos automáticos de la URL:', err.message);
   }
 
-  return { title, provider, issuer };
+  return { title, provider, issuer, description };
 }
 
 function getIconHtml(provider) {
@@ -92,6 +155,71 @@ function getIconHtml(provider) {
     return `<img *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />\n\t\t\t\t\t<img *ngIf="theme() === 'dark'" src="/icons/Udemy-Symbol.png" alt="Udemy" class="cert-card-icon" />`;
   }
   return `<img src="icons/coursera-logo.png" alt="${provider}" class="cert-card-icon" />`;
+}
+
+function insertCardInArea(content, isEnglish, area, cardHtml) {
+  const config = AREA_CONFIG[area];
+  const areaId = isEnglish ? `area-${area}-en` : `area-${area}`;
+  const sectionMarker = isEnglish
+    ? '<section class="section lang-en"'
+    : '<section class="section lang-es"';
+  const noteMarker = isEnglish
+    ? '<p class="cert-note">Certifications are used'
+    : '<p class="cert-note">Las certificaciones';
+
+  const sectionStart = content.indexOf(sectionMarker);
+  if (sectionStart === -1) throw new Error(`No se encontró la sección ${isEnglish ? 'EN' : 'ES'}`);
+
+  const sectionEnd = content.indexOf('</section>', sectionStart);
+  let sectionContent = content.slice(sectionStart, sectionEnd);
+
+  // Check if area already exists
+  const areaIndex = sectionContent.indexOf(`id="${areaId}"`);
+
+  if (areaIndex !== -1) {
+    // Area exists: insert inside its education-grid
+    const gridStart = sectionContent.indexOf('<div class="education-grid">', areaIndex);
+    const gridEnd = sectionContent.indexOf('</div>', gridStart);
+    sectionContent =
+      sectionContent.slice(0, gridEnd) + cardHtml + '\n\t\t\t\t' + sectionContent.slice(gridEnd);
+
+    // Update count badge
+    const badgeRegex = isEnglish
+      ? new RegExp(`<span class="area-badge ${config.badgeClass}">(\\d+) certification(s)?</span>`)
+      : new RegExp(
+          `<span class="area-badge ${config.badgeClass}">(\\d+) certificaci[oó]n(es)?</span>`,
+        );
+
+    sectionContent = sectionContent.replace(badgeRegex, (match, count) => {
+      const newCount = parseInt(count, 10) + 1;
+      return isEnglish
+        ? `<span class="area-badge ${config.badgeClass}">${newCount} certifications</span>`
+        : `<span class="area-badge ${config.badgeClass}">${newCount} certificaciones</span>`;
+    });
+  } else {
+    // Area does NOT exist: add chip to banner and create new area section
+    const bannerChipsClose = sectionContent.indexOf(
+      '</div>',
+      sectionContent.indexOf('class="banner-chips"'),
+    );
+    const chipHtml = `\t\t\t\t\t<span class="chip-area ${config.chipClass}">${isEnglish ? config.chipLabelEn : config.chipLabelEs}</span>\n`;
+    sectionContent =
+      sectionContent.slice(0, bannerChipsClose) + chipHtml + sectionContent.slice(bannerChipsClose);
+
+    // Create new area section
+    const areaTitle = isEnglish ? config.labelEn : config.labelEs;
+    const badgeText = isEnglish ? '1 certification' : '1 certificación';
+    const newAreaHtml = `\n\t\t\t<!-- ÁREA: ${areaTitle.toUpperCase()} -->\n\t\t\t<div class="cert-area-group" id="${areaId}">\n\t\t\t\t<div class="cert-area-header">\n\t\t\t\t\t<h4>${areaTitle}</h4>\n\t\t\t\t\t<span class="area-badge ${config.badgeClass}">${badgeText}</span>\n\t\t\t\t</div>\n\t\t\t\t<div class="education-grid">\n${cardHtml}\n\t\t\t\t</div>\n\t\t\t</div>\n`;
+
+    const noteIndex = sectionContent.indexOf(noteMarker);
+    sectionContent =
+      sectionContent.slice(0, noteIndex) +
+      newAreaHtml +
+      '\n\t\t\t' +
+      sectionContent.slice(noteIndex);
+  }
+
+  return content.slice(0, sectionStart) + sectionContent + content.slice(sectionEnd);
 }
 
 async function main() {
@@ -118,6 +246,15 @@ async function main() {
   );
   if (inputTitle) fullTitle = inputTitle;
 
+  // Detect Area
+  const autoArea = detectArea(fullTitle, meta.description);
+  const inputArea = await prompt(
+    `🎯 Área detectada: [${autoArea.toUpperCase()}]. Opciones: data | ai | software | general (Enter para aceptar): `,
+  );
+  const selectedArea = (inputArea || autoArea).toLowerCase();
+  const areaKey = AREA_CONFIG[selectedArea] ? selectedArea : 'general';
+  console.log(`✓ Asignado al área: ${AREA_CONFIG[areaKey].labelEs}`);
+
   const defaultDescEs = `Certificación profesional en ${fullTitle}, orientada al desarrollo y aplicación práctica de competencias técnicas en proyectos reales.`;
   const defaultDescEn = `Professional certification in ${fullTitle}, focused on applied technical competencies and execution in real-world environments.`;
 
@@ -133,46 +270,30 @@ async function main() {
 
   const iconHtml = getIconHtml(meta.provider);
 
-  const cardHtmlEs = `\t\t\t\t<div class="cert-card cert-completado">
-\t\t\t\t\t${iconHtml}
-\t\t\t\t\t<strong>✓ ${fullTitle}</strong>
-\t\t\t\t\t<span class="cert-card-description">${descEs}</span>
-\t\t\t\t\t<span class="cert-card-status status-completado">Completado</span>
-\t\t\t\t\t<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">Ver certificado</a></span>
-\t\t\t\t</div>`;
+  const cardHtmlEs = `\t\t\t\t\t<div class="cert-card cert-completado">
+\t\t\t\t\t\t${iconHtml}
+\t\t\t\t\t\t<strong>✓ ${fullTitle}</strong>
+\t\t\t\t\t\t<span class="cert-card-description">${descEs}</span>
+\t\t\t\t\t\t<span class="cert-card-status status-completado">Completado</span>
+\t\t\t\t\t\t<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">Ver certificado</a></span>
+\t\t\t\t\t</div>`;
 
-  const cardHtmlEn = `\t\t\t\t<div class="cert-card cert-completado">
-\t\t\t\t\t${iconHtml}
-\t\t\t\t\t<strong>✓ ${fullTitle}</strong>
-\t\t\t\t\t<span class="cert-card-description">${descEn}</span>
-\t\t\t\t\t<span class="cert-card-status status-completado">Completed</span>
-\t\t\t\t\t<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">View certificate</a></span>
-\t\t\t\t</div>`;
+  const cardHtmlEn = `\t\t\t\t\t<div class="cert-card cert-completado">
+\t\t\t\t\t\t${iconHtml}
+\t\t\t\t\t\t<strong>✓ ${fullTitle}</strong>
+\t\t\t\t\t\t<span class="cert-card-description">${descEn}</span>
+\t\t\t\t\t\t<span class="cert-card-status status-completado">Completed</span>
+\t\t\t\t\t\t<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">View certificate</a></span>
+\t\t\t\t\t</div>`;
 
   console.log('\n📄 Insertando certificado en certificaciones.html...');
   let content = readFileSync(certHtmlPath, 'utf8');
 
-  // Insert in Spanish section (before the first closing </div> followed by cert-note)
-  const esNoteMarker = '<p class="cert-note">Las certificaciones';
-  const esIndex = content.indexOf(esNoteMarker);
-  if (esIndex === -1) {
-    console.error('❌ No se encontró la sección en español en certificaciones.html');
-    process.exit(1);
-  }
+  // Insert in Spanish section
+  content = insertCardInArea(content, false, areaKey, cardHtmlEs);
 
-  const esClosingDiv = content.lastIndexOf('</div>', esIndex);
-  content = content.slice(0, esClosingDiv) + cardHtmlEs + '\n\t\t\t' + content.slice(esClosingDiv);
-
-  // Insert in English section (before the English cert-note)
-  const enNoteMarker = '<p class="cert-note">Certifications are used';
-  const enIndex = content.indexOf(enNoteMarker);
-  if (enIndex === -1) {
-    console.error('❌ No se encontró la sección en inglés en certificaciones.html');
-    process.exit(1);
-  }
-
-  const enClosingDiv = content.lastIndexOf('</div>', enIndex);
-  content = content.slice(0, enClosingDiv) + cardHtmlEn + '\n\t\t\t' + content.slice(enClosingDiv);
+  // Insert in English section
+  content = insertCardInArea(content, true, areaKey, cardHtmlEn);
 
   writeFileSync(certHtmlPath, content, 'utf8');
   console.log('✅ Archivo certificaciones.html actualizado.');
@@ -185,10 +306,13 @@ async function main() {
   );
   if (confirmPush.toLowerCase() !== 'n') {
     execSync(`git add "${certHtmlPath}"`, { cwd: repoRoot, stdio: 'inherit' });
-    execSync(`git commit -m "Agregar certificado: ${fullTitle}"`, {
-      cwd: repoRoot,
-      stdio: 'inherit',
-    });
+    execSync(
+      `git commit -m "Agregar certificado (${AREA_CONFIG[areaKey].labelEn}): ${fullTitle}"`,
+      {
+        cwd: repoRoot,
+        stdio: 'inherit',
+      },
+    );
     execSync('git push origin main', { cwd: repoRoot, stdio: 'inherit' });
     console.log('\n🎉 ¡Certificado subido y desplegado con éxito en GitHub!');
   } else {
