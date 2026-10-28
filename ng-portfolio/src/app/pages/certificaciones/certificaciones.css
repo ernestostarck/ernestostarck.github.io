@@ -505,3 +505,31 @@ html[data-theme='light'] .area-general .cert-bullet.is-active { background: #d97
   color: var(--muted);
   margin-top: 1.5rem;
 }
+
+/* ── CHIP ICONS (SVG masks) ── */
+
+html body .page-banner.page-banner .banner-chips.banner-chips .chip-area .chip-dot {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--chip-color, currentColor);
+  box-shadow: none;
+  backdrop-filter: none;
+  animation: none;
+  transform: none;
+  -webkit-mask: var(--chip-icon) center / contain no-repeat;
+  mask: var(--chip-icon) center / contain no-repeat;
+}
+
+.chip-data { --chip-icon: url('/icons/area-data.svg'); }
+.chip-ai { --chip-icon: url('/icons/area-ai.svg'); }
+.chip-general { --chip-icon: url('/icons/area-management.svg'); }
+
+.chip-data { --chip-color: #38bdf8; }
+.chip-ai { --chip-color: #c084fc; }
+.chip-general { --chip-color: #fbbf24; }
+html[data-theme='light'] .chip-data { --chip-color: #0284c7; }
+html[data-theme='light'] .chip-ai { --chip-color: #9333ea; }
+html[data-theme='light'] .chip-general { --chip-color: #d97706; }
