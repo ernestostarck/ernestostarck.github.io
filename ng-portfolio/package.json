@@ -14,7 +14,8 @@
     "lint": "prettier --check scripts/accessibility-check.mjs src/app/app.routes.spec.ts src/app/core/preferences.service.spec.ts",
     "audit:accessibility": "node scripts/accessibility-check.mjs",
     "cv:sync": "node scripts/sync-cv.mjs",
-    "cv:watch": "node scripts/sync-cv.mjs --watch"
+    "cv:watch": "node scripts/sync-cv.mjs --watch",
+    "cert:add": "node scripts/add-cert.mjs"
   },
   "prettier": {
     "printWidth": 100,
