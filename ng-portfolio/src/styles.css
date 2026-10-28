@@ -2086,6 +2086,32 @@ html[data-lang='en'] .lang-es {
 
 html[data-theme='light'] {
   color-scheme: light;
+  --bg: #edf2f9;
+  --surface: #ffffff;
+  --ink: #11233a;
+  --ink-soft: #2d425c;
+  --muted: #4b6585;
+  --card: rgba(248, 251, 255, 0.95);
+  --line: rgba(95, 128, 170, 0.26);
+  --accent: #1d5c9c;
+  --accent-bright: #2f7dc4;
+  --accent-glow: #0ea5d9;
+  --shadow: 0 10px 22px rgba(41, 66, 101, 0.1);
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #10161f;
+  --surface: #171f2b;
+  --ink: #edf2f8;
+  --ink-soft: #c3cedc;
+  --muted: #8f9eb1;
+  --card: rgba(23, 31, 43, 0.9);
+  --line: rgba(109, 148, 196, 0.22);
+  --accent: #2f6fb0;
+  --accent-bright: #4fa8e8;
+  --accent-glow: #5ec8ff;
+  --shadow: 0 14px 30px rgba(0, 0, 0, 0.42);
 }
 
 html[data-theme='light'] body {

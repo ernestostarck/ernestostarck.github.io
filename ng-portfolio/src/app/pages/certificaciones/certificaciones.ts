@@ -1,12 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { PreferencesService } from '../../core/preferences.service';
 import { ScrollRevealService } from '../../core/scroll-reveal.service';
 
 @Component({
   selector: 'app-certificaciones',
   standalone: true,
-  imports: [NgIf],
+  imports: [CommonModule],
   templateUrl: './certificaciones.html',
   styleUrl: './certificaciones.css',
 })
@@ -15,11 +15,71 @@ export class Certificaciones implements OnInit {
   theme = this.preferences.theme;
   private readonly scrollReveal = inject(ScrollRevealService);
 
+  activeIndexes: Record<string, number> = {
+    data: 0,
+    ai: 0,
+    software: 0,
+    general: 0,
+  };
+
+  certCounts: Record<string, number> = {
+    data: 2,
+    ai: 1,
+    software: 0,
+    general: 1,
+  };
+
   ngOnInit(): void {
-    // Initialize scroll reveal after view is rendered
     setTimeout(() => {
+      this.updateCertCounts();
       this.initScrollReveal();
     }, 100);
+  }
+
+  private cleanKey(area: string): string {
+    return area.replace(/-en$/, '').replace(/^area-/, '');
+  }
+
+  private updateCertCounts(): void {
+    if (typeof document === 'undefined') return;
+    const areas = ['data', 'ai', 'software', 'general'];
+    areas.forEach((area) => {
+      const el = document.getElementById(`area-${area}`) || document.getElementById(`area-${area}-en`);
+      if (el) {
+        const slides = el.querySelectorAll('.swiper-slide');
+        if (slides.length > 0) {
+          this.certCounts[area] = slides.length;
+        }
+      }
+    });
+  }
+
+  nextCert(area: string): void {
+    const key = this.cleanKey(area);
+    const count = this.certCounts[key] || 1;
+    this.activeIndexes[key] = ((this.activeIndexes[key] || 0) + 1) % count;
+  }
+
+  prevCert(area: string): void {
+    const key = this.cleanKey(area);
+    const count = this.certCounts[key] || 1;
+    this.activeIndexes[key] = ((this.activeIndexes[key] || 0) - 1 + count) % count;
+  }
+
+  goToCert(area: string, index: number): void {
+    const key = this.cleanKey(area);
+    this.activeIndexes[key] = index;
+  }
+
+  getActiveIndex(area: string): number {
+    const key = this.cleanKey(area);
+    return this.activeIndexes[key] || 0;
+  }
+
+  getBullets(area: string): number[] {
+    const key = this.cleanKey(area);
+    const count = this.certCounts[key] || 0;
+    return Array.from({ length: count }, (_, i) => i);
   }
 
   private initScrollReveal(): void {
@@ -47,4 +107,3 @@ export class Certificaciones implements OnInit {
     this.scrollReveal.initOnPageLoad();
   }
 }
-
