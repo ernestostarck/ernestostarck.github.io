@@ -163,6 +163,30 @@ html[data-theme='dark'] .section-title-main {
 .badge-software { background: rgba(74, 222, 128, 0.12); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.35); }
 .badge-general { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); }
 
+html[data-theme='dark'] .area-data h4 { color: #7dd3fc !important; text-shadow: 0 0 18px rgba(56, 189, 248, 0.35); }
+html[data-theme='dark'] .area-ai h4 { color: #d8b4fe !important; text-shadow: 0 0 18px rgba(192, 132, 252, 0.35); }
+html[data-theme='dark'] .area-software h4 { color: #86efac !important; text-shadow: 0 0 18px rgba(74, 222, 128, 0.35); }
+html[data-theme='dark'] .area-general h4 { color: #fcd34d !important; text-shadow: 0 0 18px rgba(251, 191, 36, 0.35); }
+
+html[data-theme='dark'] .cert-area-header {
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(148, 170, 205, 0.16);
+}
+
+html[data-theme='dark'] .cert-card {
+  background: linear-gradient(160deg, rgba(30, 40, 58, 0.95), rgba(20, 27, 40, 0.95));
+  border-color: rgba(148, 170, 205, 0.24);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme='dark'] .cert-card strong { color: #f4f7fc; }
+html[data-theme='dark'] .cert-card-description { color: #c3cee2; }
+html[data-theme='dark'] .cert-card-meta,
+html[data-theme='dark'] .cert-counter-chip { color: #b4c0d6; }
+html[data-theme='dark'] .cert-card-link a { color: #9db8ff; }
+html[data-theme='dark'] .cert-card-link a:hover { color: #c7d6ff; }
+html[data-theme='dark'] .cert-note { color: #b4c0d6; }
+
 html[data-theme='light'] .area-data h4 { color: #0284c7 !important; }
 html[data-theme='light'] .area-ai h4 { color: #9333ea !important; }
 html[data-theme='light'] .area-software h4 { color: #16a34a !important; }
