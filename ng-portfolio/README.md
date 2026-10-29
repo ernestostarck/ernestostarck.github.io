@@ -13,6 +13,8 @@ Portafolio SPA orientado a perfil de Software Engineer, construido con Angular 2
 - Despliegue automatizado por pipeline para reducir fricción operacional.
 - Identidad visual coherente: colores por área (Software cian, Data violeta, IA verde, Gestión ámbar), tarjetas con SVG animados, animaciones sutiles y soporte de `prefers-reduced-motion`.
 - Automatización de certificaciones: un script detecta el área del certificado y actualiza el sitio.
+- Identidad visual coherente: colores por área (Software cian, Data violeta, IA verde, Gestión ámbar), tarjetas con SVG animados, animaciones sutiles y soporte de `prefers-reduced-motion`.
+- Automatización de certificaciones: un script detecta el área del certificado y actualiza el sitio.
 
 ## Stack técnico
 
@@ -30,6 +32,7 @@ Portafolio SPA orientado a perfil de Software Engineer, construido con Angular 2
 - Proyectos
 - Certificaciones
 - Contacto
+- Header de vidrio con logo SVG propio (variantes oscura y clara) y línea de acento animada
 - Modo claro/oscuro
 - Cambio de idioma ES/EN
 
@@ -46,6 +49,12 @@ El styling se controla desde variables y reglas consistentes para sostener legib
 
 4. Navegación controlada por estado Angular
 La apertura/cierre de navbar se maneja en la app sin dependencia del JavaScript de Bootstrap.
+
+5. Estilos globales por capas
+Los estilos de componente tienen presupuesto de tamaño; las capas visuales transversales (colores por área, tarjetas, header, botones) viven en src/styles.css, y los selectores de tema dentro de componentes usan :host-context(html[data-theme=...]).
+
+6. Logo por tema
+El logo del header usa dos SVG (public/logo-header-dark.svg y public/logo-header-light.svg) que se alternan según el tema del sitio, ya que un SVG dentro de img no puede reaccionar al botón de tema.
 
 ## Requisitos
 
@@ -74,6 +83,7 @@ http://localhost:4200/
 | npm run deploy | Publicación manual a rama gh-pages |
 | npm run watch | Build continuo en modo desarrollo |
 | npm test | Ejecución de pruebas |
+| npm run cert:add | Agrega un certificado y detecta su área automáticamente (scripts/add-cert.mjs) |
 | npm run cert:add | Agrega un certificado y detecta su área automáticamente (ver scripts/add-cert.mjs) |
 
 ## Despliegue
@@ -98,7 +108,8 @@ npm run deploy
 
 ```text
 ng-portfolio/
-├── public/
+├── public/            # Íconos SVG, logos, CV y certificados
+├── scripts/           # add-cert.mjs, accessibility-check.mjs
 ├── src/
 │   ├── app/
 │   │   ├── core/
