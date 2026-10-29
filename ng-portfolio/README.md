@@ -11,6 +11,8 @@ Portafolio SPA orientado a perfil de Software Engineer, construido con Angular 2
 - Internacionalización práctica ES/EN a nivel de contenido y navegación.
 - Integración con la API pública de GitHub para actualizar repositorios sin editar el portafolio manualmente.
 - Despliegue automatizado por pipeline para reducir fricción operacional.
+- Identidad visual coherente: colores por área (Software cian, Data violeta, IA verde, Gestión ámbar), tarjetas con SVG animados, animaciones sutiles y soporte de `prefers-reduced-motion`.
+- Automatización de certificaciones: un script detecta el área del certificado y actualiza el sitio.
 
 ## Stack técnico
 
@@ -72,6 +74,7 @@ http://localhost:4200/
 | npm run deploy | Publicación manual a rama gh-pages |
 | npm run watch | Build continuo en modo desarrollo |
 | npm test | Ejecución de pruebas |
+| npm run cert:add | Agrega un certificado y detecta su área automáticamente (ver scripts/add-cert.mjs) |
 
 ## Despliegue
 
