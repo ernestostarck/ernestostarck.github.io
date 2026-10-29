@@ -1,4 +1,4 @@
-﻿/* ── SWIPER CUSTOMIZATION ── */
+/* ── SWIPER CUSTOMIZATION ── */
 
 .projects-swiper {
   /* Reducir espacio para evitar salto blanco entre banner y contenido siguiente */
@@ -417,3 +417,35 @@
   object-fit: contain;
 }
 
+
+/* ── PROJECTS BANNER ART ── */
+.projects-banner { position: relative; overflow: hidden; }
+.proj-art { position: absolute; top: 50%; right: clamp(1rem, 3vw, 3rem); width: 280px; height: 280px; transform: translateY(-50%); z-index: 1; pointer-events: none; display: none; }
+.proj-orbit { position: absolute; inset: -30px; width: calc(100% + 60px); height: calc(100% + 60px); animation: pjSpin 60s linear infinite; }
+.proj-core {
+  position: absolute; top: 50%; left: 50%; width: 88px; height: 88px; margin: -44px 0 0 -44px; display: grid; place-items: center; border-radius: 50%;
+  background: color-mix(in srgb, var(--card) 70%, transparent); border: 1px solid color-mix(in srgb, var(--accent-glow) 45%, transparent);
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-glow) 8%, transparent), 0 0 46px color-mix(in srgb, var(--accent-glow) 40%, transparent);
+  animation: pjPulse 4.5s ease-in-out infinite;
+}
+.proj-core span { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; background: var(--aurora); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.proj-tile { position: absolute; width: 64px; height: 64px; filter: drop-shadow(0 12px 20px color-mix(in srgb, var(--accent) 35%, transparent)); animation: pjFloat 6s ease-in-out infinite; }
+.proj-tile.tile-a { top: 0; left: 108px; }
+.proj-tile.tile-b { top: 108px; right: 0; animation-delay: -1.5s; }
+.proj-tile.tile-c { bottom: 0; left: 108px; animation-delay: -3s; }
+.proj-tile.tile-d { top: 108px; left: 0; animation-delay: -4.5s; }
+.projects-banner .eyebrow { display: inline-flex; align-items: center; gap: .5rem; }
+.projects-banner .eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #34d399; animation: pjPing 2.2s ease-out infinite; }
+.projects-banner h2 { background: var(--aurora); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: pjShift 8s ease-in-out infinite alternate; }
+@keyframes pjSpin { to { transform: rotate(360deg); } }
+@keyframes pjPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes pjFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
+@keyframes pjPing { 0% { box-shadow: 0 0 0 0 rgba(52,211,153,.6); } 100% { box-shadow: 0 0 0 10px rgba(52,211,153,0); } }
+@keyframes pjShift { to { background-position: 100% 0; } }
+@media (min-width: 1000px) {
+  .proj-art { display: block; }
+  .projects-banner { padding-right: 380px !important; min-height: 330px; display: flex; flex-direction: column; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proj-orbit, .proj-core, .proj-tile, .projects-banner h2, .projects-banner .eyebrow::before { animation: none !important; }
+}
