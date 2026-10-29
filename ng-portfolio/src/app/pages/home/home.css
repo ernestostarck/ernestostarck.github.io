@@ -450,3 +450,98 @@
     order: -1;
   }
 }
+
+/* ── HERO ART (SVG + animaciones) ── */
+
+.home-banner .hero-art {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 3vw, 3rem);
+  width: 340px;
+  height: 340px;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  display: none;
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  animation: heroSpin 60s linear infinite;
+}
+
+.hero-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 104px;
+  height: 104px;
+  margin: -52px 0 0 -52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-glow) 45%, transparent);
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-glow) 8%, transparent), 0 0 46px color-mix(in srgb, var(--accent-glow) 40%, transparent);
+  backdrop-filter: blur(8px);
+  animation: heroPulse 4.5s ease-in-out infinite;
+}
+
+.hero-core span {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--aurora);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-tile {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  filter: drop-shadow(0 12px 20px color-mix(in srgb, var(--accent) 35%, transparent));
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.tile-code { top: 0; left: 132px; }
+.tile-data { top: 132px; right: 0; animation-delay: -1.5s; }
+.tile-ai { bottom: 0; left: 132px; animation-delay: -3s; }
+.tile-auto { top: 132px; left: 0; animation-delay: -4.5s; }
+
+.hero-focus {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-focus::after {
+  content: '';
+  display: block;
+  height: 2px;
+  margin-top: 0.55rem;
+  border-radius: 2px;
+  background: var(--aurora);
+  background-size: 200% 100%;
+  animation: auroraShift 6s ease-in-out infinite;
+  transform-origin: left;
+}
+
+@keyframes heroSpin { to { transform: rotate(360deg); } }
+@keyframes heroPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes heroFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
+
+@media (min-width: 1100px) {
+  .home-banner .hero-art { display: block; }
+  #home .home-banner,
+  #home-en .home-banner { padding-right: 440px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orbit, .hero-core, .hero-tile, .hero-focus::after { animation: none; }
+}
