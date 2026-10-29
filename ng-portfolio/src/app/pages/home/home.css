@@ -580,13 +580,12 @@
   display: flex; align-items: center; gap: .6rem; color: var(--ink) !important;
 }
 #home .home-card h3::before, #home-en .home-card h3::before {
-  content: ''; flex: none; width: 2rem; height: 2rem; border-radius: 10px;
+  content: ''; flex: none; width: 1.7rem; height: 1.7rem;
   background: var(--c);
-  -webkit-mask: var(--ico) center / 58% no-repeat, linear-gradient(#000, #000);
-  mask: var(--ico) center / 58% no-repeat, linear-gradient(#000, #000);
-  -webkit-mask-composite: source-out; mask-composite: subtract;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent);
-  animation: cardIconPulse 3.2s ease-in-out infinite;
+  -webkit-mask: var(--ico) center / 100% no-repeat;
+  mask: var(--ico) center / 100% no-repeat;
+  
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c) 60%, transparent));
 }
 #home .card-profile h3, #home-en .card-profile h3 { --ico: url('/icons/card-profile.svg'); }
 #home .card-principles h3, #home-en .card-principles h3 { --ico: url('/icons/card-principles.svg'); }

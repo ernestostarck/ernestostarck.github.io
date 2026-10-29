@@ -242,3 +242,85 @@
 @media (prefers-reduced-motion: reduce) {
   .about-orbit, .about-core, .about-tile, .about-banner h2, .about-banner .eyebrow::before { animation: none !important; }
 }
+/* ── ABOUT SECTIONS: area colors + motion (same system as home cards) ── */
+.content-block.ab-context, .content-block.ab-approach, .content-block.ab-decisions, .content-block.ab-areas {
+  --c: #22d3ee; position: relative; overflow: hidden; border-radius: 14px; padding: 1.6rem 1.8rem;
+  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--line)); border-left: 1px solid color-mix(in srgb, var(--c) 28%, var(--line));
+  border-top: 3px solid var(--c);
+  background: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c) 14%, transparent), transparent 60%),
+    linear-gradient(135deg, color-mix(in srgb, var(--card) 94%, var(--c) 6%), var(--card));
+  box-shadow: 0 10px 30px -18px color-mix(in srgb, var(--c) 60%, transparent);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.content-block.ab-approach { --c: #a78bfa; }
+.content-block.ab-decisions { --c: #fbbf24; }
+.content-block.ab-areas { --c: #4ade80; }
+:host-context(html[data-theme='light']) .content-block.ab-context { --c: #0891b2; }
+:host-context(html[data-theme='light']) .content-block.ab-approach { --c: #7c3aed; }
+:host-context(html[data-theme='light']) .content-block.ab-decisions { --c: #d97706; }
+:host-context(html[data-theme='light']) .content-block.ab-areas { --c: #16a34a; }
+.content-block.ab-context:hover, .content-block.ab-approach:hover, .content-block.ab-decisions:hover, .content-block.ab-areas:hover {
+  transform: translateY(-4px); border-color: var(--c); border-left-color: var(--c);
+  box-shadow: 0 18px 38px -16px color-mix(in srgb, var(--c) 70%, transparent);
+}
+.ab-context::after, .ab-approach::after, .ab-decisions::after, .ab-areas::after {
+  content: ''; position: absolute; inset: 0 auto 0 -60%; width: 40%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--c) 18%, transparent), transparent);
+  transform: skewX(-20deg); animation: abSheen 8s ease-in-out infinite;
+}
+.ab-context h3, .ab-approach h3, .ab-decisions h3, .ab-areas h3 {
+  display: flex; align-items: center; gap: .65rem; color: var(--ink) !important;
+}
+.ab-context h3::before, .ab-approach h3::before, .ab-decisions h3::before, .ab-areas h3::before {
+  content: ''; flex: none; width: 1.7rem; height: 1.7rem; background: var(--c);
+  -webkit-mask: var(--ico) center / 100% no-repeat;
+  mask: var(--ico) center / 100% no-repeat;
+  
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c) 60%, transparent));
+}
+.ab-context h3 { --ico: url('/icons/card-profile.svg'); }
+.ab-approach h3 { --ico: url('/icons/card-principles.svg'); }
+.ab-decisions h3 { --ico: url('/icons/card-priorities.svg'); }
+.ab-areas h3 { --ico: url('/icons/card-services.svg'); }
+.ab-context strong, .ab-approach strong { color: var(--c); }
+
+.ab-decisions .value-list { counter-reset: dec; display: grid; gap: .7rem; }
+.ab-decisions .value-list li {
+  counter-increment: dec; display: flex; align-items: center; gap: .9rem; padding: .85rem 1rem; border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+  border-radius: 12px; background: color-mix(in srgb, var(--c) 8%, transparent); transition: transform .3s ease, background .3s ease;
+}
+.ab-decisions .value-list li::before {
+  content: counter(dec); position: static; flex: none; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%;
+  font-family: var(--font-mono); font-size: .8rem; font-weight: 700; color: var(--c);
+  border: 1px solid color-mix(in srgb, var(--c) 50%, transparent); background: color-mix(in srgb, var(--c) 16%, transparent);
+}
+.ab-decisions .value-list li:hover { padding-left: 1rem; color: inherit; transform: translateX(6px); background: color-mix(in srgb, var(--c) 16%, transparent); }
+
+.area-grid { display: grid; gap: .9rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.area-card {
+  --a: #38bdf8; padding: 1.1rem; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+  background: radial-gradient(100% 80% at 100% 0%, color-mix(in srgb, var(--a) 16%, transparent), transparent 70%), color-mix(in srgb, var(--a) 6%, transparent);
+  transition: transform .3s ease, box-shadow .3s ease; animation: abPop .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+.area-card.area-software { --a: #4ade80; animation-delay: .1s; }
+.area-card.area-ai { --a: #c084fc; animation-delay: .2s; }
+:host-context(html[data-theme='light']) .area-card.area-data { --a: #0369a1; }
+:host-context(html[data-theme='light']) .area-card.area-software { --a: #15803d; }
+:host-context(html[data-theme='light']) .area-card.area-ai { --a: #7e22ce; }
+.area-card:hover { transform: translateY(-5px); box-shadow: 0 16px 30px -14px var(--a); }
+.area-card img { display: block; margin-bottom: .6rem; animation: abFloat 5s ease-in-out infinite; }
+.area-card.area-software img { animation-delay: -1.6s; }
+.area-card.area-ai img { animation-delay: -3.2s; }
+.area-card h4 { margin: 0 0 .35rem; font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--a); }
+.area-card p { margin: 0; font-size: .88rem; line-height: 1.45; color: var(--ink-soft); }
+
+@media (max-width: 768px) { .area-grid { grid-template-columns: 1fr; } }
+@keyframes abSheen { 0%, 70% { left: -60%; } 100% { left: 140%; } }
+@keyframes abPulse { 0%, 100% { box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent), 0 0 0 0 color-mix(in srgb, var(--c) 35%, transparent); } 50% { box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent), 0 0 0 6px transparent; } }
+@keyframes abPop { from { opacity: 0; transform: scale(.88) translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes abFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ab-context::after, .ab-approach::after, .ab-decisions::after, .ab-areas::after, .area-card, .area-card img,
+  .ab-context h3::before, .ab-approach h3::before, .ab-decisions h3::before, .ab-areas h3::before { animation: none !important; }
+  .content-block:hover, .area-card:hover, .ab-decisions .value-list li:hover { transform: none !important; }
+}
