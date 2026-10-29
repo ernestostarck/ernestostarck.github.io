@@ -3026,3 +3026,9 @@ html[data-theme='light'] body .brand-mark { color: #fff; background: linear-grad
 @media (prefers-reduced-motion: reduce) {
   html body .navbar::after { animation: none; }
 }
+/* Header logo SVG (dark/light variants) */
+html body .brand-logo { height: 38px; width: auto; display: block; transition: transform 260ms ease, filter 260ms ease; }
+html body .navbar-brand:hover .brand-logo { transform: translateY(-1px) scale(1.03); filter: drop-shadow(0 4px 12px rgba(34, 211, 238, 0.4)); }
+html body .brand-logo-light { display: none; }
+html[data-theme='light'] body .brand-logo-dark { display: none; }
+html[data-theme='light'] body .brand-logo-light { display: block; }

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" role="img" aria-labelledby="title desc">
+  <title id="title">Portafolio Ernesto Starck</title>
+  <desc id="desc">Logotipo adaptable a modo claro y oscuro, con un símbolo de código y el nombre Ernesto Starck.</desc>
+  <style>
+    :root { color-scheme: light dark; }
+    .primary { fill: #171827; }
+    .secondary { fill: #626579; }
+    .accent { fill: url(#accentGradient); }
+    .outline { stroke: #171827; }
+    @media (prefers-color-scheme: dark) {
+      .primary { fill: #F4F5FC; }
+      .secondary { fill: #B6B9CC; }
+      .outline { stroke: #F4F5FC; }
+    }
+    text { font-family: Inter, "Segoe UI", Arial, sans-serif; }
+    .eyebrow { font-size: 19px; font-weight: 650; letter-spacing: 4px; }
+    .name { font-size: 52px; font-weight: 760; letter-spacing: -1.6px; }
+  </style>
+  <defs>
+    <linearGradient id="accentGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4F8CFF"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icono: marco de terminal con símbolo de código -->
+  <g transform="translate(28 36)">
+    <rect x="0" y="0" width="164" height="164" rx="34" fill="url(#accentGradient)"/>
+    <path d="M65 54 39 82 65 110" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M99 54 125 82 99 110" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M91 46 73 118" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+    <circle cx="34" cy="29" r="4" fill="#FFFFFF" opacity=".75"/>
+    <circle cx="49" cy="29" r="4" fill="#FFFFFF" opacity=".55"/>
+    <circle cx="64" cy="29" r="4" fill="#FFFFFF" opacity=".35"/>
+  </g>
+
+  <g transform="translate(230 70)">
+    <text class="eyebrow accent" x="0" y="0">PORTAFOLIO</text>
+    <text class="name primary" x="0" y="66">Ernesto Starck</text>
+    <rect x="1" y="91" width="74" height="5" rx="2.5" fill="url(#accentGradient)"/>
+    <text class="secondary" x="0" y="127" font-size="20" font-weight="500">Software · Datos · Automatización</text>
+  </g>
+</svg>
