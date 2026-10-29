@@ -2807,3 +2807,31 @@ html body .social-icon-link:hover, html body .social-icon-link:focus-visible {
   html body .btn.btn-primary::after, html body .featured-projects .section-heading::after { animation: none !important; }
   html body .featured-grid .featured-project:hover, html body .btn:hover, html body .social-icon-link:hover { transform: none !important; }
 }
+/* ── SOBRE MI: technologies (icons always legible) ── */
+html body .tech-grid .tech-item { --k: #a78bfa; --t-line: color-mix(in srgb, var(--k) 38%, transparent); --t-bg: color-mix(in srgb, var(--k) 12%, transparent); border-radius: 16px; animation: tagPop .6s cubic-bezier(.34,1.56,.64,1) both; }
+html body .tech-grid .tech-item:nth-child(2) { --k: #22d3ee; animation-delay: .08s; }
+html body .tech-grid .tech-item:nth-child(3) { --k: #fbbf24; animation-delay: .16s; }
+html body .tech-grid .tech-item:nth-child(4) { --k: #4ade80; animation-delay: .24s; }
+html body .tech-grid .tech-item:nth-child(5) { --k: #38bdf8; animation-delay: .32s; }
+html body .tech-grid .tech-item:nth-child(6) { --k: #f472b6; animation-delay: .4s; }
+html[data-theme='light'] body .tech-grid .tech-item { --k: #7c3aed; }
+html[data-theme='light'] body .tech-grid .tech-item:nth-child(2) { --k: #0891b2; }
+html[data-theme='light'] body .tech-grid .tech-item:nth-child(3) { --k: #d97706; }
+html[data-theme='light'] body .tech-grid .tech-item:nth-child(4) { --k: #16a34a; }
+html[data-theme='light'] body .tech-grid .tech-item:nth-child(5) { --k: #0369a1; }
+html[data-theme='light'] body .tech-grid .tech-item:nth-child(6) { --k: #db2777; }
+html body .tech-grid .tech-item::before { background: var(--k) !important; }
+html body .tech-grid .tech-item h4 { color: var(--k) !important; display: flex; align-items: center; gap: .5rem; }
+html body .tech-grid .tech-item h4::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--k); box-shadow: 0 0 10px var(--k); }
+html body .tech-grid .tech-item:hover { border-color: var(--k); box-shadow: 0 16px 34px -18px var(--k); }
+
+/* light tile so dark brand icons (Django, Express, Git, Next.js...) stay visible in dark mode */
+html body .tech-badge, html body .skill-item { --tile: #f4f6fc; }
+html body .tech-badge { background: var(--tile) !important; border: 1px solid color-mix(in srgb, var(--k, #7c5cff) 45%, transparent); }
+html body .tech-badge > span { color: #1b2440 !important; }
+html body .tech-badge:hover { border-color: var(--k, var(--accent-glow)); box-shadow: 0 12px 24px -12px var(--k, var(--accent-glow)); }
+html body .tech-badge-image { object-fit: contain; min-width: 32px; min-height: 32px; }
+html body .skills-grid .skill-item {
+  background: var(--tile) !important; color: #1b2440 !important; border-radius: 12px; border: 1px solid rgba(124, 92, 255, .4);
+}
+html body .skills-grid .skill-item:hover { border-color: #22d3ee; box-shadow: 0 12px 24px -12px #22d3ee; }
