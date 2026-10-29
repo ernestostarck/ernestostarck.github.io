@@ -549,11 +549,14 @@
 
 .chip-data { --chip-icon: url('/icons/area-data.svg'); }
 .chip-ai { --chip-icon: url('/icons/area-ai.svg'); }
+.chip-software { --chip-icon: url('/icons/area-software.svg'); }
 .chip-general { --chip-icon: url('/icons/area-management.svg'); }
 
 .chip-data { --chip-color: #38bdf8; }
 .chip-ai { --chip-color: #c084fc; }
+.chip-software { --chip-color: #4ade80; }
 .chip-general { --chip-color: #fbbf24; }
 :host-context(html[data-theme='light']) .chip-data { --chip-color: #0284c7; }
 :host-context(html[data-theme='light']) .chip-ai { --chip-color: #9333ea; }
+:host-context(html[data-theme='light']) .chip-software { --chip-color: #16a34a; }
 :host-context(html[data-theme='light']) .chip-general { --chip-color: #d97706; }

@@ -157,9 +157,93 @@ function getIconHtml(provider) {
   return `<img src="icons/coursera-logo.png" alt="${provider}" class="cert-card-icon" />`;
 }
 
-function insertCardInArea(content, isEnglish, area, cardHtml) {
+const AREA_ORDER = ['data', 'ai', 'software', 'general'];
+
+const AREA_ARIA = {
+  data: { es: 'Data', en: 'Data' },
+  ai: { es: 'AI', en: 'AI' },
+  software: { es: 'Software', en: 'Software' },
+  general: { es: 'Gestión', en: 'Management' },
+};
+
+const NAV_ICON_PREV =
+  '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+const NAV_ICON_NEXT =
+  '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+
+function buildSlide({ isEnglish, area, index, iconHtml, title, description, url }) {
+  const T = '\t';
+  const status = isEnglish ? 'Completed' : 'Completado';
+  const linkText = isEnglish ? 'View certificate' : 'Ver certificado';
+  return [
+    `${T.repeat(6)}<div class="swiper-slide" [class.is-active]="getActiveIndex('${area}') === ${index}">`,
+    `${T.repeat(7)}<div class="cert-card cert-completado">`,
+    `${T.repeat(8)}<div class="cert-card-top">`,
+    `${T.repeat(9)}${iconHtml}`,
+    `${T.repeat(9)}<span class="cert-counter-chip" *ngIf="certCounts['${area}'] > 1">${index + 1} / {{ certCounts['${area}'] }}</span>`,
+    `${T.repeat(8)}</div>`,
+    `${T.repeat(8)}<strong>✓ ${title}</strong>`,
+    `${T.repeat(8)}<span class="cert-card-description">${description}</span>`,
+    `${T.repeat(8)}<div class="cert-card-footer">`,
+    `${T.repeat(9)}<span class="cert-card-status status-completado status-${area}">${status}</span>`,
+    `${T.repeat(9)}<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">${linkText} <span aria-hidden="true">↗</span></a></span>`,
+    `${T.repeat(8)}</div>`,
+    `${T.repeat(7)}</div>`,
+    `${T.repeat(6)}</div>`,
+  ].join('\n');
+}
+
+function buildAreaSection({ isEnglish, area, areaId, slideHtml }) {
   const config = AREA_CONFIG[area];
-  const areaId = isEnglish ? `area-${area}-en` : `area-${area}`;
+  const T = '\t';
+  const title = (isEnglish ? config.labelEn : config.labelEs).replace(/&/g, '&amp;');
+  const badgeText = isEnglish ? '1 certification' : '1 certificación';
+  const aria = AREA_ARIA[area][isEnglish ? 'en' : 'es'];
+  const regionLabel = isEnglish
+    ? `${aria} certifications carousel`
+    : `Carrusel de certificaciones de ${aria}`;
+  const prevLabel = isEnglish ? `Previous certificate in ${aria}` : `Certificado anterior en ${aria}`;
+  const nextLabel = isEnglish ? `Next certificate in ${aria}` : `Siguiente certificado en ${aria}`;
+  const pagLabel = isEnglish ? `${aria} pagination` : `Paginación ${aria}`;
+  const goLabel = isEnglish ? 'Go to certificate ' : 'Ir a certificado ';
+  return [
+    `${T.repeat(3)}<!-- ÁREA: ${area.toUpperCase()} -->`,
+    `${T.repeat(3)}<div class="cert-area-group area-${area}" id="${areaId}">`,
+    `${T.repeat(4)}<div class="cert-area-header">`,
+    `${T.repeat(5)}<div class="cert-area-title-wrap">`,
+    `${T.repeat(6)}<span class="area-indicator indicator-${area}" aria-hidden="true"></span>`,
+    `${T.repeat(6)}<h4>${title}</h4>`,
+    `${T.repeat(5)}</div>`,
+    `${T.repeat(5)}<span class="area-badge ${config.badgeClass}">${badgeText}</span>`,
+    `${T.repeat(4)}</div>`,
+    '',
+    `${T.repeat(4)}<div class="cert-swiper" role="region" aria-label="${regionLabel}">`,
+    `${T.repeat(5)}<div class="swiper-wrapper">`,
+    slideHtml,
+    `${T.repeat(5)}</div>`,
+    '',
+    `${T.repeat(5)}<div class="cert-swiper-nav" *ngIf="certCounts['${area}'] > 1">`,
+    `${T.repeat(6)}<button class="cert-swiper-btn cert-swiper-prev" type="button" (click)="prevCert('${area}')" aria-label="${prevLabel}">`,
+    `${T.repeat(7)}${NAV_ICON_PREV}`,
+    `${T.repeat(6)}</button>`,
+    `${T.repeat(6)}<div class="cert-swiper-pagination" aria-label="${pagLabel}">`,
+    `${T.repeat(7)}<button *ngFor="let i of getBullets('${area}')" type="button" class="cert-bullet" [class.is-active]="getActiveIndex('${area}') === i" (click)="goToCert('${area}', i)" [attr.aria-label]="'${goLabel}' + (i + 1)"></button>`,
+    `${T.repeat(6)}</div>`,
+    `${T.repeat(6)}<button class="cert-swiper-btn cert-swiper-next" type="button" (click)="nextCert('${area}')" aria-label="${nextLabel}">`,
+    `${T.repeat(7)}${NAV_ICON_NEXT}`,
+    `${T.repeat(6)}</button>`,
+    `${T.repeat(5)}</div>`,
+    `${T.repeat(4)}</div>`,
+    `${T.repeat(3)}</div>`,
+    '',
+    '',
+  ].join('\n');
+}
+
+function insertCardInArea(content, isEnglish, area, cardData) {
+  const config = AREA_CONFIG[area];
+  const areaSuffix = isEnglish ? '-en' : '';
+  const areaId = `area-${area}${areaSuffix}`;
   const sectionMarker = isEnglish
     ? '<section class="section lang-en"'
     : '<section class="section lang-es"';
@@ -173,55 +257,66 @@ function insertCardInArea(content, isEnglish, area, cardHtml) {
   const sectionEnd = content.indexOf('</section>', sectionStart);
   let sectionContent = content.slice(sectionStart, sectionEnd);
 
-  // Check if area already exists
   const areaIndex = sectionContent.indexOf(`id="${areaId}"`);
 
   if (areaIndex !== -1) {
-    // Area exists: insert inside its education-grid
-    const gridStart = sectionContent.indexOf('<div class="education-grid">', areaIndex);
-    const gridEnd = sectionContent.indexOf('</div>', gridStart);
+    const navIndex = sectionContent.indexOf('<div class="cert-swiper-nav"', areaIndex);
+    if (navIndex === -1) throw new Error(`No se encontró el carrusel del área ${area}`);
+    const slideCount = (
+      sectionContent.slice(areaIndex, navIndex).match(/class="swiper-slide"/g) || []
+    ).length;
+    const slideHtml = buildSlide({ isEnglish, area, index: slideCount, ...cardData });
+
+    const wrapperClose = sectionContent.lastIndexOf('</div>', navIndex);
+    const lineStart = sectionContent.lastIndexOf('\n', wrapperClose) + 1;
     sectionContent =
-      sectionContent.slice(0, gridEnd) + cardHtml + '\n\t\t\t\t' + sectionContent.slice(gridEnd);
+      sectionContent.slice(0, lineStart) + slideHtml + '\n' + sectionContent.slice(lineStart);
 
-    // Update count badge
-    const badgeRegex = isEnglish
-      ? new RegExp(`<span class="area-badge ${config.badgeClass}">(\\d+) certification(s)?</span>`)
-      : new RegExp(
-          `<span class="area-badge ${config.badgeClass}">(\\d+) certificaci[oó]n(es)?</span>`,
-        );
-
-    sectionContent = sectionContent.replace(badgeRegex, (match, count) => {
-      const newCount = parseInt(count, 10) + 1;
-      return isEnglish
-        ? `<span class="area-badge ${config.badgeClass}">${newCount} certifications</span>`
-        : `<span class="area-badge ${config.badgeClass}">${newCount} certificaciones</span>`;
+    const badgeRegex = new RegExp(
+      `(<span class="area-badge ${config.badgeClass}">)(\\d+) [^<]*(</span>)`,
+    );
+    sectionContent = sectionContent.replace(badgeRegex, (_m, open, count, close) => {
+      const n = parseInt(count, 10) + 1;
+      return `${open}${n} ${isEnglish ? 'certifications' : 'certificaciones'}${close}`;
     });
   } else {
-    // Area does NOT exist: add chip to banner and create new area section
-    const bannerChipsClose = sectionContent.indexOf(
-      '</div>',
-      sectionContent.indexOf('class="banner-chips"'),
-    );
-    const chipHtml = `\t\t\t\t\t<span class="chip-area ${config.chipClass}">${isEnglish ? config.chipLabelEn : config.chipLabelEs}</span>\n`;
-    sectionContent =
-      sectionContent.slice(0, bannerChipsClose) + chipHtml + sectionContent.slice(bannerChipsClose);
+    // Área nueva: chip en el banner (con ícono) + sección con carrusel en su posición
+    const chipsStart = sectionContent.indexOf('class="banner-chips"');
+    const chipsClose = sectionContent.indexOf('\n\t\t\t\t</div>', chipsStart);
+    const chipLabel = (isEnglish ? config.chipLabelEn : config.chipLabelEs).replace(/&/g, '&amp;');
+    const chipHtml = `\n\t\t\t\t\t<span class="chip-area ${config.chipClass}"><span class="chip-dot" aria-hidden="true"></span>${chipLabel}</span>`;
+    let chipAt = chipsClose;
+    for (const next of AREA_ORDER.slice(AREA_ORDER.indexOf(area) + 1)) {
+      const nextChip = sectionContent.indexOf(`chip-area ${AREA_CONFIG[next].chipClass}"`, chipsStart);
+      if (nextChip !== -1 && nextChip < chipsClose) {
+        chipAt = sectionContent.lastIndexOf('\n', nextChip);
+        break;
+      }
+    }
+    sectionContent = sectionContent.slice(0, chipAt) + chipHtml + sectionContent.slice(chipAt);
 
-    // Create new area section
-    const areaTitle = isEnglish ? config.labelEn : config.labelEs;
-    const badgeText = isEnglish ? '1 certification' : '1 certificación';
-    const newAreaHtml = `\n\t\t\t<!-- ÁREA: ${areaTitle.toUpperCase()} -->\n\t\t\t<div class="cert-area-group" id="${areaId}">\n\t\t\t\t<div class="cert-area-header">\n\t\t\t\t\t<h4>${areaTitle}</h4>\n\t\t\t\t\t<span class="area-badge ${config.badgeClass}">${badgeText}</span>\n\t\t\t\t</div>\n\t\t\t\t<div class="education-grid">\n${cardHtml}\n\t\t\t\t</div>\n\t\t\t</div>\n`;
+    const slideHtml = buildSlide({ isEnglish, area, index: 0, ...cardData });
+    const newAreaHtml = buildAreaSection({ isEnglish, area, areaId, slideHtml });
 
-    const noteIndex = sectionContent.indexOf(noteMarker);
+    let insertAt = -1;
+    for (const next of AREA_ORDER.slice(AREA_ORDER.indexOf(area) + 1)) {
+      const nextIdx = sectionContent.indexOf(`id="area-${next}${areaSuffix}"`);
+      if (nextIdx !== -1) {
+        const commentIdx = sectionContent.lastIndexOf('<!-- ÁREA', nextIdx);
+        insertAt = sectionContent.lastIndexOf('\n', commentIdx) + 1;
+        break;
+      }
+    }
+    if (insertAt === -1) {
+      const noteIdx = sectionContent.indexOf(noteMarker);
+      insertAt = sectionContent.lastIndexOf('\n', noteIdx) + 1;
+    }
     sectionContent =
-      sectionContent.slice(0, noteIndex) +
-      newAreaHtml +
-      '\n\t\t\t' +
-      sectionContent.slice(noteIndex);
+      sectionContent.slice(0, insertAt) + newAreaHtml + sectionContent.slice(insertAt);
   }
 
   return content.slice(0, sectionStart) + sectionContent + content.slice(sectionEnd);
 }
-
 async function main() {
   let url = process.argv[2];
   if (!url) {
@@ -270,30 +365,17 @@ async function main() {
 
   const iconHtml = getIconHtml(meta.provider);
 
-  const cardHtmlEs = `\t\t\t\t\t<div class="cert-card cert-completado">
-\t\t\t\t\t\t${iconHtml}
-\t\t\t\t\t\t<strong>✓ ${fullTitle}</strong>
-\t\t\t\t\t\t<span class="cert-card-description">${descEs}</span>
-\t\t\t\t\t\t<span class="cert-card-status status-completado">Completado</span>
-\t\t\t\t\t\t<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">Ver certificado</a></span>
-\t\t\t\t\t</div>`;
-
-  const cardHtmlEn = `\t\t\t\t\t<div class="cert-card cert-completado">
-\t\t\t\t\t\t${iconHtml}
-\t\t\t\t\t\t<strong>✓ ${fullTitle}</strong>
-\t\t\t\t\t\t<span class="cert-card-description">${descEn}</span>
-\t\t\t\t\t\t<span class="cert-card-status status-completado">Completed</span>
-\t\t\t\t\t\t<span class="cert-card-link"><a href="${url}" target="_blank" rel="noopener noreferrer">View certificate</a></span>
-\t\t\t\t\t</div>`;
+  const cardDataEs = { iconHtml, title: fullTitle, description: descEs, url };
+  const cardDataEn = { iconHtml, title: fullTitle, description: descEn, url };
 
   console.log('\n📄 Insertando certificado en certificaciones.html...');
   let content = readFileSync(certHtmlPath, 'utf8');
 
   // Insert in Spanish section
-  content = insertCardInArea(content, false, areaKey, cardHtmlEs);
+  content = insertCardInArea(content, false, areaKey, cardDataEs);
 
   // Insert in English section
-  content = insertCardInArea(content, true, areaKey, cardHtmlEn);
+  content = insertCardInArea(content, true, areaKey, cardDataEn);
 
   writeFileSync(certHtmlPath, content, 'utf8');
   console.log('✅ Archivo certificaciones.html actualizado.');
