@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CONTACT_EMAIL, CONTACT_FORM_ENDPOINT } from '../../core/contact-config';
 
 const REASONS: Record<string, string> = {
   job: 'Oportunidad laboral',
@@ -20,6 +21,7 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
 })
 export class Contacto {
   private readonly fb = inject(FormBuilder);
+  readonly contactEmail = CONTACT_EMAIL;
   status = signal<Status>('idle');
 
   form = this.fb.nonNullable.group({
@@ -56,7 +58,7 @@ export class Contacto {
       payload.set('lang', lang);
       payload.set('reason', REASONS[this.form.controls.reason.value] ?? this.form.controls.reason.value);
 
-      const response = await fetch('/', {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: payload.toString(),

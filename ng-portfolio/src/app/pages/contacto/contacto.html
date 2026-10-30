@@ -22,9 +22,9 @@
 					<h3 class="cx-h">Contacto directo</h3>
 					<p class="cx-sub">Escríbeme por el canal que prefieras.</p>
 					<ul class="cx-channels">
-						<li><a class="cx-channel cx-email" href="mailto:ernesto.starck@gmail.com">
+						<li><a class="cx-channel cx-email" [href]="'mailto:' + contactEmail">
 							<img src="icons/contact-anim-email.svg" alt="" width="44" height="44" />
-							<span><strong>Correo electrónico</strong><small>Oportunidades y consultas profesionales</small><em>ernesto.starck@gmail.com</em></span>
+							<span><strong>Correo electrónico</strong><small>Oportunidades y consultas profesionales</small><em>{{ contactEmail }}</em></span>
 						</a></li>
 						<li><a class="cx-channel cx-linkedin" href="https://www.linkedin.com/in/ernesto-arturo-starck-hern%C3%A1ndez" target="_blank" rel="noopener noreferrer">
 							<img src="icons/contact-anim-linkedin.svg" alt="" width="44" height="44" />
@@ -89,7 +89,7 @@
 						<span aria-hidden="true">↗</span>
 					</button>
 					<p class="cx-status cx-ok" role="status" *ngIf="status() === 'sent'">¡Mensaje enviado! Te responderé a la brevedad.</p>
-					<p class="cx-status cx-bad" role="alert" *ngIf="status() === 'error'">No se pudo enviar. Inténtalo de nuevo o escríbeme a ernesto.starck@gmail.com.</p>
+					<p class="cx-status cx-bad" role="alert" *ngIf="status() === 'error'">No se pudo enviar. Inténtalo de nuevo o escríbeme a {{ contactEmail }}.</p>
 					<p class="cx-privacy">Usaré tus datos solo para responder a tu consulta; no se comparten con terceros.</p>
 				</form>
 			</div>
@@ -119,9 +119,9 @@
 					<h3 class="cx-h">Direct contact</h3>
 					<p class="cx-sub">Reach me through the channel you prefer.</p>
 					<ul class="cx-channels">
-						<li><a class="cx-channel cx-email" href="mailto:ernesto.starck@gmail.com">
+						<li><a class="cx-channel cx-email" [href]="'mailto:' + contactEmail">
 							<img src="icons/contact-anim-email.svg" alt="" width="44" height="44" />
-							<span><strong>Email</strong><small>Opportunities and professional inquiries</small><em>ernesto.starck@gmail.com</em></span>
+							<span><strong>Email</strong><small>Opportunities and professional inquiries</small><em>{{ contactEmail }}</em></span>
 						</a></li>
 						<li><a class="cx-channel cx-linkedin" href="https://www.linkedin.com/in/ernesto-arturo-starck-hern%C3%A1ndez" target="_blank" rel="noopener noreferrer">
 							<img src="icons/contact-anim-linkedin.svg" alt="" width="44" height="44" />
@@ -186,7 +186,7 @@
 						<span aria-hidden="true">↗</span>
 					</button>
 					<p class="cx-status cx-ok" role="status" *ngIf="status() === 'sent'">Message sent! I'll get back to you shortly.</p>
-					<p class="cx-status cx-bad" role="alert" *ngIf="status() === 'error'">Could not send. Try again or write to ernesto.starck@gmail.com.</p>
+					<p class="cx-status cx-bad" role="alert" *ngIf="status() === 'error'">Could not send. Try again or write to {{ contactEmail }}.</p>
 					<p class="cx-privacy">I will only use your data to answer your inquiry; it is not shared with third parties.</p>
 				</form>
 			</div>
