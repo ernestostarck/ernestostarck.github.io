@@ -3176,3 +3176,11 @@ html body .hv-cta h2 { font-size: clamp(1.3rem, 1rem + 1.4vw, 2rem); background:
 html body .hv-cta p { color: var(--ink-soft); max-width: 60ch; margin: .6rem auto 1.1rem; }
 html body .hv-cta .hero-actions { justify-content: center; display: flex; }
 @media (prefers-reduced-motion: reduce) { html body .hv-area, html body .hv-stat, html body .hv-dot, html body #home .hv-hero h1, html body #home-en .hv-hero h1 { animation: none !important; } }
+/* ===== ABOUT v2 ===== */
+html body .hv-card.hv-am { --k: #fbbf24; }
+html[data-theme='light'] body .hv-card.hv-am { --k: #d97706; }
+html body .ab-exp .hv-cards { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 767px) { html body .ab-exp .hv-cards { grid-template-columns: 1fr; } }
+html body .ab-exp .hv-card h3 { font-size: 1.1rem; }
+html body .ab-intro p { max-width: 75ch; }
+html body .area-card .area-tech { margin-top: .6rem; font: 600 .76rem var(--font-mono); letter-spacing: .02em; color: var(--ink); opacity: .85; }
