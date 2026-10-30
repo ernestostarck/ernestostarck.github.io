@@ -29,9 +29,53 @@ export class Certificaciones implements OnInit {
     general: 1,
   };
 
+  filter = 'all';
+  stats: Record<string, { total: number; links: number; areas: number }> = {
+    es: { total: 0, links: 0, areas: 0 },
+    en: { total: 0, links: 0, areas: 0 },
+  };
+  filters: Record<string, { key: string; label: string; count: number }[]> = { es: [], en: [] };
+
+  setFilter(key: string): void {
+    this.filter = key;
+    this.applyFilter();
+  }
+
+  private applyFilter(): void {
+    document.querySelectorAll('.cert-area-group').forEach((group) => {
+      const key = this.areaKey(group);
+      (group as HTMLElement).style.display = this.filter === 'all' || this.filter === key ? '' : 'none';
+    });
+  }
+
+  private areaKey(group: Element): string {
+    return /(?:^|\s)area-(?!group)([a-z]+)/.exec(group.className)?.[1] ?? '';
+  }
+
+  private buildSummary(): void {
+    (['es', 'en'] as const).forEach((lang) => {
+      const section = document.querySelector(`.lang-${lang}`);
+      if (!section) return;
+      const groups = Array.from(section.querySelectorAll('.cert-area-group'));
+      this.filters[lang] = groups
+        .map((g) => ({
+          key: this.areaKey(g),
+          label: g.querySelector('h4')?.textContent?.trim() ?? '',
+          count: g.querySelectorAll('.cert-completado').length,
+        }))
+        .filter((f) => f.count > 0);
+      this.stats[lang] = {
+        total: section.querySelectorAll('.cert-completado').length,
+        links: section.querySelectorAll('.cert-completado .cert-card-link a').length,
+        areas: this.filters[lang].length,
+      };
+    });
+  }
+
   ngOnInit(): void {
     setTimeout(() => {
       this.updateCertCounts();
+      this.buildSummary();
       this.initScrollReveal();
     }, 100);
   }

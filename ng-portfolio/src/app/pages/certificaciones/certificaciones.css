@@ -560,3 +560,20 @@
 :host-context(html[data-theme='light']) .chip-ai { --chip-color: #9333ea; }
 :host-context(html[data-theme='light']) .chip-software { --chip-color: #16a34a; }
 :host-context(html[data-theme='light']) .chip-general { --chip-color: #d97706; }
+
+/* Certificaciones: resumen y filtros */
+.ct-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; border: 1px solid var(--line, rgba(148,163,184,.25)); border-radius: 16px; background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(34,211,238,.05)); }
+.ct-stats { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+.ct-stats div { display: flex; flex-direction: column; line-height: 1.15; }
+.ct-stats strong { font-family: var(--font-heading); font-size: 1.6rem; background: var(--aurora, linear-gradient(90deg,#10b981,#22d3ee)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ct-stats span { font-size: 0.78rem; color: var(--ink-soft); }
+.ct-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ct-filter { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid var(--line, rgba(148,163,184,.3)); background: transparent; color: var(--ink); font-size: 0.85rem; cursor: pointer; transition: all .2s ease; }
+.ct-filter span { font-size: 0.72rem; padding: 0.05rem 0.45rem; border-radius: 999px; background: rgba(148,163,184,.18); }
+.ct-filter:hover { transform: translateY(-1px); border-color: #10b981; }
+.ct-filter.is-active { background: #10b981; border-color: #10b981; color: #04210f; font-weight: 600; }
+.ct-filter.is-active span { background: rgba(0,0,0,.15); }
+.ct-filter[data-area='data'].is-active { background: #22d3ee; border-color: #22d3ee; }
+.ct-filter[data-area='ai'].is-active { background: #a78bfa; border-color: #a78bfa; }
+.ct-filter[data-area='software'].is-active { background: #4ade80; border-color: #4ade80; }
+.ct-filter[data-area='general'].is-active { background: #fbbf24; border-color: #fbbf24; }

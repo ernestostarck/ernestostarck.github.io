@@ -51,6 +51,20 @@
 
 			<h3 class="mt-5 mb-4 section-title-main">Certificaciones Profesionales</h3>
 
+			<div class="ct-toolbar" aria-label="Resumen de formación">
+				<div class="ct-stats">
+					<div><strong>{{ stats['es'].total }}</strong><span>certificaciones</span></div>
+					<div><strong>{{ stats['es'].links }}</strong><span>credenciales verificables</span></div>
+					<div><strong>{{ stats['es'].areas }}</strong><span>áreas</span></div>
+				</div>
+				<div class="ct-filters" role="group" aria-label="Filtrar certificaciones por área">
+					<button type="button" class="ct-filter" [class.is-active]="filter === 'all'" (click)="setFilter('all')">Todas <span>{{ stats['es'].total }}</span></button>
+					<button type="button" *ngFor="let f of filters['es']" class="ct-filter" [attr.data-area]="f.key" [class.is-active]="filter === f.key" (click)="setFilter(f.key)">{{ f.label }} <span>{{ f.count }}</span></button>
+				</div>
+			</div>
+
+
+
 			<!-- ÁREA: DATA -->
 			<div class="cert-area-group area-data" id="area-data">
 				<div class="cert-area-header">
@@ -257,6 +271,20 @@
 			</div>
 
 			<h3 class="mt-5 mb-4 section-title-main">Professional Certifications</h3>
+
+			<div class="ct-toolbar" aria-label="Training summary">
+				<div class="ct-stats">
+					<div><strong>{{ stats['en'].total }}</strong><span>certifications</span></div>
+					<div><strong>{{ stats['en'].links }}</strong><span>verifiable credentials</span></div>
+					<div><strong>{{ stats['en'].areas }}</strong><span>areas</span></div>
+				</div>
+				<div class="ct-filters" role="group" aria-label="Filter certifications by area">
+					<button type="button" class="ct-filter" [class.is-active]="filter === 'all'" (click)="setFilter('all')">All <span>{{ stats['en'].total }}</span></button>
+					<button type="button" *ngFor="let f of filters['en']" class="ct-filter" [attr.data-area]="f.key" [class.is-active]="filter === f.key" (click)="setFilter(f.key)">{{ f.label }} <span>{{ f.count }}</span></button>
+				</div>
+			</div>
+
+
 
 			<!-- AREA: DATA -->
 			<div class="cert-area-group area-data" id="area-data-en">
