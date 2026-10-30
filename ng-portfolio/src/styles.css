@@ -3049,3 +3049,12 @@ html body .hero-core img { width: 100%; height: 100%; object-fit: cover; border-
   html body .about-art { margin: -18px 0 -18px !important; }
   html body :is(.proj-art, .cb-art) { margin: -16px 0 -16px !important; }
 }
+/* ===== BANNER TILES: high-contrast dark glass tiles + stronger orbit (both themes) ===== */
+html body :is(.hero-tile, .about-tile, .proj-tile, .cb-tile, .contact-banner .banner-art img) {
+  border-radius: 27%;
+  background: radial-gradient(120% 120% at 20% 10%, #1e2a52 0%, #0b1226 70%);
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, #22d3ee 55%, transparent), 0 12px 26px -8px rgba(34, 211, 238, 0.55);
+  padding: 2px;
+}
+html[data-theme='light'] body :is(.hero-orbit, .about-orbit, .proj-orbit, .cb-orbit) { filter: saturate(1.6) brightness(.72) contrast(1.15); }
+html[data-theme='light'] body :is(.hero-core, .about-core, .proj-core, .cb-core) { border-color: #0891b2; }
