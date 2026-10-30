@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { map } from 'rxjs';
 import { GitHubRepositoriesService } from '../../core/github-repositories.service';
+import { CERTIFICATION_COUNT, formatCount } from '../../core/portfolio-stats';
 import { ScrollRevealService } from '../../core/scroll-reveal.service';
 
 @Component({
@@ -13,6 +15,10 @@ import { ScrollRevealService } from '../../core/scroll-reveal.service';
 export class Home implements OnInit {
   private readonly scrollReveal = inject(ScrollRevealService);
   readonly githubRepositories = inject(GitHubRepositoriesService);
+  readonly certificationCount = formatCount(CERTIFICATION_COUNT);
+  readonly projectCount$ = this.githubRepositories.repositories$.pipe(
+    map((repositories) => (repositories.length ? formatCount(repositories.length) : '–')),
+  );
 
   ngOnInit(): void {
     // Initialize scroll reveal after view is rendered

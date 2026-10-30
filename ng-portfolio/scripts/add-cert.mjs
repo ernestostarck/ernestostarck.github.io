@@ -380,6 +380,19 @@ async function main() {
   writeFileSync(certHtmlPath, content, 'utf8');
   console.log('✅ Archivo certificaciones.html actualizado.');
 
+  const statsPath = resolve(__dirname, '..', 'src', 'app', 'core', 'portfolio-stats.ts');
+  const esSection = content.slice(0, content.indexOf('lang-en'));
+  const certTotal = (esSection.match(/cert-card cert-completado/g) || []).length;
+  writeFileSync(
+    statsPath,
+    readFileSync(statsPath, 'utf8').replace(
+      /CERTIFICATION_COUNT = \d+/,
+      `CERTIFICATION_COUNT = ${certTotal}`,
+    ),
+    'utf8',
+  );
+  console.log(`✅ Contador de certificaciones: ${certTotal}`);
+
   console.log('🧪 Validando accesibilidad...');
   execSync('npm run audit:accessibility', { cwd: resolve(__dirname, '..'), stdio: 'inherit' });
 
@@ -387,7 +400,7 @@ async function main() {
     '\n🚀 ¿Deseas subir automáticamente los cambios a GitHub? (S/n): ',
   );
   if (confirmPush.toLowerCase() !== 'n') {
-    execSync(`git add "${certHtmlPath}"`, { cwd: repoRoot, stdio: 'inherit' });
+    execSync(`git add "${certHtmlPath}" "${statsPath}"`, { cwd: repoRoot, stdio: 'inherit' });
     execSync(
       `git commit -m "Agregar certificado (${AREA_CONFIG[areaKey].labelEn}): ${fullTitle}"`,
       {

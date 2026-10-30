@@ -23,8 +23,8 @@
 			<div class="hv-stats">
 				<div class="hv-stat s1"><strong>4+</strong><span>años de docencia</span></div>
 				<div class="hv-stat s2"><strong>3</strong><span>áreas de especialización</span></div>
-				<div class="hv-stat s3"><strong>4</strong><span>proyectos de desarrollo</span></div>
-				<div class="hv-stat s4"><strong>3</strong><span>certificaciones profesionales</span></div>
+				<div class="hv-stat s3"><strong>{{ (projectCount$ | async) ?? '–' }}</strong><span>proyectos de desarrollo</span></div>
+				<div class="hv-stat s4"><strong>{{ certificationCount }}</strong><span>certificaciones profesionales</span></div>
 			</div>
 
 			<section class="hv-section">
@@ -130,8 +130,8 @@
 			<div class="hv-stats">
 				<div class="hv-stat s1"><strong>4+</strong><span>years of teaching</span></div>
 				<div class="hv-stat s2"><strong>3</strong><span>areas of expertise</span></div>
-				<div class="hv-stat s3"><strong>4</strong><span>development projects</span></div>
-				<div class="hv-stat s4"><strong>3</strong><span>professional certifications</span></div>
+				<div class="hv-stat s3"><strong>{{ (projectCount$ | async) ?? '–' }}</strong><span>development projects</span></div>
+				<div class="hv-stat s4"><strong>{{ certificationCount }}</strong><span>professional certifications</span></div>
 			</div>
 
 			<section class="hv-section">
