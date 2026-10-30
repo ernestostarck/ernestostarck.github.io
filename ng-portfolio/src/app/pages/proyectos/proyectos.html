@@ -16,32 +16,49 @@
 			</div>
 
 			<!-- Carrusel manual de proyectos -->
+			<div class="pj-toolbar" *ngIf="projects.length" aria-label="Resumen de proyectos">
+				<div class="pj-stats">
+					<span><strong>{{ projects.length }}</strong> repositorios públicos</span>
+					<span><strong>{{ demoCount }}</strong> demos en vivo</span>
+					<span><strong>{{ languageCount }}</strong> lenguajes</span>
+				</div>
+				<div class="pj-filters" role="group" aria-label="Filtrar proyectos por categoría">
+					<ng-container *ngFor="let f of filterOptions">
+						<button type="button" class="pj-filter" *ngIf="f.key === 'all' || countFor(f.key)" [class.is-active]="filter === f.key" [attr.data-cat]="f.key" (click)="setFilter(f.key)">{{ f.es }} <b>{{ countFor(f.key) }}</b></button>
+					</ng-container>
+				</div>
+			</div>
+
 			<div class="projects-swiper" role="region" aria-label="Carrusel de proyectos principales">
-				<div class="swiper-wrapper github-swiper-wrapper" *ngIf="githubRepositories.projects$ | async as projects">
-					<article class="swiper-slide" *ngFor="let project of projects; let index = index" [class.is-active]="activeProjectIndex === index">
-						<article class="project project-card github-project-card">
+				<div class="swiper-wrapper github-swiper-wrapper" *ngIf="!useStaticProjects">
+					<article class="swiper-slide" *ngFor="let project of visibleProjects; let index = index" [class.is-active]="activeProjectIndex === index">
+						<article class="project project-card github-project-card pj-card" [attr.data-cat]="categoryOf(project)">
 							<div class="project-head">
 								<p class="project-rank">Proyecto {{ index + 1 }}</p>
-								<span class="project-tag">{{ project.repository.language || 'Software' }}</span>
+								<span class="pj-status" [attr.data-status]="statusOf(project)">{{ statusLabel(project, 'es') }}</span>
 							</div>
-							<h3>{{ project.title }}</h3>
-							<p class="project-summary">{{ project.repository.description || project.context }}</p>
-							<div class="project-grid">
-								<p><strong>Contexto:</strong> {{ project.context }}</p>
-								<p><strong>Problema:</strong> {{ project.problem }}</p>
-								<p><strong>Solución:</strong> {{ project.solution }}</p>
-								<p><strong>Decisiones técnicas:</strong> {{ project.technicalDecisions }}</p>
-								<p><strong>Impacto:</strong> {{ project.impact }}</p>
+							<h3>{{ caseText(project, 'title', 'es') }}</h3>
+							<p class="project-summary" *ngIf="caseText(project, 'summary', 'es')">{{ short(caseText(project, 'summary', 'es'), 160) }}</p>
+							<div class="pj-case" *ngIf="caseText(project, 'problem', 'es') || caseText(project, 'solution', 'es')">
+								<div class="pj-case-item" *ngIf="caseText(project, 'problem', 'es')"><span>El problema</span><p>{{ short(caseText(project, 'problem', 'es')) }}</p></div>
+								<div class="pj-case-item" *ngIf="caseText(project, 'solution', 'es')"><span>La solución</span><p>{{ short(caseText(project, 'solution', 'es')) }}</p></div>
 							</div>
 							<div class="project-technologies" *ngIf="project.stack.length">
-								<strong>Tecnologías:</strong>
 								<div class="github-stack-chips">
-									<span *ngFor="let technology of project.stack" class="stack-chip"><i *ngIf="techIcon(technology)" [class]="techIcon(technology)" aria-hidden="true"></i>{{ technology }}</span>
+									<span *ngFor="let technology of project.stack | slice: 0 : 6" class="stack-chip"><i *ngIf="techIcon(technology)" [class]="techIcon(technology)" aria-hidden="true"></i>{{ technology }}</span>
 								</div>
 							</div>
+							<details class="pj-more" *ngIf="caseText(project, 'context', 'es') || caseText(project, 'decisions', 'es') || caseText(project, 'impact', 'es')">
+								<summary>Ver detalle técnico</summary>
+								<div class="project-grid">
+									<p *ngIf="caseText(project, 'context', 'es')"><strong>Contexto:</strong> {{ caseText(project, 'context', 'es') }}</p>
+									<p *ngIf="caseText(project, 'decisions', 'es')"><strong>Decisiones técnicas:</strong> {{ caseText(project, 'decisions', 'es') }}</p>
+									<p *ngIf="caseText(project, 'impact', 'es')"><strong>Impacto:</strong> {{ caseText(project, 'impact', 'es') }}</p>
+								</div>
+							</details>
 							<p class="project-link">
-								<a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">Ver repositorio en GitHub <span aria-hidden="true">↗</span></a>
-								<a *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" rel="noopener noreferrer">Ver demo en vivo <span aria-hidden="true">↗</span></a>
+								<a class="pj-btn pj-btn-primary" *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" rel="noopener noreferrer">Probar demo <span aria-hidden="true">↗</span></a>
+								<a class="pj-btn" [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">Ver código <span aria-hidden="true">↗</span></a>
 							</p>
 						</article>
 					</article>
@@ -215,32 +232,49 @@
 			</div>
 
 			<!-- Manual project carousel -->
+			<div class="pj-toolbar" *ngIf="projects.length" aria-label="Projects overview">
+				<div class="pj-stats">
+					<span><strong>{{ projects.length }}</strong> public repositories</span>
+					<span><strong>{{ demoCount }}</strong> live demos</span>
+					<span><strong>{{ languageCount }}</strong> languages</span>
+				</div>
+				<div class="pj-filters" role="group" aria-label="Filter projects by category">
+					<ng-container *ngFor="let f of filterOptions">
+						<button type="button" class="pj-filter" *ngIf="f.key === 'all' || countFor(f.key)" [class.is-active]="filter === f.key" [attr.data-cat]="f.key" (click)="setFilter(f.key)">{{ f.en }} <b>{{ countFor(f.key) }}</b></button>
+					</ng-container>
+				</div>
+			</div>
+
 			<div class="projects-swiper" role="region" aria-label="Main projects carousel">
-				<div class="swiper-wrapper github-swiper-wrapper" *ngIf="githubRepositories.projects$ | async as projects">
-					<article class="swiper-slide" *ngFor="let project of projects; let index = index" [class.is-active]="activeProjectIndex === index">
-						<article class="project project-card github-project-card">
+				<div class="swiper-wrapper github-swiper-wrapper" *ngIf="!useStaticProjects">
+					<article class="swiper-slide" *ngFor="let project of visibleProjects; let index = index" [class.is-active]="activeProjectIndex === index">
+						<article class="project project-card github-project-card pj-card" [attr.data-cat]="categoryOf(project)">
 							<div class="project-head">
 								<p class="project-rank">Project {{ index + 1 }}</p>
-								<span class="project-tag">{{ project.repository.language || 'Software' }}</span>
+								<span class="pj-status" [attr.data-status]="statusOf(project)">{{ statusLabel(project, 'en') }}</span>
 							</div>
-							<h3>{{ project.title }}</h3>
-							<p class="project-summary">{{ project.repository.description || project.context }}</p>
-							<div class="project-grid">
-								<p><strong>Context:</strong> {{ project.context }}</p>
-								<p><strong>Problem:</strong> {{ project.problem }}</p>
-								<p><strong>Solution:</strong> {{ project.solution }}</p>
-								<p><strong>Technical decisions:</strong> {{ project.technicalDecisions }}</p>
-								<p><strong>Impact:</strong> {{ project.impact }}</p>
+							<h3>{{ caseText(project, 'title', 'en') }}</h3>
+							<p class="project-summary" *ngIf="caseText(project, 'summary', 'en')">{{ short(caseText(project, 'summary', 'en'), 160) }}</p>
+							<div class="pj-case" *ngIf="caseText(project, 'problem', 'en') || caseText(project, 'solution', 'en')">
+								<div class="pj-case-item" *ngIf="caseText(project, 'problem', 'en')"><span>The problem</span><p>{{ short(caseText(project, 'problem', 'en')) }}</p></div>
+								<div class="pj-case-item" *ngIf="caseText(project, 'solution', 'en')"><span>The solution</span><p>{{ short(caseText(project, 'solution', 'en')) }}</p></div>
 							</div>
 							<div class="project-technologies" *ngIf="project.stack.length">
-								<strong>Technologies:</strong>
 								<div class="github-stack-chips">
-									<span *ngFor="let technology of project.stack" class="stack-chip"><i *ngIf="techIcon(technology)" [class]="techIcon(technology)" aria-hidden="true"></i>{{ technology }}</span>
+									<span *ngFor="let technology of project.stack | slice: 0 : 6" class="stack-chip"><i *ngIf="techIcon(technology)" [class]="techIcon(technology)" aria-hidden="true"></i>{{ technology }}</span>
 								</div>
 							</div>
+							<details class="pj-more" *ngIf="caseText(project, 'context', 'en') || caseText(project, 'decisions', 'en') || caseText(project, 'impact', 'en')">
+								<summary>See technical detail</summary>
+								<div class="project-grid">
+									<p *ngIf="caseText(project, 'context', 'en')"><strong>Context:</strong> {{ caseText(project, 'context', 'en') }}</p>
+									<p *ngIf="caseText(project, 'decisions', 'en')"><strong>Technical decisions:</strong> {{ caseText(project, 'decisions', 'en') }}</p>
+									<p *ngIf="caseText(project, 'impact', 'en')"><strong>Impact:</strong> {{ caseText(project, 'impact', 'en') }}</p>
+								</div>
+							</details>
 							<p class="project-link">
-								<a [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">View repository on GitHub <span aria-hidden="true">↗</span></a>
-								<a *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" rel="noopener noreferrer">View live demo <span aria-hidden="true">↗</span></a>
+								<a class="pj-btn pj-btn-primary" *ngIf="project.liveDemoUrl" [href]="project.liveDemoUrl" target="_blank" rel="noopener noreferrer">Try the demo <span aria-hidden="true">↗</span></a>
+								<a class="pj-btn" [href]="project.repository.html_url" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
 							</p>
 						</article>
 					</article>

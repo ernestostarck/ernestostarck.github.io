@@ -3184,3 +3184,34 @@ html body .ab-exp .hv-cards { grid-template-columns: repeat(2, 1fr); }
 html body .ab-exp .hv-card h3 { font-size: 1.1rem; }
 html body .ab-intro p { max-width: 75ch; }
 html body .area-card .area-tech { margin-top: .6rem; font: 600 .76rem var(--font-mono); letter-spacing: .02em; color: var(--ink); opacity: .85; }
+/* ===== PROYECTOS v2: fichas de caso, filtros y estado ===== */
+html body .pj-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 1.2rem; }
+html body .pj-stats { display: flex; flex-wrap: wrap; gap: .6rem; }
+html body .pj-stats span { padding: .35rem .85rem; border-radius: 999px; font: 500 .8rem var(--font-mono); color: var(--ink-soft); border: 1px solid color-mix(in srgb, #10b981 40%, var(--line)); background: color-mix(in srgb, #10b981 9%, transparent); }
+html body .pj-stats strong { color: #10b981; font-size: 1rem; margin-right: .2rem; }
+html body .pj-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+html body .pj-filter { --k: #10b981; cursor: pointer; padding: .4rem .95rem; border-radius: 999px; font: 600 .82rem var(--font-heading); color: var(--ink); border: 1px solid color-mix(in srgb, var(--k) 50%, var(--line)); background: color-mix(in srgb, var(--k) 8%, transparent); transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+html body .pj-filter b { margin-left: .3rem; opacity: .75; font-weight: 700; }
+html body .pj-filter:hover { transform: translateY(-2px); }
+html body .pj-filter.is-active { color: #04141a; background: var(--k); border-color: var(--k); box-shadow: 0 8px 20px -10px var(--k); }
+html body [data-cat='software'] { --k: #22d3ee; } html body [data-cat='data'] { --k: #a78bfa; } html body [data-cat='automation'] { --k: #4ade80; } html body [data-cat='ai'] { --k: #fbbf24; }
+html[data-theme='light'] body [data-cat='software'] { --k: #0891b2; } html[data-theme='light'] body [data-cat='data'] { --k: #7c3aed; } html[data-theme='light'] body [data-cat='automation'] { --k: #16a34a; } html[data-theme='light'] body [data-cat='ai'] { --k: #d97706; }
+html[data-theme='light'] body .pj-filter.is-active { color: #fff; }
+html body .pj-card { --k: #22d3ee; border-top: 3px solid var(--k) !important; background: radial-gradient(110% 80% at 100% 0%, color-mix(in srgb, var(--k) 16%, transparent), transparent 60%), var(--card) !important; }
+html body .pj-card h3 { color: var(--k); }
+html body .pj-status { display: inline-flex; align-items: center; gap: .4rem; padding: .2rem .7rem; border-radius: 999px; font: 600 .7rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--k); border: 1px solid color-mix(in srgb, var(--k) 55%, transparent); background: color-mix(in srgb, var(--k) 12%, transparent); }
+html body .pj-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+html body .pj-status[data-status='demo']::before { animation: aboutPing 1.8s ease-out infinite; }
+html body .pj-case { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin: 1rem 0; }
+html body .pj-case-item { padding: .8rem .95rem; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--k) 28%, var(--line)); background: color-mix(in srgb, var(--k) 7%, transparent); }
+html body .pj-case-item span { display: block; margin-bottom: .3rem; font: 700 .7rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--k); }
+html body .pj-case-item p { margin: 0; font-size: .92rem; color: var(--ink-soft); }
+@media (max-width: 767px) { html body .pj-case { grid-template-columns: 1fr; } }
+html body .pj-more { margin: .8rem 0 0; }
+html body .pj-more summary { cursor: pointer; font: 600 .85rem var(--font-heading); color: var(--k); }
+html body .pj-more .project-grid { margin-top: .7rem; }
+html body .pj-card .project-link { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+html body .pj-btn { display: inline-flex; align-items: center; gap: .35rem; padding: .5rem 1.05rem; border-radius: 999px; font: 600 .85rem var(--font-heading); text-decoration: none; color: var(--k); border: 1px solid color-mix(in srgb, var(--k) 60%, transparent); transition: transform .2s ease, box-shadow .2s ease; }
+html body .pj-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -12px var(--k); }
+html body .pj-btn-primary { color: #04141a; background: var(--k); border-color: var(--k); }
+html[data-theme='light'] body .pj-btn-primary { color: #fff; }
