@@ -3032,3 +3032,20 @@ html body .navbar-brand:hover .brand-logo { transform: translateY(-1px) scale(1.
 html body .brand-logo-light { display: none; }
 html[data-theme='light'] body .brand-logo-dark { display: none; }
 html[data-theme='light'] body .brand-logo-light { display: block; }
+/* ===== BANNER ART: portrait core, stronger motion, mobile visibility ===== */
+html body .hero-core { width: 176px; height: 176px; margin: -88px 0 0 -88px; overflow: hidden; padding: 0; border: 2px solid color-mix(in srgb, #22d3ee 70%, transparent); }
+html body .hero-core img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; transform: scale(1.3); transform-origin: 50% 24%; display: block; }
+@keyframes bnFloat { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -14px; rotate: 4deg; } }
+@keyframes bnGlow { 0%, 100% { box-shadow: 0 0 0 8px color-mix(in srgb, #22d3ee 14%, transparent), 0 0 30px color-mix(in srgb, #22d3ee 45%, transparent); } 50% { box-shadow: 0 0 0 16px color-mix(in srgb, #a78bfa 10%, transparent), 0 0 60px color-mix(in srgb, #a78bfa 60%, transparent); } }
+@media (prefers-reduced-motion: no-preference) {
+  html body :is(.hero-tile, .about-tile, .proj-tile, .cb-tile) { animation-name: bnFloat !important; animation-duration: 5s !important; filter: drop-shadow(0 10px 16px color-mix(in srgb, #22d3ee 60%, transparent)) !important; }
+  html body :is(.hero-core, .about-core, .proj-core, .cb-core) { animation-name: bnGlow !important; animation-duration: 4s !important; }
+}
+@media (max-width: 1099px) {
+  html body .home-banner .hero-art { display: block !important; position: relative !important; top: auto !important; right: auto !important; left: 50% !important; transform: translateX(-50%) scale(.8) !important; margin: -34px 0 -34px !important; }
+}
+@media (max-width: 999px) {
+  html body :is(.about-art, .proj-art, .cb-art) { display: block !important; position: relative !important; top: auto !important; right: auto !important; left: 50% !important; transform: translateX(-50%) scale(.88) !important; }
+  html body .about-art { margin: -18px 0 -18px !important; }
+  html body :is(.proj-art, .cb-art) { margin: -16px 0 -16px !important; }
+}
