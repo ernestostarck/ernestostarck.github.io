@@ -3058,3 +3058,28 @@ html body :is(.hero-tile, .about-tile, .proj-tile, .cb-tile, .contact-banner .ba
 }
 html[data-theme='light'] body :is(.hero-orbit, .about-orbit, .proj-orbit, .cb-orbit) { filter: saturate(1.6) brightness(.72) contrast(1.15); }
 html[data-theme='light'] body :is(.hero-core, .about-core, .proj-core, .cb-core) { border-color: #0891b2; }
+/* ===== BANNERS: emerald main color + vivid light-mode title gradient ===== */
+html body .page-banner.page-banner.page-banner {
+  --accent-glow: #10b981;
+  border-color: color-mix(in srgb, #10b981 40%, transparent);
+  background:
+    radial-gradient(600px 260px at 100% 0%, color-mix(in srgb, #10b981 22%, transparent), transparent 70%),
+    radial-gradient(520px 260px at 0% 100%, color-mix(in srgb, var(--accent-bright) 22%, transparent), transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--card) 94%, transparent), color-mix(in srgb, var(--card) 82%, #10b981 18%));
+}
+html body .page-banner.page-banner.page-banner::before { background: linear-gradient(90deg, #059669, #10b981, #34d399, #10b981, #059669); background-size: 200% 100%; }
+html body .page-banner.page-banner.page-banner::after { background: radial-gradient(circle, color-mix(in srgb, #10b981 55%, transparent), transparent 68%); }
+html body .page-banner :is(.hero-pills span, .hero-chips span, .about-chips span, .banner-chips span, .cert-chip, .area-chip),
+html body .page-banner .eyebrow { border-color: color-mix(in srgb, #10b981 55%, transparent) !important; }
+html body .page-banner .eyebrow { color: #34d399; background: color-mix(in srgb, #10b981 14%, transparent); }
+html body .page-banner :is(a.btn, .btn-primary, .home-cta a:first-child, .cta-primary) { background: linear-gradient(135deg, #059669, #10b981 55%, #22d3ee) !important; border-color: transparent !important; color: #04170f !important; box-shadow: 0 10px 24px -10px rgba(16, 185, 129, 0.7) !important; }
+html[data-theme='light'] body .page-banner.page-banner.page-banner {
+  --accent-glow: #059669;
+  --aurora: linear-gradient(120deg, #7c3aed 0%, #0ea5e9 52%, #10b981 100%);
+  background:
+    radial-gradient(600px 260px at 100% 0%, color-mix(in srgb, #10b981 26%, transparent), transparent 70%),
+    radial-gradient(520px 260px at 0% 100%, color-mix(in srgb, #7c3aed 14%, transparent), transparent 70%),
+    linear-gradient(160deg, #ffffff, #ecfdf5);
+}
+html[data-theme='light'] body .page-banner .eyebrow { color: #047857; background: #d1fae5; border-color: #6ee7b7 !important; }
+html[data-theme='light'] body .page-banner :is(h1, h2) { background-image: var(--aurora) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; color: transparent !important; }
