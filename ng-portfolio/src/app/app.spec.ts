@@ -16,10 +16,10 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render navbar brand', () => {
+  it('should give the navbar brand an accessible name', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.navbar-brand')?.textContent).toContain('Portfolio');
+    expect(compiled.querySelector('.navbar-brand')?.getAttribute('aria-label')).toContain('Ernesto Starck');
   });
 });

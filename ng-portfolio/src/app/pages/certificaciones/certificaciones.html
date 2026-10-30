@@ -3,12 +3,12 @@
 		<div class="panel card border-0 shadow-sm p-4 p-lg-5 page-shell">
 			<div class="page-banner cert-banner mb-4">
 				<div class="cb-art" aria-hidden="true">
-					<img class="cb-orbit" src="icons/hero-orbit.svg" alt="" width="400" height="400" />
+					<img loading="lazy" decoding="async" class="cb-orbit" src="icons/hero-orbit.svg" alt="" width="400" height="400" />
 					<div class="cb-core"><span>&#10003;</span></div>
-					<img class="cb-tile tile-a" src="icons/cert-cap.svg" alt="" width="64" height="64" />
-					<img class="cb-tile tile-b" src="icons/cert-chart.svg" alt="" width="64" height="64" />
-					<img class="cb-tile tile-c" src="icons/cert-brain.svg" alt="" width="64" height="64" />
-					<img class="cb-tile tile-d" src="icons/cert-badge.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-a" src="icons/cert-cap.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-b" src="icons/cert-chart.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-c" src="icons/cert-brain.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-d" src="icons/cert-badge.svg" alt="" width="64" height="64" />
 				</div>
 				<div class="banner-eyebrow-wrap">
 					<span class="banner-eyebrow-dot" aria-hidden="true"></span>
@@ -26,8 +26,8 @@
 			<h3 class="mt-5 mb-3">Educación</h3>
 			<div class="education-grid">
 				<div class="cert-card edu-titulado">
-					<img *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
-					<img *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
 					<div class="cert-title-line">
 						<strong>✓ Ingeniería Civil en Informática y Telecomunicaciones</strong>
 						<span class="academic-badge badge-distincion-maxima">Distinción máxima</span>
@@ -37,8 +37,8 @@
 					<span class="cert-card-status status-titulado">Titulado</span>
 				</div>
 				<div class="cert-card edu-licenciado">
-					<img *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
-					<img *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Universidad Finis Terrae" class="cert-card-icon" />
 					<div class="cert-title-line">
 						<strong>✓ Licenciatura en Ciencias de la Ingeniería</strong>
 						<span class="academic-badge badge-distincion-doble">Dos votos de distinción</span>
@@ -80,7 +80,7 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('data') === 0">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['data'] > 1">1 / {{ certCounts['data'] }}</span>
 								</div>
 								<strong>✓ Foundations of Data Science (Google)</strong>
@@ -94,7 +94,7 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('data') === 1">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['data'] > 1">2 / {{ certCounts['data'] }}</span>
 								</div>
 								<strong>✓ Foundations: Data, Data, Everywhere (Google)</strong>
@@ -137,7 +137,7 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('ai') === 0">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['ai'] > 1">1 / {{ certCounts['ai'] }}</span>
 								</div>
 								<strong>✓ Supervised Machine Learning: Regression and Classification</strong>
@@ -179,8 +179,8 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('general') === 0">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />
-									<img *ngIf="theme() === 'dark'" src="/icons/Udemy-Symbol.png" alt="Udemy" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" *ngIf="theme() === 'dark'" src="/icons/Udemy-Symbol.png" alt="Udemy" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['general'] > 1">1 / {{ certCounts['general'] }}</span>
 								</div>
 								<strong>✓ Professional Diploma in Business Project Manager</strong>
@@ -224,12 +224,12 @@
 		<div class="panel card border-0 shadow-sm p-4 p-lg-5 page-shell">
 			<div class="page-banner cert-banner mb-4">
 				<div class="cb-art" aria-hidden="true">
-					<img class="cb-orbit" src="icons/hero-orbit.svg" alt="" width="400" height="400" />
+					<img loading="lazy" decoding="async" class="cb-orbit" src="icons/hero-orbit.svg" alt="" width="400" height="400" />
 					<div class="cb-core"><span>&#10003;</span></div>
-					<img class="cb-tile tile-a" src="icons/cert-cap.svg" alt="" width="64" height="64" />
-					<img class="cb-tile tile-b" src="icons/cert-chart.svg" alt="" width="64" height="64" />
-					<img class="cb-tile tile-c" src="icons/cert-brain.svg" alt="" width="64" height="64" />
-					<img class="cb-tile tile-d" src="icons/cert-badge.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-a" src="icons/cert-cap.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-b" src="icons/cert-chart.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-c" src="icons/cert-brain.svg" alt="" width="64" height="64" />
+					<img loading="lazy" decoding="async" class="cb-tile tile-d" src="icons/cert-badge.svg" alt="" width="64" height="64" />
 				</div>
 				<div class="banner-eyebrow-wrap">
 					<span class="banner-eyebrow-dot" aria-hidden="true"></span>
@@ -247,8 +247,8 @@
 			<h3 class="mt-5 mb-3">Education</h3>
 			<div class="education-grid">
 				<div class="cert-card edu-titulado">
-					<img *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Finis Terrae University" class="cert-card-icon" />
-					<img *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Finis Terrae University" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Finis Terrae University" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Finis Terrae University" class="cert-card-icon" />
 					<div class="cert-title-line">
 						<strong>✓ Telecommunications and Computer Engineering</strong>
 						<span class="academic-badge badge-distincion-maxima">Highest distinction</span>
@@ -258,8 +258,8 @@
 					<span class="cert-card-status status-titulado">Graduated</span>
 				</div>
 				<div class="cert-card edu-licenciado">
-					<img *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Finis Terrae University" class="cert-card-icon" />
-					<img *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Finis Terrae University" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'light'" src="/icons/uft_logo.png" alt="Finis Terrae University" class="cert-card-icon" />
+					<img loading="lazy" decoding="async" *ngIf="theme() === 'dark'" src="/icons/logo_dark.png" alt="Finis Terrae University" class="cert-card-icon" />
 					<div class="cert-title-line">
 						<strong>✓ Bachelor of Engineering Sciences</strong>
 						<span class="academic-badge badge-distincion-doble">Double distinction votes</span>
@@ -301,7 +301,7 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('data') === 0">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['data'] > 1">1 / {{ certCounts['data'] }}</span>
 								</div>
 								<strong>✓ Foundations of Data Science (Google)</strong>
@@ -315,7 +315,7 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('data') === 1">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['data'] > 1">2 / {{ certCounts['data'] }}</span>
 								</div>
 								<strong>✓ Foundations: Data, Data, Everywhere (Google)</strong>
@@ -357,7 +357,7 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('ai') === 0">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" src="icons/coursera-logo.png" alt="Coursera" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['ai'] > 1">1 / {{ certCounts['ai'] }}</span>
 								</div>
 								<strong>✓ Supervised Machine Learning: Regression and Classification</strong>
@@ -399,8 +399,8 @@
 						<div class="swiper-slide" [class.is-active]="getActiveIndex('general') === 0">
 							<div class="cert-card cert-completado">
 								<div class="cert-card-top">
-									<img *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />
-									<img *ngIf="theme() === 'dark'" src="/icons/Udemy-Symbol.png" alt="Udemy" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" *ngIf="theme() === 'light'" src="/icons/udemy_light.png" alt="Udemy" class="cert-card-icon" />
+									<img loading="lazy" decoding="async" *ngIf="theme() === 'dark'" src="/icons/Udemy-Symbol.png" alt="Udemy" class="cert-card-icon" />
 									<span class="cert-counter-chip" *ngIf="certCounts['general'] > 1">1 / {{ certCounts['general'] }}</span>
 								</div>
 								<strong>✓ Professional Diploma in Business Project Manager</strong>

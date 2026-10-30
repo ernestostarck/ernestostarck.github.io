@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, HostListener, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
 import { AppLanguage, PreferencesService } from './core/preferences.service';
 
 @Component({
@@ -12,6 +14,9 @@ import { AppLanguage, PreferencesService } from './core/preferences.service';
 })
 export class App {
   private readonly preferences = inject(PreferencesService);
+  private readonly router = inject(Router);
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
 
   currentYear = new Date().getFullYear();
   showScrollTop = false;
@@ -19,6 +24,10 @@ export class App {
 
   constructor() {
     this.preferences.init();
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => this.updateMetadata(event.urlAfterRedirects));
+    this.updateMetadata(this.router.url);
   }
 
   get theme(): 'dark' | 'light' {
@@ -43,6 +52,36 @@ export class App {
 
   setLanguage(language: AppLanguage): void {
     this.preferences.setLanguage(language);
+    this.updateMetadata(this.router.url);
+  }
+
+  private updateMetadata(url: string): void {
+    const path = url.split('?')[0].replace(/^\/+|\/+$/g, '');
+    const pages: Record<string, { es: [string, string]; en: [string, string] }> = {
+      '': {
+        es: ['Portafolio de Ernesto Starck | Ingeniería de software y datos', 'Portafolio profesional de Ernesto Starck: desarrollo de software, análisis de datos y automatización.'],
+        en: ['Ernesto Starck Portfolio | Software and Data Engineering', 'Professional portfolio of Ernesto Starck: software development, data analytics and automation.'],
+      },
+      'sobre-mi': {
+        es: ['Sobre mí | Ernesto Starck', 'Conoce la experiencia, habilidades y enfoque profesional de Ernesto Starck.'],
+        en: ['About | Ernesto Starck', 'Learn about Ernesto Starck’s experience, skills and professional approach.'],
+      },
+      proyectos: {
+        es: ['Proyectos | Ernesto Starck', 'Proyectos de software, datos y automatización desarrollados por Ernesto Starck.'],
+        en: ['Projects | Ernesto Starck', 'Software, data and automation projects by Ernesto Starck.'],
+      },
+      certificaciones: {
+        es: ['Certificaciones | Ernesto Starck', 'Certificaciones y formación profesional de Ernesto Starck.'],
+        en: ['Certifications | Ernesto Starck', 'Professional certifications and training completed by Ernesto Starck.'],
+      },
+      contacto: {
+        es: ['Contacto | Ernesto Starck', 'Contacta a Ernesto Starck para oportunidades profesionales, proyectos y colaboraciones.'],
+        en: ['Contact | Ernesto Starck', 'Contact Ernesto Starck about professional opportunities, projects and collaborations.'],
+      },
+    };
+    const [title, description] = (pages[path] ?? pages[''])[this.language];
+    this.title.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
   }
 
   t(esText: string, enText: string): string {

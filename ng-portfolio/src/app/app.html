@@ -1,7 +1,7 @@
 <header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark border-bottom shadow-sm" aria-label="Navegación principal">
     <div class="container">
-      <a class="navbar-brand fw-semibold text-uppercase small" routerLink="/"><img class="brand-logo brand-logo-dark" src="logo-header-dark.svg" alt="Portfolio Ernesto Starck" height="40"><img class="brand-logo brand-logo-light" src="logo-header-light.svg" alt="Portfolio Ernesto Starck" height="40"></a>
+      <a class="navbar-brand fw-semibold text-uppercase small" routerLink="/" [attr.aria-label]="t('Portafolio de Ernesto Starck', 'Ernesto Starck portfolio')"><img class="brand-logo brand-logo-dark" src="logo-header-dark.svg" alt="" height="40"><img class="brand-logo brand-logo-light" src="logo-header-light.svg" alt="" height="40"></a>
       <button class="navbar-toggler" type="button" (click)="toggleNav()" [attr.aria-expanded]="navOpen" aria-controls="mainNav" [attr.aria-label]="t('Mostrar navegación', 'Show navigation')">
         <span class="navbar-toggler-icon"></span>
       </button>

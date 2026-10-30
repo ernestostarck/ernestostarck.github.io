@@ -1,15 +1,10 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { SobreMi } from './pages/sobre-mi/sobre-mi';
-import { Proyectos } from './pages/proyectos/proyectos';
-import { Certificaciones } from './pages/certificaciones/certificaciones';
-import { Contacto } from './pages/contacto/contacto';
 
 export const routes: Routes = [
-	{ path: '', component: Home },
-	{ path: 'sobre-mi', component: SobreMi },
-	{ path: 'proyectos', component: Proyectos },
-	{ path: 'certificaciones', component: Certificaciones },
-	{ path: 'contacto', component: Contacto },
+	{ path: '', loadComponent: () => import('./pages/home/home').then((page) => page.Home) },
+	{ path: 'sobre-mi', loadComponent: () => import('./pages/sobre-mi/sobre-mi').then((page) => page.SobreMi) },
+	{ path: 'proyectos', loadComponent: () => import('./pages/proyectos/proyectos').then((page) => page.Proyectos) },
+	{ path: 'certificaciones', loadComponent: () => import('./pages/certificaciones/certificaciones').then((page) => page.Certificaciones) },
+	{ path: 'contacto', loadComponent: () => import('./pages/contacto/contacto').then((page) => page.Contacto) },
 	{ path: '**', redirectTo: '' },
 ];
