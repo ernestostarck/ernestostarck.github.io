@@ -1,40 +1,98 @@
 <main class="container py-4 page-main">
 	<section class="section lang-es" aria-label="Contacto">
 		<div class="panel card border-0 shadow-sm p-4 p-lg-5 page-shell">
-			<div id="contacto-banner" class="page-banner contact-banner mb-4">
+			<div class="page-banner contact-banner mb-4">
 				<div class="banner-art" aria-hidden="true">
 					<img src="icons/banner-mail.svg" alt="" width="96" height="96" />
 					<img src="icons/banner-chat.svg" alt="" width="96" height="96" />
 					<img src="icons/banner-send.svg" alt="" width="96" height="96" />
 					<img src="icons/banner-network.svg" alt="" width="96" height="96" />
 				</div>
-				<p class="eyebrow mb-2">Contacto</p>
-				<h2 class="mb-2">Hablemos sobre el problema que quieres resolver</h2>
-				<p class="banner-lead">Si buscas desarrollar, automatizar o mejorar un sistema, conversemos sobre el contexto y la solución más útil.</p>
-				<div class="banner-chips" aria-label="Canales de contacto">
-					<span>Email directo</span>
-					<span>Roles y colaboraciones</span>
-					<span>LinkedIn</span>
+				<div class="banner-eyebrow-wrap">
+					<span class="banner-eyebrow-dot" aria-hidden="true"></span>
+					<p class="eyebrow mb-0">Disponible para oportunidades profesionales</p>
 				</div>
+				<h2 class="mb-2">¿Tienes un desafío tecnológico?</h2>
+				<p class="banner-lead">Conversemos y construyamos algo que genere valor. Estoy abierto a oportunidades profesionales, proyectos de desarrollo de software, análisis de datos y automatización.</p>
+				<div class="banner-chips" aria-label="Áreas de interés"><span>Software Engineering</span><span>Data Analytics</span><span>Automation</span></div>
 			</div>
-			<ul class="contact-list contact-cards">
-				<li class="cc-name">
-					<img class="contact-icon" src="icons/contact-anim-name.svg" alt="" width="64" height="64" />
-					<span><strong>Nombre:</strong> Ernesto Arturo Starck Hernández</span>
-				</li>
-				<li class="cc-email">
-					<img class="contact-icon" src="icons/contact-anim-email.svg" alt="" width="64" height="64" />
-					<span><strong>Email:</strong> <a href="mailto:ernesto.starck@gmail.com">ernesto.starck@gmail.com</a></span>
-				</li>
-				<li class="cc-phone">
-					<img class="contact-icon" src="icons/contact-anim-phone.svg" alt="" width="64" height="64" />
-					<span><strong>Telefono:</strong> <a href="tel:+56954985915">+56 9 5498 5915</a></span>
-				</li>
-				<li class="cc-linkedin">
-					<img class="contact-icon" src="icons/contact-anim-linkedin.svg" alt="" width="64" height="64" />
-					<span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ernesto-arturo-starck-hern%C3%A1ndez" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/ernesto-arturo-starck-hernández</a></span>
-				</li>
-			</ul>
+
+			<div class="cx-grid">
+				<div class="cx-side">
+					<h3 class="cx-h">Contacto directo</h3>
+					<p class="cx-sub">Escríbeme por el canal que prefieras.</p>
+					<ul class="cx-channels">
+						<li><a class="cx-channel cx-email" href="mailto:ernesto.starck@gmail.com">
+							<img src="icons/contact-anim-email.svg" alt="" width="44" height="44" />
+							<span><strong>Correo electrónico</strong><small>Oportunidades y consultas profesionales</small><em>ernesto.starck@gmail.com</em></span>
+						</a></li>
+						<li><a class="cx-channel cx-linkedin" href="https://www.linkedin.com/in/ernesto-arturo-starck-hern%C3%A1ndez" target="_blank" rel="noopener noreferrer">
+							<img src="icons/contact-anim-linkedin.svg" alt="" width="44" height="44" />
+							<span><strong>LinkedIn</strong><small>Conectemos profesionalmente</small><em>ernesto-arturo-starck-hernández</em></span>
+						</a></li>
+						<li><a class="cx-channel cx-github" href="https://github.com/ernestostarck" target="_blank" rel="noopener noreferrer">
+							<span class="cx-gh" aria-hidden="true"><i class="devicon-github-original"></i></span>
+							<span><strong>GitHub</strong><small>Explora mis proyectos y desarrollos</small><em>github.com/ernestostarck</em></span>
+						</a></li>
+						<li><a class="cx-channel cx-phone" href="tel:+56954985915">
+							<img src="icons/contact-anim-phone.svg" alt="" width="44" height="44" />
+							<span><strong>Teléfono</strong><small>Llamadas y WhatsApp</small><em>+56 9 5498 5915</em></span>
+						</a></li>
+					</ul>
+					<div class="cx-avail">
+						<h4>Disponibilidad</h4>
+						<dl>
+							<div><dt>Ubicación</dt><dd>Chile</dd></div>
+							<div><dt>Modalidad</dt><dd>Remota, híbrida o presencial, según el cargo</dd></div>
+							<div><dt>Disponibilidad</dt><dd>A convenir</dd></div>
+							<div><dt>Intereses</dt><dd>Software, datos y automatización</dd></div>
+						</dl>
+					</div>
+				</div>
+
+				<form #contactFormEs name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" [formGroup]="form" (ngSubmit)="submit('es', contactFormEs)" novalidate>
+					<input type="hidden" name="form-name" value="contact" />
+					<input type="hidden" name="lang" value="es" />
+					<h3 class="cx-h">Envíame un mensaje</h3>
+					<p class="cx-sub">Cuéntame un poco sobre tu consulta. Te responderé tan pronto como sea posible.</p>
+					<div class="cx-field">
+						<label for="cx-name-es">Nombre completo</label>
+						<input id="cx-name-es" type="text" name="name" formControlName="name" autocomplete="name" required [attr.aria-invalid]="invalid('name')" />
+						<p class="cx-error" role="alert" *ngIf="invalid('name')">Ingresa tu nombre (mínimo 2 caracteres).</p>
+					</div>
+					<div class="cx-field">
+						<label for="cx-email-es">Correo electrónico</label>
+						<input id="cx-email-es" type="email" name="email" formControlName="email" autocomplete="email" required [attr.aria-invalid]="invalid('email')" />
+						<p class="cx-error" role="alert" *ngIf="invalid('email')">Ingresa un correo válido.</p>
+					</div>
+					<div class="cx-field">
+						<label for="cx-reason-es">Motivo del contacto</label>
+						<select id="cx-reason-es" name="reason" formControlName="reason">
+							<option value="job">Oportunidad laboral</option>
+							<option value="collab">Colaboración o proyecto</option>
+							<option value="tech">Consulta técnica</option>
+							<option value="other">Otro</option>
+						</select>
+					</div>
+					<div class="cx-field">
+						<label for="cx-msg-es">Mensaje</label>
+						<textarea id="cx-msg-es" name="message" rows="5" formControlName="message" required [attr.aria-invalid]="invalid('message')"></textarea>
+						<p class="cx-error" role="alert" *ngIf="invalid('message')">Escribe un mensaje de al menos 10 caracteres.</p>
+					</div>
+					<div class="cx-trap">
+						<label>No completar este campo <input type="text" name="bot-field" tabindex="-1" autocomplete="off" formControlName="botField" /></label>
+					</div>
+					<div class="cx-recaptcha" data-netlify-recaptcha="true"></div>
+					<button class="cx-submit" type="submit" [disabled]="status() === 'sending'">
+						<span *ngIf="status() !== 'sending'">Enviar mensaje</span>
+						<span *ngIf="status() === 'sending'">Enviando…</span>
+						<span aria-hidden="true">↗</span>
+					</button>
+					<p class="cx-status cx-ok" role="status" *ngIf="status() === 'sent'">¡Mensaje enviado! Te responderé a la brevedad.</p>
+					<p class="cx-status cx-bad" role="alert" *ngIf="status() === 'error'">No se pudo enviar. Inténtalo de nuevo o escríbeme a ernesto.starck@gmail.com.</p>
+					<p class="cx-privacy">Usaré tus datos solo para responder a tu consulta; no se comparten con terceros.</p>
+				</form>
+			</div>
 		</div>
 	</section>
 
@@ -47,33 +105,91 @@
 					<img src="icons/banner-send.svg" alt="" width="96" height="96" />
 					<img src="icons/banner-network.svg" alt="" width="96" height="96" />
 				</div>
-				<p class="eyebrow mb-2">Contact</p>
-				<h2 class="mb-2">Let&apos;s talk about the problem you want to solve</h2>
-				<p class="banner-lead">If you are looking to develop, automate, or improve a system, let&apos;s discuss the context and the most useful solution.</p>
-				<div class="banner-chips" aria-label="Contact channels">
-					<span>Direct email</span>
-					<span>Roles and collaborations</span>
-					<span>LinkedIn</span>
+				<div class="banner-eyebrow-wrap">
+					<span class="banner-eyebrow-dot" aria-hidden="true"></span>
+					<p class="eyebrow mb-0">Open to professional opportunities</p>
 				</div>
+				<h2 class="mb-2">Have a technology challenge?</h2>
+				<p class="banner-lead">Let's talk and build something of value. I'm open to professional opportunities and to software development, data analytics and automation projects.</p>
+				<div class="banner-chips" aria-label="Areas of interest"><span>Software Engineering</span><span>Data Analytics</span><span>Automation</span></div>
 			</div>
-			<ul class="contact-list contact-cards">
-				<li class="cc-name">
-					<img class="contact-icon" src="icons/contact-anim-name.svg" alt="" width="64" height="64" />
-					<span><strong>Name:</strong> Ernesto Arturo Starck Hernandez</span>
-				</li>
-				<li class="cc-email">
-					<img class="contact-icon" src="icons/contact-anim-email.svg" alt="" width="64" height="64" />
-					<span><strong>Email:</strong> <a href="mailto:ernesto.starck@gmail.com">ernesto.starck@gmail.com</a></span>
-				</li>
-				<li class="cc-phone">
-					<img class="contact-icon" src="icons/contact-anim-phone.svg" alt="" width="64" height="64" />
-					<span><strong>Phone:</strong> <a href="tel:+56954985915">+56 9 5498 5915</a></span>
-				</li>
-				<li class="cc-linkedin">
-					<img class="contact-icon" src="icons/contact-anim-linkedin.svg" alt="" width="64" height="64" />
-					<span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ernesto-arturo-starck-hern%C3%A1ndez" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/ernesto-arturo-starck-hernandez</a></span>
-				</li>
-			</ul>
+
+			<div class="cx-grid">
+				<div class="cx-side">
+					<h3 class="cx-h">Direct contact</h3>
+					<p class="cx-sub">Reach me through the channel you prefer.</p>
+					<ul class="cx-channels">
+						<li><a class="cx-channel cx-email" href="mailto:ernesto.starck@gmail.com">
+							<img src="icons/contact-anim-email.svg" alt="" width="44" height="44" />
+							<span><strong>Email</strong><small>Opportunities and professional inquiries</small><em>ernesto.starck@gmail.com</em></span>
+						</a></li>
+						<li><a class="cx-channel cx-linkedin" href="https://www.linkedin.com/in/ernesto-arturo-starck-hern%C3%A1ndez" target="_blank" rel="noopener noreferrer">
+							<img src="icons/contact-anim-linkedin.svg" alt="" width="44" height="44" />
+							<span><strong>LinkedIn</strong><small>Let's connect professionally</small><em>ernesto-arturo-starck-hernández</em></span>
+						</a></li>
+						<li><a class="cx-channel cx-github" href="https://github.com/ernestostarck" target="_blank" rel="noopener noreferrer">
+							<span class="cx-gh" aria-hidden="true"><i class="devicon-github-original"></i></span>
+							<span><strong>GitHub</strong><small>Explore my projects and code</small><em>github.com/ernestostarck</em></span>
+						</a></li>
+						<li><a class="cx-channel cx-phone" href="tel:+56954985915">
+							<img src="icons/contact-anim-phone.svg" alt="" width="44" height="44" />
+							<span><strong>Phone</strong><small>Calls and WhatsApp</small><em>+56 9 5498 5915</em></span>
+						</a></li>
+					</ul>
+					<div class="cx-avail">
+						<h4>Availability</h4>
+						<dl>
+							<div><dt>Location</dt><dd>Chile</dd></div>
+							<div><dt>Work mode</dt><dd>Remote, hybrid or on-site, depending on the role</dd></div>
+							<div><dt>Availability</dt><dd>To be agreed</dd></div>
+							<div><dt>Interests</dt><dd>Software, data and automation</dd></div>
+						</dl>
+					</div>
+				</div>
+
+				<form #contactFormEn name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" [formGroup]="form" (ngSubmit)="submit('en', contactFormEn)" novalidate>
+					<input type="hidden" name="form-name" value="contact" />
+					<input type="hidden" name="lang" value="en" />
+					<h3 class="cx-h">Send me a message</h3>
+					<p class="cx-sub">Tell me a bit about your inquiry. I'll reply as soon as possible.</p>
+					<div class="cx-field">
+						<label for="cx-name-en">Full name</label>
+						<input id="cx-name-en" type="text" name="name" formControlName="name" autocomplete="name" required [attr.aria-invalid]="invalid('name')" />
+						<p class="cx-error" role="alert" *ngIf="invalid('name')">Enter your name (at least 2 characters).</p>
+					</div>
+					<div class="cx-field">
+						<label for="cx-email-en">Email</label>
+						<input id="cx-email-en" type="email" name="email" formControlName="email" autocomplete="email" required [attr.aria-invalid]="invalid('email')" />
+						<p class="cx-error" role="alert" *ngIf="invalid('email')">Enter a valid email.</p>
+					</div>
+					<div class="cx-field">
+						<label for="cx-reason-en">Reason for contact</label>
+						<select id="cx-reason-en" name="reason" formControlName="reason">
+							<option value="job">Job opportunity</option>
+							<option value="collab">Collaboration or project</option>
+							<option value="tech">Technical inquiry</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+					<div class="cx-field">
+						<label for="cx-msg-en">Message</label>
+						<textarea id="cx-msg-en" name="message" rows="5" formControlName="message" required [attr.aria-invalid]="invalid('message')"></textarea>
+						<p class="cx-error" role="alert" *ngIf="invalid('message')">Write a message of at least 10 characters.</p>
+					</div>
+					<div class="cx-trap">
+						<label>Do not fill this field <input type="text" name="bot-field" tabindex="-1" autocomplete="off" formControlName="botField" /></label>
+					</div>
+					<div class="cx-recaptcha" data-netlify-recaptcha="true"></div>
+					<button class="cx-submit" type="submit" [disabled]="status() === 'sending'">
+						<span *ngIf="status() !== 'sending'">Send message</span>
+						<span *ngIf="status() === 'sending'">Sending…</span>
+						<span aria-hidden="true">↗</span>
+					</button>
+					<p class="cx-status cx-ok" role="status" *ngIf="status() === 'sent'">Message sent! I'll get back to you shortly.</p>
+					<p class="cx-status cx-bad" role="alert" *ngIf="status() === 'error'">Could not send. Try again or write to ernesto.starck@gmail.com.</p>
+					<p class="cx-privacy">I will only use your data to answer your inquiry; it is not shared with third parties.</p>
+				</form>
+			</div>
 		</div>
 	</section>
 </main>

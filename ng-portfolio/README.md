@@ -88,6 +88,17 @@ http://localhost:4200/
 
 ## Despliegue
 
+### Netlify (formularios de contacto)
+
+El formulario de contacto usa Netlify Forms y Netlify reCAPTCHA. Para que el envío funcione,
+despliega `ng-portfolio/` como sitio en Netlify (el archivo `netlify.toml` define el comando de
+build y la carpeta publicada). En la configuración del sitio, habilita la detección de formularios
+y reCAPTCHA, y vuelve a desplegar para que Netlify detecte el formulario `contact`. El formulario
+se procesa en el mismo dominio del sitio; GitHub Pages no ejecuta Netlify Forms.
+
+Los envíos quedan disponibles en **Site configuration → Forms → Submissions** en Netlify. El
+enlace de correo sigue disponible como alternativa directa.
+
 ### Automático (recomendado)
 
 El workflow en ../.github/workflows/deploy-pages.yml despliega cuando hay cambios en main bajo ng-portfolio/.

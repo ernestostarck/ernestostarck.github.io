@@ -214,3 +214,46 @@
 @media (prefers-reduced-motion: reduce) {
   .contact-banner .banner-art img { animation: none; }
 }
+
+/* Contacto v2 */
+.cx-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 992px) { .cx-grid { grid-template-columns: 5fr 6fr; align-items: start; } }
+.cx-side, .cx-form { border: 1px solid var(--line, rgba(148,163,184,.25)); border-radius: 18px; padding: 1.4rem; background: var(--card, rgba(15,23,42,.5)); }
+.cx-h { font-family: var(--font-heading); font-size: 1.25rem; margin: 0 0 .25rem; }
+.cx-sub { color: var(--ink-soft); font-size: .92rem; margin: 0 0 1rem; }
+.cx-channels { list-style: none; margin: 0 0 1.2rem; padding: 0; display: grid; gap: .65rem; }
+.cx-channel { display: flex; align-items: center; gap: .9rem; padding: .7rem .9rem; border-radius: 14px; border: 1px solid var(--line, rgba(148,163,184,.25)); text-decoration: none; color: var(--ink); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.cx-channel:hover { transform: translateY(-2px); border-color: #10b981; box-shadow: 0 8px 22px rgba(16,185,129,.15); }
+.cx-channel img, .cx-gh { width: 44px; height: 44px; flex: none; }
+.cx-gh { display: grid; place-items: center; font-size: 1.7rem; border-radius: 12px; background: rgba(148,163,184,.15); }
+.cx-channel span { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.cx-channel strong { font-size: .98rem; }
+.cx-channel small { color: var(--ink-soft); font-size: .78rem; }
+.cx-channel em { font-style: normal; font-size: .82rem; color: #10b981; overflow-wrap: anywhere; }
+.cx-avail { border-top: 1px dashed var(--line, rgba(148,163,184,.3)); padding-top: 1rem; }
+.cx-avail h4 { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 .6rem; }
+.cx-avail dl { margin: 0; display: grid; gap: .45rem; }
+.cx-avail dl div { display: flex; gap: .8rem; font-size: .9rem; }
+.cx-avail dt { flex: 0 0 6.5rem; color: var(--ink-soft); }
+.cx-avail dd { margin: 0; }
+.cx-field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: .9rem; }
+.cx-field label { font-size: .85rem; font-weight: 600; }
+.cx-field input, .cx-field select, .cx-field textarea { width: 100%; padding: .65rem .8rem; border-radius: 12px; border: 1px solid var(--line, rgba(148,163,184,.35)); background: rgba(148,163,184,.08); color: var(--ink); font: inherit; transition: border-color .2s ease, box-shadow .2s ease; }
+.cx-field select option { color: #0f172a; }
+.cx-field textarea { resize: vertical; min-height: 120px; }
+.cx-field input:focus, .cx-field select:focus, .cx-field textarea:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,.25); }
+.cx-field [aria-invalid='true'] { border-color: #f87171; }
+.cx-error { color: #f87171; font-size: .8rem; margin: 0; }
+.cx-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.cx-submit { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.5rem; border: 0; border-radius: 999px; font-weight: 700; color: #04210f; background: linear-gradient(135deg, #10b981, #22d3ee); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
+.cx-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(16,185,129,.3); }
+.cx-submit:disabled { opacity: .6; cursor: progress; }
+.cx-status { margin: .9rem 0 0; padding: .6rem .9rem; border-radius: 12px; font-size: .9rem; }
+.cx-ok { background: rgba(16,185,129,.14); color: #34d399; }
+.cx-bad { background: rgba(248,113,113,.14); color: #f87171; }
+.cx-privacy { margin: .9rem 0 0; font-size: .75rem; color: var(--ink-soft); }
+:host-context(html[data-theme='light']) .cx-side,
+:host-context(html[data-theme='light']) .cx-form { background: #fff; }
+:host-context(html[data-theme='light']) .cx-channel em { color: #059669; }
+:host-context(html[data-theme='light']) .cx-ok { color: #047857; }
+:host-context(html[data-theme='light']) .cx-bad, :host-context(html[data-theme='light']) .cx-error { color: #b91c1c; }
