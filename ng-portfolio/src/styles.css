@@ -1588,6 +1588,23 @@ html body .timeline-entry p strong { color: var(--ink); }
   html body .timeline-years button { transition: none; }
 }
 
+/* Certification summary and filters */
+html body .ct-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 1.5rem; padding: .9rem 1.1rem; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(34,211,238,.05)); }
+html body .ct-stats { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+html body .ct-stats div { display: flex; flex-direction: column; line-height: 1.15; }
+html body .ct-stats strong { font-family: var(--font-heading); font-size: 1.6rem; background: var(--aurora, linear-gradient(90deg,#10b981,#22d3ee)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+html body .ct-stats span { font-size: .78rem; color: var(--ink-soft); }
+html body .ct-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+html body .ct-filter { display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .9rem; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: .85rem; cursor: pointer; transition: all .2s ease; }
+html body .ct-filter span { font-size: .72rem; padding: .05rem .45rem; border-radius: 999px; background: rgba(148,163,184,.18); }
+html body .ct-filter:hover { transform: translateY(-1px); border-color: var(--success); }
+html body .ct-filter.is-active { background: var(--success); border-color: var(--success); color: #fff; font-weight: 600; }
+html body .ct-filter.is-active span { background: rgba(0,0,0,.15); }
+html body .ct-filter[data-area='data'].is-active { background: var(--data); border-color: var(--data); }
+html body .ct-filter[data-area='ai'].is-active { background: var(--accent); border-color: var(--accent); }
+html body .ct-filter[data-area='software'].is-active { background: var(--success); border-color: var(--success); }
+html body .ct-filter[data-area='general'].is-active { background: #a56b16; border-color: #a56b16; }
+
 /* =====================================================
    Component refinements (dark tech theme)
    ===================================================== */

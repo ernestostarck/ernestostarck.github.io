@@ -23,7 +23,6 @@
 }
 
 .about-banner h2 {
-  animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-delay: 0.1s;
   animation-fill-mode: both;
   position: relative;
@@ -53,13 +52,11 @@
 .about-banner .banner-chips span {
   animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: both;
-  background: linear-gradient(135deg, rgba(109, 148, 196, 0.15), rgba(109, 148, 196, 0.05));
   border: 1px solid rgba(109, 148, 196, 0.3);
   padding: 0.6rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--accent-bright);
   backdrop-filter: blur(8px);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -110,44 +107,6 @@
 .content-block:nth-child(5) { animation-delay: 0.3s; }
 
 /* ── VALUE LIST ── */
-
-.value-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.value-list li {
-  padding: 0.8rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation-fill-mode: both;
-  border-bottom: 1px solid rgba(109, 148, 196, 0.1);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.value-list li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--accent-bright);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.value-list li:last-child {
-  border-bottom: none;
-}
-
-.value-list li:hover {
-  padding-left: 2rem;
-  color: var(--accent-bright);
-}
-
-.value-list li:nth-child(1) { animation-delay: 0.35s; }
-.value-list li:nth-child(2) { animation-delay: 0.4s; }
-.value-list li:nth-child(3) { animation-delay: 0.45s; }
 
 /* ── SKILLS GRID ── */
 
@@ -262,38 +221,22 @@
   transform: translateY(-4px); border-color: var(--c); border-left-color: var(--c);
   box-shadow: 0 18px 38px -16px color-mix(in srgb, var(--c) 70%, transparent);
 }
-.ab-context::after, .ab-approach::after, .ab-decisions::after, .ab-areas::after {
+.ab-areas::after {
   content: ''; position: absolute; inset: 0 auto 0 -60%; width: 40%; pointer-events: none;
   background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--c) 18%, transparent), transparent);
   transform: skewX(-20deg); animation: abSheen 8s ease-in-out infinite;
 }
-.ab-context h3, .ab-approach h3, .ab-decisions h3, .ab-areas h3 {
+.ab-areas h3 {
   display: flex; align-items: center; gap: .65rem; color: var(--ink) !important;
 }
-.ab-context h3::before, .ab-approach h3::before, .ab-decisions h3::before, .ab-areas h3::before {
+.ab-areas h3::before {
   content: ''; flex: none; width: 1.7rem; height: 1.7rem; background: var(--c);
   -webkit-mask: var(--ico) center / 100% no-repeat;
   mask: var(--ico) center / 100% no-repeat;
   
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c) 60%, transparent));
 }
-.ab-context h3 { --ico: url('/icons/card-profile.svg'); }
-.ab-approach h3 { --ico: url('/icons/card-principles.svg'); }
-.ab-decisions h3 { --ico: url('/icons/card-priorities.svg'); }
 .ab-areas h3 { --ico: url('/icons/card-services.svg'); }
-.ab-context strong, .ab-approach strong { color: var(--c); }
-
-.ab-decisions .value-list { counter-reset: dec; display: grid; gap: .7rem; }
-.ab-decisions .value-list li {
-  counter-increment: dec; display: flex; align-items: center; gap: .9rem; padding: .85rem 1rem; border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
-  border-radius: 12px; background: color-mix(in srgb, var(--c) 8%, transparent); transition: transform .3s ease, background .3s ease;
-}
-.ab-decisions .value-list li::before {
-  content: counter(dec); position: static; flex: none; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%;
-  font-family: var(--font-mono); font-size: .8rem; font-weight: 700; color: var(--c);
-  border: 1px solid color-mix(in srgb, var(--c) 50%, transparent); background: color-mix(in srgb, var(--c) 16%, transparent);
-}
-.ab-decisions .value-list li:hover { padding-left: 1rem; color: inherit; transform: translateX(6px); background: color-mix(in srgb, var(--c) 16%, transparent); }
 
 .area-grid { display: grid; gap: .9rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .area-card {
@@ -319,7 +262,6 @@
 @keyframes abPop { from { opacity: 0; transform: scale(.88) translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes abFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
 @media (prefers-reduced-motion: reduce) {
-  .ab-context::after, .ab-approach::after, .ab-decisions::after, .ab-areas::after, .area-card, .area-card img,
-  .ab-context h3::before, .ab-approach h3::before, .ab-decisions h3::before, .ab-areas h3::before { animation: none !important; }
-  .content-block:hover, .area-card:hover, .ab-decisions .value-list li:hover { transform: none !important; }
+  .ab-areas::after, .area-card, .area-card img, .ab-areas h3::before { animation: none !important; }
+  .content-block:hover, .area-card:hover { transform: none !important; }
 }

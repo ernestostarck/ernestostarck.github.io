@@ -74,12 +74,6 @@
   background: rgba(192, 132, 252, 0.08);
 }
 
-.chip-software {
-  color: #4ade80;
-  border-color: rgba(74, 222, 128, 0.35);
-  background: rgba(74, 222, 128, 0.08);
-}
-
 .chip-general {
   color: #fbbf24;
   border-color: rgba(251, 191, 36, 0.35);
@@ -88,7 +82,6 @@
 
 :host-context(html[data-theme='light']) .chip-data { color: #0284c7; border-color: rgba(2, 132, 199, 0.35); background: rgba(2, 132, 199, 0.08); }
 :host-context(html[data-theme='light']) .chip-ai { color: #9333ea; border-color: rgba(147, 51, 234, 0.35); background: rgba(147, 51, 234, 0.08); }
-:host-context(html[data-theme='light']) .chip-software { color: #16a34a; border-color: rgba(22, 163, 74, 0.35); background: rgba(22, 163, 74, 0.08); }
 :host-context(html[data-theme='light']) .chip-general { color: #d97706; border-color: rgba(217, 119, 6, 0.35); background: rgba(217, 119, 6, 0.08); }
 
 /* ── TITLES & HEADINGS ── */
@@ -146,7 +139,6 @@
 
 .indicator-data { background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); }
 .indicator-ai { background: #c084fc; box-shadow: 0 0 8px rgba(192, 132, 252, 0.6); }
-.indicator-software { background: #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.6); }
 .indicator-general { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
 
 .area-badge {
@@ -160,12 +152,10 @@
 
 .badge-data { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); }
 .badge-ai { background: rgba(192, 132, 252, 0.12); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.35); }
-.badge-software { background: rgba(74, 222, 128, 0.12); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.35); }
 .badge-general { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); }
 
 :host-context(html[data-theme='dark']) .area-data h4 { color: #7dd3fc !important; text-shadow: 0 0 18px rgba(56, 189, 248, 0.35); }
 :host-context(html[data-theme='dark']) .area-ai h4 { color: #d8b4fe !important; text-shadow: 0 0 18px rgba(192, 132, 252, 0.35); }
-:host-context(html[data-theme='dark']) .area-software h4 { color: #86efac !important; text-shadow: 0 0 18px rgba(74, 222, 128, 0.35); }
 :host-context(html[data-theme='dark']) .area-general h4 { color: #fcd34d !important; text-shadow: 0 0 18px rgba(251, 191, 36, 0.35); }
 
 :host-context(html[data-theme='dark']) .cert-area-header {
@@ -181,20 +171,17 @@
 
 :host-context(html[data-theme='dark']) .cert-card strong { color: #f4f7fc; }
 :host-context(html[data-theme='dark']) .cert-card-description { color: #c3cee2; }
-:host-context(html[data-theme='dark']) .cert-card-meta,
-:host-context(html[data-theme='dark']) .cert-counter-chip { color: #b4c0d6; }
+:host-context(html[data-theme='dark']) .cert-card-meta, :host-context(html[data-theme='dark']) .cert-counter-chip { color: #b4c0d6; }
 :host-context(html[data-theme='dark']) .cert-card-link a { color: #9db8ff; }
 :host-context(html[data-theme='dark']) .cert-card-link a:hover { color: #c7d6ff; }
 :host-context(html[data-theme='dark']) .cert-note { color: #b4c0d6; }
 
 :host-context(html[data-theme='light']) .area-data h4 { color: #0284c7 !important; }
 :host-context(html[data-theme='light']) .area-ai h4 { color: #9333ea !important; }
-:host-context(html[data-theme='light']) .area-software h4 { color: #16a34a !important; }
 :host-context(html[data-theme='light']) .area-general h4 { color: #d97706 !important; }
 
 :host-context(html[data-theme='light']) .badge-data { color: #0284c7; background: rgba(2, 132, 199, 0.1); border-color: rgba(2, 132, 199, 0.35); }
 :host-context(html[data-theme='light']) .badge-ai { color: #9333ea; background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.35); }
-:host-context(html[data-theme='light']) .badge-software { color: #16a34a; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.35); }
 :host-context(html[data-theme='light']) .badge-general { color: #d97706; background: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.35); }
 
 /* ── EDUCATION GRID ── */
@@ -381,75 +368,53 @@
 }
 
 /* Completado con color de área */
-.status-data,
-#area-data .status-completado,
-#area-data-en .status-completado {
+.status-data, #area-data .status-completado, #area-data-en .status-completado {
   color: #38bdf8 !important;
   background: rgba(56, 189, 248, 0.12) !important;
   border: 1px solid rgba(56, 189, 248, 0.35) !important;
 }
 
-.status-ai,
-#area-ai .status-completado,
-#area-ai-en .status-completado {
+.status-ai, #area-ai .status-completado, #area-ai-en .status-completado {
   color: #c084fc !important;
   background: rgba(192, 132, 252, 0.12) !important;
   border: 1px solid rgba(192, 132, 252, 0.35) !important;
 }
 
-.status-software,
-#area-software .status-completado,
-#area-software-en .status-completado {
+#area-software .status-completado, #area-software-en .status-completado {
   color: #4ade80 !important;
   background: rgba(74, 222, 128, 0.12) !important;
   border: 1px solid rgba(74, 222, 128, 0.35) !important;
 }
 
-.status-general,
-#area-general .status-completado,
-#area-general-en .status-completado {
+.status-general, #area-general .status-completado, #area-general-en .status-completado {
   color: #fbbf24 !important;
   background: rgba(251, 191, 36, 0.12) !important;
   border: 1px solid rgba(251, 191, 36, 0.35) !important;
 }
 
-:host-context(html[data-theme='light']) .status-data,
-:host-context(html[data-theme='light']) #area-data .status-completado,
-:host-context(html[data-theme='light']) #area-data-en .status-completado {
+:host-context(html[data-theme='light']) .status-data, :host-context(html[data-theme='light']) #area-data .status-completado, :host-context(html[data-theme='light']) #area-data-en .status-completado {
   color: #0284c7 !important;
   background: rgba(2, 132, 199, 0.1) !important;
   border-color: rgba(2, 132, 199, 0.35) !important;
 }
 
-:host-context(html[data-theme='light']) .status-ai,
-:host-context(html[data-theme='light']) #area-ai .status-completado,
-:host-context(html[data-theme='light']) #area-ai-en .status-completado {
+:host-context(html[data-theme='light']) .status-ai, :host-context(html[data-theme='light']) #area-ai .status-completado, :host-context(html[data-theme='light']) #area-ai-en .status-completado {
   color: #9333ea !important;
   background: rgba(147, 51, 234, 0.1) !important;
   border-color: rgba(147, 51, 234, 0.35) !important;
 }
 
-:host-context(html[data-theme='light']) .status-software,
-:host-context(html[data-theme='light']) #area-software .status-completado,
-:host-context(html[data-theme='light']) #area-software-en .status-completado {
+:host-context(html[data-theme='light']) #area-software .status-completado, :host-context(html[data-theme='light']) #area-software-en .status-completado {
   color: #16a34a !important;
   background: rgba(22, 163, 74, 0.1) !important;
   border-color: rgba(22, 163, 74, 0.35) !important;
 }
 
-:host-context(html[data-theme='light']) .status-general,
-:host-context(html[data-theme='light']) #area-general .status-completado,
-:host-context(html[data-theme='light']) #area-general-en .status-completado {
+:host-context(html[data-theme='light']) .status-general, :host-context(html[data-theme='light']) #area-general .status-completado, :host-context(html[data-theme='light']) #area-general-en .status-completado {
   color: #d97706 !important;
   background: rgba(217, 119, 6, 0.1) !important;
   border-color: rgba(217, 119, 6, 0.35) !important;
 }
-
-/* Card hover accents */
-.area-data .cert-card:hover { border-color: #38bdf8; box-shadow: 0 8px 26px rgba(56, 189, 248, 0.16); }
-.area-ai .cert-card:hover { border-color: #c084fc; box-shadow: 0 8px 26px rgba(192, 132, 252, 0.16); }
-.area-software .cert-card:hover { border-color: #4ade80; box-shadow: 0 8px 26px rgba(74, 222, 128, 0.16); }
-.area-general .cert-card:hover { border-color: #fbbf24; box-shadow: 0 8px 26px rgba(251, 191, 36, 0.16); }
 
 /* ── SWIPER NAVIGATION & BULLETS ── */
 
@@ -549,31 +514,11 @@
 
 .chip-data { --chip-icon: url('/icons/area-data.svg'); }
 .chip-ai { --chip-icon: url('/icons/area-ai.svg'); }
-.chip-software { --chip-icon: url('/icons/area-software.svg'); }
 .chip-general { --chip-icon: url('/icons/area-management.svg'); }
 
 .chip-data { --chip-color: #38bdf8; }
 .chip-ai { --chip-color: #c084fc; }
-.chip-software { --chip-color: #4ade80; }
 .chip-general { --chip-color: #fbbf24; }
 :host-context(html[data-theme='light']) .chip-data { --chip-color: #0284c7; }
 :host-context(html[data-theme='light']) .chip-ai { --chip-color: #9333ea; }
-:host-context(html[data-theme='light']) .chip-software { --chip-color: #16a34a; }
 :host-context(html[data-theme='light']) .chip-general { --chip-color: #d97706; }
-
-/* Certificaciones: resumen y filtros */
-.ct-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; border: 1px solid var(--line, rgba(148,163,184,.25)); border-radius: 16px; background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(34,211,238,.05)); }
-.ct-stats { display: flex; gap: 1.6rem; flex-wrap: wrap; }
-.ct-stats div { display: flex; flex-direction: column; line-height: 1.15; }
-.ct-stats strong { font-family: var(--font-heading); font-size: 1.6rem; background: var(--aurora, linear-gradient(90deg,#10b981,#22d3ee)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.ct-stats span { font-size: 0.78rem; color: var(--ink-soft); }
-.ct-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.ct-filter { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid var(--line, rgba(148,163,184,.3)); background: transparent; color: var(--ink); font-size: 0.85rem; cursor: pointer; transition: all .2s ease; }
-.ct-filter span { font-size: 0.72rem; padding: 0.05rem 0.45rem; border-radius: 999px; background: rgba(148,163,184,.18); }
-.ct-filter:hover { transform: translateY(-1px); border-color: #10b981; }
-.ct-filter.is-active { background: #10b981; border-color: #10b981; color: #04210f; font-weight: 600; }
-.ct-filter.is-active span { background: rgba(0,0,0,.15); }
-.ct-filter[data-area='data'].is-active { background: #22d3ee; border-color: #22d3ee; }
-.ct-filter[data-area='ai'].is-active { background: #a78bfa; border-color: #a78bfa; }
-.ct-filter[data-area='software'].is-active { background: #4ade80; border-color: #4ade80; }
-.ct-filter[data-area='general'].is-active { background: #fbbf24; border-color: #fbbf24; }
