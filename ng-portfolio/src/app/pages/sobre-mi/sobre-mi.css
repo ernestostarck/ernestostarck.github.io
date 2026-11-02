@@ -10,7 +10,6 @@
   overflow: hidden;
   margin-bottom: 2rem;
 }
-
 .about-banner::before {
   content: '';
   position: absolute;

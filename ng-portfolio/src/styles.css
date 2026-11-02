@@ -1521,6 +1521,73 @@ html[data-theme='light'] .cert-card-status.status-titulado {
   }
 }
 
+/* Applied experience timeline */
+html body .experience-timeline { margin-top: 1.25rem; }
+html body .timeline-years {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  position: relative;
+  overflow-x: auto;
+  padding: .5rem .25rem 1.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+html body .timeline-years::before {
+  content: '';
+  position: absolute;
+  top: 1.9rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: var(--line);
+}
+html body .timeline-years button {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 4.25rem;
+  min-height: 4.25rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font: 600 .88rem var(--font-mono);
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+html body .timeline-years button:hover { border-color: var(--accent-bright); color: var(--ink); }
+html body .timeline-years button.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+html body .timeline-years button:focus-visible { outline: 3px solid var(--accent-bright); outline-offset: 4px; }
+html body .timeline-details { min-height: 10rem; padding: 1rem 0 .25rem; }
+html body .timeline-year-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+html body .timeline-entry {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-sm, .65rem);
+  background: var(--surface);
+}
+html body .timeline-entry .hv-role { display: inline-block; margin-bottom: .4rem; color: var(--accent-bright); font-family: var(--font-mono); font-size: .78rem; }
+html body .timeline-entry h4 { margin: 0 0 .55rem; color: var(--ink); font-size: 1.05rem; font-weight: 700; }
+html body .timeline-entry p { margin: .35rem 0 0; color: var(--ink-soft); font-size: .92rem; }
+html body .timeline-entry p strong { color: var(--ink); }
+
+@media (max-width: 640px) {
+  html body .timeline-years { justify-content: flex-start; gap: .65rem; }
+  html body .timeline-years button { flex-basis: 3.75rem; min-height: 3.75rem; }
+  html body .timeline-years::before { top: 1.75rem; left: 1rem; right: 1rem; }
+  html body .timeline-year-details { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .timeline-years button { transition: none; }
+}
+
 /* =====================================================
    Component refinements (dark tech theme)
    ===================================================== */

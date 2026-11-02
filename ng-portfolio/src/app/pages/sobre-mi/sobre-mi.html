@@ -29,13 +29,36 @@
 
 			<div class="content-block ab-exp">
 				<h3>Experiencia aplicada</h3>
-				<div class="hv-cards">
-					<article class="hv-card hv-da"><span class="hv-role">Jul 2026</span><h3>Analista de datos</h3><p><strong>Universidad Finis Terrae</strong><br />Consolidé datos de varios programas de apoyo estudiantil en reportes y tableros automatizados para detectar patrones de deserción y priorizar intervenciones.</p></article>
-					<article class="hv-card hv-ai"><span class="hv-role">Mar – Dic 2025</span><h3>Tutor de Tutores</h3><p><strong>Universidad Finis Terrae</strong><br />Formé y acompañé a tutores académicos, estandarizando procesos para asegurar calidad y trazabilidad del programa.</p></article>
-					<article class="hv-card hv-sw"><span class="hv-role">Sep 2021 – Dic 2025</span><h3>Profesor universitario asistente</h3><p><strong>Universidad Finis Terrae</strong><br />Docencia en matemáticas, programación y estadística descriptiva para ingeniería, uniendo teoría con herramientas computacionales.</p></article>
-					<article class="hv-card hv-am"><span class="hv-role">May 2023 – Dic 2024</span><h3>Tutor de matemáticas y cálculo</h3><p><strong>Universidad Finis Terrae</strong><br />Apoyo a estudiantes de ingeniería en álgebra y cálculo diferencial, con foco en modelamiento y razonamiento lógico.</p></article>
-					<article class="hv-card hv-da"><span class="hv-role">Feb – Abr 2024</span><h3>Practicante en Ingeniería Civil Informática</h3><p><strong>CMPC</strong><br />Gestión de riesgos operacionales: estructuré datos de incidentes de múltiples plantas en IBM OpenPages y analicé patrones para mitigación.</p></article>
-					<article class="hv-card hv-sw"><span class="hv-role">Ene – Feb 2023</span><h3>Practicante IT</h3><p><strong>Cognita Schools</strong><br />Soporte técnico, mantenimiento e inventario de la infraestructura TI de un entorno educativo.</p></article>
+				<div class="experience-timeline">
+					<div class="timeline-years" role="group" aria-label="Selecciona un año de experiencia">
+						<button *ngFor="let year of experienceYears" type="button" [class.active]="selectedExperienceYear() === year" [attr.aria-pressed]="selectedExperienceYear() === year" aria-controls="experience-details-es" (click)="selectExperienceYear(year)">{{ year }}</button>
+					</div>
+					<div class="timeline-details" id="experience-details-es" aria-live="polite">
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2021">
+							<article class="timeline-entry"><span class="hv-role">Sep – Dic 2021</span><h4>Profesor universitario asistente</h4><p><strong>Universidad Finis Terrae</strong></p><p>Apoyo a la docencia de Álgebra y acompañamiento a estudiantes en la comprensión de sus fundamentos y ejercicios.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2022">
+							<article class="timeline-entry"><span class="hv-role">Mar – Jun 2022</span><h4>Profesor universitario asistente</h4><p><strong>Universidad Finis Terrae</strong></p><p>Apoyo docente en Estadística, Matemáticas y Álgebra Lineal, reforzando contenidos y resolución de ejercicios.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2023">
+							<article class="timeline-entry"><span class="hv-role">Ene – Feb 2023</span><h4>Practicante IT</h4><p><strong>Cognita Schools</strong></p><p>Soporte técnico, mantenimiento e inventario de la infraestructura TI de un entorno educativo.</p></article>
+							<article class="timeline-entry"><span class="hv-role">May – Nov 2023</span><h4>Tutor de Matemáticas, Cálculo y Álgebra</h4><p><strong>Universidad Finis Terrae</strong></p><p>Acompañamiento académico y resolución de dudas para fortalecer la comprensión y aplicación de los contenidos.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2024">
+							<article class="timeline-entry"><span class="hv-role">Feb – Abr 2024</span><h4>Practicante en Ingeniería Civil Informática</h4><p><strong>CMPC</strong></p><p>Gestión de riesgos operacionales: estructuré datos de incidentes de múltiples plantas en IBM OpenPages y analicé patrones para mitigación.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Mar – Jun 2024</span><h4>Profesor universitario asistente</h4><p><strong>Universidad Finis Terrae</strong></p><p>Apoyo a la docencia de Matemáticas y acompañamiento a estudiantes durante el aprendizaje y la resolución de ejercicios.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Mar – Jun 2024</span><h4>Tutor de Cálculo y Álgebra</h4><p><strong>Universidad Finis Terrae</strong></p><p>Tutorías para reforzar conceptos y estrategias de resolución en ambas asignaturas.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Ago – Dic 2024</span><h4>Profesor universitario asistente</h4><p><strong>Universidad Finis Terrae</strong></p><p>Apoyo docente en Cálculo y Sistemas de Recomendación, adaptado a los contenidos de cada asignatura.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Ago – Dic 2024</span><h4>Tutor de Cálculo y Álgebra</h4><p><strong>Universidad Finis Terrae</strong></p><p>Acompañamiento académico y apoyo en la resolución de problemas de cálculo y álgebra.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2025">
+							<article class="timeline-entry"><span class="hv-role">Mar – Dic 2025</span><h4>Tutor de tutores</h4><p><strong>Universidad Finis Terrae</strong></p><p>Formación y acompañamiento de tutores académicos, apoyando la coordinación y calidad del programa.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Ago – Dic 2025</span><h4>Profesor universitario asistente</h4><p><strong>Universidad Finis Terrae</strong></p><p>Apoyo a la docencia universitaria y acompañamiento del aprendizaje de los estudiantes.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2026">
+							<article class="timeline-entry"><span class="hv-role">Jul 2026</span><h4>Analista de datos</h4><p><strong>Trayectoria Estudiantil y Centro de Acompañamiento al Aprendizaje</strong></p><p>Análisis de datos para apoyar el seguimiento de trayectorias estudiantiles y el acompañamiento al aprendizaje.</p></article>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -160,13 +183,36 @@
 
 			<div class="content-block ab-exp">
 				<h3>Applied experience</h3>
-				<div class="hv-cards">
-					<article class="hv-card hv-da"><span class="hv-role">Jul 2026</span><h3>Data Analyst</h3><p><strong>Universidad Finis Terrae</strong><br />Consolidated data from several student support programs into automated reports and dashboards to detect dropout patterns and prioritize interventions.</p></article>
-					<article class="hv-card hv-ai"><span class="hv-role">Mar – Dec 2025</span><h3>Tutor of Tutors</h3><p><strong>Universidad Finis Terrae</strong><br />Trained and mentored academic tutors, standardizing processes to ensure program quality and traceability.</p></article>
-					<article class="hv-card hv-sw"><span class="hv-role">Sep 2021 – Dec 2025</span><h3>Assistant University Professor</h3><p><strong>Universidad Finis Terrae</strong><br />Taught mathematics, programming and descriptive statistics to engineering students, linking theory with computational tools.</p></article>
-					<article class="hv-card hv-am"><span class="hv-role">May 2023 – Dec 2024</span><h3>Math and Calculus Tutor</h3><p><strong>Universidad Finis Terrae</strong><br />Supported engineering students in algebra and differential calculus, focused on modeling and logical reasoning.</p></article>
-					<article class="hv-card hv-da"><span class="hv-role">Feb – Apr 2024</span><h3>Computer Engineering Intern</h3><p><strong>CMPC</strong><br />Operational risk management: structured incident data from multiple plants in IBM OpenPages and analyzed patterns for mitigation.</p></article>
-					<article class="hv-card hv-sw"><span class="hv-role">Jan – Feb 2023</span><h3>IT Intern</h3><p><strong>Cognita Schools</strong><br />Technical support, maintenance and inventory for the IT infrastructure of an educational environment.</p></article>
+				<div class="experience-timeline">
+					<div class="timeline-years" role="group" aria-label="Select an experience year">
+						<button *ngFor="let year of experienceYears" type="button" [class.active]="selectedExperienceYear() === year" [attr.aria-pressed]="selectedExperienceYear() === year" aria-controls="experience-details-en" (click)="selectExperienceYear(year)">{{ year }}</button>
+					</div>
+					<div class="timeline-details" id="experience-details-en" aria-live="polite">
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2021">
+							<article class="timeline-entry"><span class="hv-role">Sep – Dec 2021</span><h4>Assistant University Professor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Supported Algebra instruction and helped students understand core concepts and work through exercises.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2022">
+							<article class="timeline-entry"><span class="hv-role">Mar – Jun 2022</span><h4>Assistant University Professor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Supported Statistics, Mathematics and Linear Algebra instruction, reinforcing course material and problem solving.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2023">
+							<article class="timeline-entry"><span class="hv-role">Jan – Feb 2023</span><h4>IT Intern</h4><p><strong>Cognita Schools</strong></p><p>Provided technical support and maintained and inventoried IT infrastructure in an educational environment.</p></article>
+							<article class="timeline-entry"><span class="hv-role">May – Nov 2023</span><h4>Mathematics, Calculus and Algebra Tutor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Provided academic guidance and answered questions to strengthen students’ understanding and application of course material.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2024">
+							<article class="timeline-entry"><span class="hv-role">Feb – Apr 2024</span><h4>Computer Engineering Intern</h4><p><strong>CMPC</strong></p><p>Worked on operational risk management, structuring incident data from multiple plants in IBM OpenPages and analyzing patterns for mitigation.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Mar – Jun 2024</span><h4>Assistant University Professor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Supported Mathematics instruction and helped students with course material and exercises.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Mar – Jun 2024</span><h4>Calculus and Algebra Tutor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Provided tutoring to reinforce concepts and problem-solving strategies in both subjects.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Aug – Dec 2024</span><h4>Assistant University Professor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Supported Calculus and Recommender Systems instruction, aligned with each course’s material.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Aug – Dec 2024</span><h4>Calculus and Algebra Tutor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Provided academic guidance and helped students work through Calculus and Algebra problems.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2025">
+							<article class="timeline-entry"><span class="hv-role">Mar – Dec 2025</span><h4>Tutor of Tutors</h4><p><strong>Universidad Finis Terrae</strong></p><p>Trained and mentored academic tutors, supporting program coordination and quality.</p></article>
+							<article class="timeline-entry"><span class="hv-role">Aug – Dec 2025</span><h4>Assistant University Professor</h4><p><strong>Universidad Finis Terrae</strong></p><p>Supported university instruction and student learning.</p></article>
+						</div>
+						<div class="timeline-year-details" *ngIf="selectedExperienceYear() === 2026">
+							<article class="timeline-entry"><span class="hv-role">Jul 2026</span><h4>Data Analyst</h4><p><strong>Trayectoria Estudiantil y Centro de Acompañamiento al Aprendizaje</strong></p><p>Analyzes data to support student pathway monitoring and learning support.</p></article>
+						</div>
+					</div>
 				</div>
 			</div>
 
