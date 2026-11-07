@@ -92,6 +92,19 @@ export class App {
     this.navOpen = false;
   }
 
+  openCv(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const cvFiles: Record<string, string> = {
+      data: 'CV_ERNESTO_STARCK.pdf',
+      software: 'CV%20Ernesto%20Starck.pdf',
+      ai: 'CV%20-%20Ernesto%20Starck.pdf',
+    };
+    const file = cvFiles[select.value];
+    select.value = '';
+    if (file) window.open(file, '_blank', 'noopener,noreferrer');
+    this.closeNav();
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.showScrollTop = window.scrollY > 260;

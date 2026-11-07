@@ -11,9 +11,15 @@
           <li class="nav-item"><a class="nav-link" routerLink="/sobre-mi" routerLinkActive="active" (click)="closeNav()">{{ t('Sobre mí', 'About') }}</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/proyectos" routerLinkActive="active" (click)="closeNav()">{{ t('Proyectos', 'Projects') }}</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/certificaciones" routerLinkActive="active" (click)="closeNav()">{{ t('Certificaciones', 'Certifications') }}</a></li>
-          <li class="nav-item"><a class="nav-link" href="CV%20Ernesto%20Starck.pdf" target="_blank" rel="noopener noreferrer" (click)="closeNav()">CV Software</a></li>
-          <li class="nav-item"><a class="nav-link" href="CV_ERNESTO_STARCK.pdf" target="_blank" rel="noopener noreferrer" (click)="closeNav()">CV Data</a></li>
-          <li class="nav-item"><a class="nav-link" href="CV%20-%20Ernesto%20Starck.pdf" target="_blank" rel="noopener noreferrer" (click)="closeNav()">CV AI</a></li>
+          <li class="nav-item cv-nav-item">
+            <span class="cv-nav-title" aria-hidden="true">CV</span>
+            <select class="cv-nav-select" [attr.aria-label]="t('Seleccionar CV por área', 'Select a CV by area')" (change)="openCv($event)">
+              <option value="" selected>{{ t('Área', 'Area') }}</option>
+              <option value="data">Data</option>
+              <option value="software">Software</option>
+              <option value="ai">AI</option>
+            </select>
+          </li>
           <li class="nav-item"><a class="nav-link" routerLink="/contacto" routerLinkActive="active" (click)="closeNav()">{{ t('Contacto', 'Contact') }}</a></li>
         </ul>
 

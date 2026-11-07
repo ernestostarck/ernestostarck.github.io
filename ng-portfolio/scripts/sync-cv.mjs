@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(scriptDir, '..', '..');
 const publicDir = resolve(scriptDir, '..', 'public');
-const appHtmlFile = resolve(scriptDir, '..', 'src', 'app', 'app.html');
+const appTsFile = resolve(scriptDir, '..', 'src', 'app', 'app.ts');
 const cvs = {
   software: { label: 'Software', file: 'CV Ernesto Starck.pdf' },
   data: { label: 'Data', file: 'CV_ERNESTO_STARCK.pdf' },
@@ -78,16 +78,16 @@ function syncCV({ type, source }) {
   }
 
   copyFileSync(sourceFile, targetFile);
-  const html = readFileSync(appHtmlFile, 'utf8');
+  const appTs = readFileSync(appTsFile, 'utf8');
   const encodedName = encodeURIComponent(config.file);
-  const linkPattern = new RegExp(`href="${encodedName}(?:\\?v=[^"]*)?"`);
-  const updatedHtml = html.replace(linkPattern, `href="${encodedName}?v=${Date.now()}"`);
-  if (updatedHtml === html) throw new Error(`No encontré en app.html el enlace del CV ${config.label}.`);
-  writeFileSync(appHtmlFile, updatedHtml, 'utf8');
+  const filePattern = new RegExp(`'${encodedName}(?:\\?v=[^']*)?'`);
+  const updatedAppTs = appTs.replace(filePattern, `'${encodedName}?v=${Date.now()}'`);
+  if (updatedAppTs === appTs) throw new Error(`No encontré en app.ts el enlace del CV ${config.label}.`);
+  writeFileSync(appTsFile, updatedAppTs, 'utf8');
 
   execFileSync(
     'git',
-    ['commit', '--only', '-m', `Actualizar CV ${config.label}`, '--', targetFile, appHtmlFile],
+    ['commit', '--only', '-m', `Actualizar CV ${config.label}`, '--', targetFile, appTsFile],
     { cwd: repoRoot, stdio: 'inherit' },
   );
   execFileSync('git', ['push', 'origin', 'main'], { cwd: repoRoot, stdio: 'inherit' });
