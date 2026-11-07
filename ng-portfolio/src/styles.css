@@ -3512,37 +3512,22 @@ html body img[width][height] {
 /* ── Footer finish ── */
 
 html body .site-footer {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  margin-top: clamp(1.5rem, 4vw, 3rem);
-  padding: 1.5rem 0 calc(1.1rem + env(safe-area-inset-bottom, 0px));
-  background-color: color-mix(in srgb, var(--surface) 42%, var(--bg));
-  background-image:
-    radial-gradient(ellipse at 50% 0, color-mix(in srgb, var(--accent-bright) 9%, transparent), transparent 68%),
-    repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 28%, transparent) 0 1px, transparent 1px 2.5rem),
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 28%, transparent) 0 1px, transparent 1px 2.5rem);
+  width: min(var(--page-max), calc(100% - 2rem));
+  margin: clamp(1.5rem, 4vw, 3rem) auto 1rem;
+  padding: 0 0 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 html body .site-footer .footer-copy {
-  position: relative;
-  width: min(100%, 76rem);
-  padding: 1.05rem 0.5rem 0;
-  border-top-color: color-mix(in srgb, var(--line) 78%, transparent);
+  width: 100%;
+  padding: 0.9rem 0.5rem 0;
+  border-top-color: var(--line);
   color: var(--muted);
   font-size: clamp(0.7rem, 0.66rem + 0.18vw, 0.8rem);
   letter-spacing: 0.065em;
   line-height: 1.8;
   text-wrap: balance;
-}
-
-html body .site-footer .footer-copy::before {
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  width: clamp(2.5rem, 7vw, 4rem);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-bright), transparent);
-  content: '';
-  transform: translateX(-50%);
 }
