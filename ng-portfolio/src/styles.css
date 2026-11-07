@@ -1614,8 +1614,6 @@ body {
   background:
     radial-gradient(980px 540px at -12% -22%, rgba(109, 148, 196, 0.14), transparent 58%),
     radial-gradient(620px 360px at 110% 12%, rgba(76, 120, 171, 0.1), transparent 55%),
-    repeating-linear-gradient(0deg, rgba(109, 148, 196, 0.035) 0px, rgba(109, 148, 196, 0.035) 1px, transparent 1px, transparent 48px),
-    repeating-linear-gradient(90deg, rgba(109, 148, 196, 0.035) 0px, rgba(109, 148, 196, 0.035) 1px, transparent 1px, transparent 48px),
     linear-gradient(180deg, #131b26 0%, #101722 48%, #0d141d 100%);
 }
 
@@ -2202,8 +2200,6 @@ html[data-theme='light'] body {
   background:
     radial-gradient(920px 500px at -10% -20%, rgba(109, 148, 196, 0.22), transparent 58%),
     radial-gradient(620px 330px at 115% 8%, rgba(76, 120, 171, 0.16), transparent 54%),
-    repeating-linear-gradient(0deg, rgba(76, 120, 171, 0.05) 0px, rgba(76, 120, 171, 0.05) 1px, transparent 1px, transparent 48px),
-    repeating-linear-gradient(90deg, rgba(76, 120, 171, 0.05) 0px, rgba(76, 120, 171, 0.05) 1px, transparent 1px, transparent 48px),
     linear-gradient(180deg, #edf2f9 0%, #e7edf6 52%, #e1e8f2 100%);
   color: #16202e;
 }
@@ -3530,4 +3526,45 @@ html body .site-footer .footer-copy {
   letter-spacing: 0.065em;
   line-height: 1.8;
   text-wrap: balance;
+}
+
+html body .scroll-top-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid color-mix(in srgb, var(--accent-bright) 42%, var(--line));
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--accent-bright);
+  font-size: 1.35rem;
+  line-height: 1;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 16%, transparent);
+  backdrop-filter: blur(10px);
+  transition:
+    transform 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+html[data-theme='light'] body .scroll-top-btn {
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--line));
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  color: var(--accent);
+}
+
+html body .scroll-top-btn:hover,
+html body .scroll-top-btn:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  color: #fff;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 32%, transparent);
+}
+
+@media (max-width: 760px) {
+  html body .scroll-top-btn {
+    width: 44px;
+    height: 44px;
+  }
 }
