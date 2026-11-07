@@ -1,140 +1,120 @@
 import { createHash } from 'node:crypto';
-import { execSync } from 'node:child_process';
-import {
-  copyFileSync,
-  existsSync,
-  readdirSync,
-  readFileSync,
-  statSync,
-  watch,
-  writeFileSync,
-} from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, watch, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(__dirname, '..', '..');
-const targetFile = resolve(__dirname, '..', 'public', 'CV Ernesto Starck.pdf');
-const appHtmlFile = resolve(__dirname, '..', 'src', 'app', 'app.html');
+const scriptDir = dirname(fileURLToPath(import.meta.url));
+const repoRoot = resolve(scriptDir, '..', '..');
+const publicDir = resolve(scriptDir, '..', 'public');
+const appHtmlFile = resolve(scriptDir, '..', 'src', 'app', 'app.html');
+const cvs = {
+  software: { label: 'Software', file: 'CV Ernesto Starck.pdf' },
+  data: { label: 'Data', file: 'CV_ERNESTO_STARCK.pdf' },
+  ai: { label: 'AI', file: 'CV - Ernesto Starck.pdf' },
+};
+
+function parseArgs(args) {
+  const options = {};
+  for (let i = 0; i < args.length; i += 1) {
+    if (args[i] === '--type') options.type = args[++i]?.toLowerCase();
+    else if (args[i] === '--source') options.source = args[++i];
+    else if (args[i] === '--watch' || args[i] === '-w') options.watch = true;
+    else throw new Error(`Argumento desconocido: ${args[i]}`);
+  }
+  if (!cvs[options.type]) throw new Error('Indica --type software, data o ai.');
+  return options;
+}
 
 function getDocumentDirs() {
   const userProfile = process.env.USERPROFILE || process.env.HOME || '';
-  const candidates = [
+  return [
     join(userProfile, 'OneDrive', 'Documentos'),
     join(userProfile, 'OneDrive', 'Documents'),
     join(userProfile, 'Documentos'),
     join(userProfile, 'Documents'),
-  ];
-  return candidates.filter((dir) => existsSync(dir));
+  ].filter((dir) => existsSync(dir));
 }
 
-function getLatestCvFile() {
-  const dirs = getDocumentDirs();
-  let latestFile = null;
-  let latestMtime = 0;
-
+function findSource(type, dirs) {
+  const matchesType = {
+    software: /software|desarrollo/i,
+    data: /data|datos|analytics|analista/i,
+    ai: /\bai\b|artificial.?intelligence|inteligencia.?artificial/i,
+  }[type];
+  const candidates = [];
   for (const dir of dirs) {
     try {
-      const files = readdirSync(dir);
-      for (const file of files) {
-        if (/^cv.*\.pdf$/i.test(file)) {
-          const fullPath = join(dir, file);
-          try {
-            const stat = statSync(fullPath);
-            if (stat.isFile() && stat.mtimeMs > latestMtime) {
-              latestMtime = stat.mtimeMs;
-              latestFile = fullPath;
-            }
-          } catch {
-            // Ignore stat errors for inaccessible files
-          }
+      for (const name of readdirSync(dir)) {
+        if (/^cv.*\.pdf$/i.test(name) && matchesType.test(name)) {
+          const file = join(dir, name);
+          const info = statSync(file);
+          if (info.isFile()) candidates.push({ file, mtime: info.mtimeMs });
         }
       }
     } catch {
-      // Ignore directory read errors
+      // Ignore document folders that cannot be read.
     }
   }
-
-  return latestFile;
+  return candidates.sort((a, b) => b.mtime - a.mtime)[0]?.file;
 }
 
-function getFileHash(filePath) {
-  if (!existsSync(filePath)) return null;
-  try {
-    const buffer = readFileSync(filePath);
-    return createHash('sha256').update(buffer).digest('hex');
-  } catch {
-    return null;
-  }
+function hash(file) {
+  return createHash('sha256').update(readFileSync(file)).digest('hex');
 }
 
-function syncCV() {
-  const latestSource = getLatestCvFile();
-  if (!latestSource) {
-    console.log('⚠️ No se encontró ningún archivo PDF de CV en la carpeta Documentos.');
+function syncCV({ type, source }) {
+  const config = cvs[type];
+  const sourceFile = source ? resolve(source) : findSource(type, getDocumentDirs());
+  if (!sourceFile || !existsSync(sourceFile)) {
+    console.error(`No encontré el PDF para ${config.label}. Usa --source "ruta/al/CV.pdf".`);
     return false;
   }
 
-  console.log(`📄 Archivo detectado: ${latestSource}`);
-  const sourceHash = getFileHash(latestSource);
-  const targetHash = getFileHash(targetFile);
-
-  if (sourceHash && targetHash && sourceHash === targetHash) {
-    console.log('✓ El CV en el portafolio ya está actualizado con la versión más reciente.');
+  const targetFile = join(publicDir, config.file);
+  if (existsSync(targetFile) && hash(sourceFile) === hash(targetFile)) {
+    console.log(`El CV de ${config.label} ya está actualizado.`);
     return false;
   }
 
-  console.log('🔄 Copiando nueva versión del CV al portafolio...');
-  copyFileSync(latestSource, targetFile);
+  copyFileSync(sourceFile, targetFile);
+  const html = readFileSync(appHtmlFile, 'utf8');
+  const encodedName = encodeURIComponent(config.file);
+  const linkPattern = new RegExp(`href="${encodedName}(?:\\?v=[^"]*)?"`);
+  const updatedHtml = html.replace(linkPattern, `href="${encodedName}?v=${Date.now()}"`);
+  if (updatedHtml === html) throw new Error(`No encontré en app.html el enlace del CV ${config.label}.`);
+  writeFileSync(appHtmlFile, updatedHtml, 'utf8');
 
-  if (existsSync(appHtmlFile)) {
-    const html = readFileSync(appHtmlFile, 'utf8');
-    const updatedHtml = html.replace(
-      /href="CV%20Ernesto%20Starck\.pdf(\?v=[^"]*)?"/,
-      `href="CV%20Ernesto%20Starck.pdf?v=${Date.now()}"`,
-    );
-    writeFileSync(appHtmlFile, updatedHtml, 'utf8');
-  }
-
-  console.log('🚀 Subiendo cambios a GitHub...');
-  try {
-    execSync(`git add "${targetFile}" "${appHtmlFile}"`, { cwd: repoRoot, stdio: 'inherit' });
-    execSync('git commit -m "Actualizar CV Ernesto Starck.pdf"', {
-      cwd: repoRoot,
-      stdio: 'inherit',
-    });
-    execSync('git push origin main', { cwd: repoRoot, stdio: 'inherit' });
-    console.log('✅ CV actualizado y subido exitosamente a GitHub.');
-    return true;
-  } catch (error) {
-    console.error('❌ Error al subir a GitHub:', error.message);
-    return false;
-  }
+  execFileSync(
+    'git',
+    ['commit', '--only', '-m', `Actualizar CV ${config.label}`, '--', targetFile, appHtmlFile],
+    { cwd: repoRoot, stdio: 'inherit' },
+  );
+  execFileSync('git', ['push', 'origin', 'main'], { cwd: repoRoot, stdio: 'inherit' });
+  console.log(`CV ${config.label} actualizado, commit creado y cambios enviados a origin/main.`);
+  return true;
 }
 
-const isWatchMode = process.argv.includes('--watch') || process.argv.includes('-w');
-
-if (isWatchMode) {
-  const dirs = getDocumentDirs();
-  console.log('👀 Modo observación activo. Monitoreando cambios en:', dirs.join(', '));
-  syncCV();
-
-  let debounceTimer = null;
-  for (const dir of dirs) {
-    try {
-      watch(dir, (eventType, filename) => {
+try {
+  const options = parseArgs(process.argv.slice(2));
+  if (options.watch) {
+    const dirs = getDocumentDirs();
+    if (!dirs.length) throw new Error('No encontré carpetas Documentos para observar.');
+    console.log(`Observando CVs de ${options.type} en: ${dirs.join(', ')}`);
+    syncCV(options);
+    let timer;
+    for (const dir of dirs) {
+      watch(dir, (_event, filename) => {
         if (filename && /^cv.*\.pdf$/i.test(filename)) {
-          console.log(`\n🔔 Cambio detectado en "${filename}".`);
-          clearTimeout(debounceTimer);
-          debounceTimer = setTimeout(() => {
-            syncCV();
-          }, 2500);
+          clearTimeout(timer);
+          timer = setTimeout(() => syncCV(options), 1500);
         }
       });
-    } catch (err) {
-      console.warn(`No se pudo observar la carpeta ${dir}:`, err.message);
     }
+  } else {
+    syncCV(options);
   }
-} else {
-  syncCV();
+} catch (error) {
+  console.error(error.message);
+  process.exitCode = 1;
 }
