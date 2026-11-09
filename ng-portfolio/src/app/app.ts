@@ -95,7 +95,7 @@ export class App {
   openCv(event: Event): void {
     const select = event.target as HTMLSelectElement;
     const cvFiles: Record<string, string> = {
-      data: 'CV_ERNESTO_STARCK.pdf',
+      data: 'CV_ERNESTO_STARCK.pdf?v=1794257178295',
       software: 'CV%20Ernesto%20Starck.pdf?v=1794257159518',
       ai: 'CV%20-%20Ernesto%20Starck.pdf',
     };
