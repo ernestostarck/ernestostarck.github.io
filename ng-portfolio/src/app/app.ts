@@ -97,7 +97,7 @@ export class App {
     const cvFiles: Record<string, string> = {
       data: 'CV_ERNESTO_STARCK.pdf?v=1794257178295',
       software: 'CV%20Ernesto%20Starck.pdf?v=1794257159518',
-      ai: 'CV%20-%20Ernesto%20Starck.pdf',
+      ai: 'CV%20-%20Ernesto%20Starck.pdf?v=1794257969473',
     };
     const file = cvFiles[select.value];
     select.value = '';
