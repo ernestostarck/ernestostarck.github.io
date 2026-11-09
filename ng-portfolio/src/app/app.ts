@@ -96,7 +96,7 @@ export class App {
     const select = event.target as HTMLSelectElement;
     const cvFiles: Record<string, string> = {
       data: 'CV_ERNESTO_STARCK.pdf',
-      software: 'CV%20Ernesto%20Starck.pdf',
+      software: 'CV%20Ernesto%20Starck.pdf?v=1794257159518',
       ai: 'CV%20-%20Ernesto%20Starck.pdf',
     };
     const file = cvFiles[select.value];
